@@ -5,18 +5,13 @@ import { styled } from "@material-ui/core/styles";
 
 const MyButton = styled(Button)({
   width: "40vw",
-
-  margin: "2vw",
+  margin: "4.5vw",
   padding: "2vw",
-
   backgroundColor: "var(--colorOne)",
-  border: "1px double var(--colorSix)",
-
+  border: "2px double var(--borderColor)",
   borderRadius: "10px",
-
-  boxShadow: "0 0 10px black",
-
-  color: "var(--colorSix)",
+  boxShadow: "0 0 10px var(--shadowColor)",
+  color: "var(--textColor)",
 
   "&:hover": {
     backgroundColor: "var(--colorThree)",

@@ -13,6 +13,11 @@ export const GlobalStyle = createGlobalStyle`
 	--colorFour: #A31621;
 	--colorFive: #FCDC4D;
 	--colorSix: #F9FBB2;
+
+	
+	--borderColor: var(--colorFour);
+	--textColor: var(--colorFour);
+	--shadowColor: var(--colorOne);
 }
 
 html, body, div, span, applet, object, iframe,
