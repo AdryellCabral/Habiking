@@ -6,6 +6,15 @@ export const GlobalStyle = createGlobalStyle`
    License: none (public domain)
 */
 
+:root {
+	--colorOne: #1D1E18;
+	--colorTwo: #C8BFC7;
+	--colorThree: #18206F;
+	--colorFour: #A31621;
+	--colorFive: #FCDC4D;
+	--colorSix: #F9FBB2;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -32,8 +41,20 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+html {
+    height: 100%;
+}
+
 body {
 	line-height: 1;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+	background: #0F2027;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 ol, ul {
 	list-style: none;
@@ -52,5 +73,10 @@ table {
 }
 a {
 	text-decoration: none;
+}
+
+button {
+	border: none;
+	cursor: pointer;
 }
 `;
