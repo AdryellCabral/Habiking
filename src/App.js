@@ -1,4 +1,4 @@
-import NavMenu from "./components/Header";
+import NavMenu from "./components/NavMenu";
 import Routes from "./routes";
 import { GlobalStyle } from "./styles/global";
 

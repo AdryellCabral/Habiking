@@ -15,8 +15,8 @@ export const GlobalStyle = createGlobalStyle`
 	--colorSix: #F9FBB2;
 
 	
-	--borderColor: var(--colorFour);
-	--textColor: var(--colorFour);
+	--borderColor: var(--colorFive);
+	--textColor: var(--colorTwo);
 	--shadowColor: var(--colorOne);
 }
 
@@ -57,9 +57,10 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-	background: #0F2027;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #485563;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 ol, ul {
 	list-style: none;
