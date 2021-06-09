@@ -6,23 +6,23 @@ import ButtonComp from "../Button";
 import { Breaker } from "./style";
 import { FaCompressArrowsAlt } from "react-icons/fa";
 
-const MyMenuItem = styled(MenuItem)({
-  width: "40vw",
-  margin: "2vw",
-  padding: "2vw",
-  border: "2px double var(--borderColor)",
-  borderRadius: "10px",
-  boxShadow: "0 0 10px var(--shadowColor)",
-  color: "var(--textColor)",
-  backgroundColor: "var(--colorOne)",
-
-  "&:hover": {
-    backgroundColor: "var(--colorThree)",
-    transition: "300ms",
-  },
-});
-
 const NavMenu = () => {
+  const MyMenuItem = styled(MenuItem)({
+    width: "40vw",
+    margin: "2vw",
+    padding: "2vw",
+    border: "2px double var(--borderColor)",
+    borderRadius: "10px",
+    boxShadow: "0 0 10px var(--shadowColor)",
+    color: "var(--textColor)",
+    backgroundColor: "var(--colorOne)",
+
+    "&:hover": {
+      backgroundColor: "var(--colorThree)",
+      transition: "300ms",
+    },
+  });
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
