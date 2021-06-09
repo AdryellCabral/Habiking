@@ -1,9 +1,8 @@
 import Button from "@material-ui/core/Button";
 import { styled } from "@material-ui/core/styles";
 
-// Estilização Básica.
-
 const ButtonComp = ({ PropFunction, children, NewStyles }) => {
+  // Estilização Básica.
   const MyButton = styled(Button)({
     ...{
       width: "40vw",

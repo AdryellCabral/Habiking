@@ -1,10 +1,13 @@
 import { useState } from "react";
+import ButtonComp from "../ButtonComp";
+import { Breaker } from "./style";
+
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { styled } from "@material-ui/core/styles";
-import ButtonComp from "../Button";
-import { Breaker } from "./style";
 import { FaCompressArrowsAlt } from "react-icons/fa";
+
+import { Link } from "react-router-dom";
 
 const NavMenu = () => {
   const MyMenuItem = styled(MenuItem)({
@@ -38,14 +41,14 @@ const NavMenu = () => {
   return (
     <Breaker>
       <ButtonComp
-        aria-controls="simple-menu"
+        aria-controls="NavMenu"
         aria-haspopup="true"
         PropFunction={handleClick}
       >
         Go To <FaCompressArrowsAlt style={{ marginLeft: "10px" }} />
       </ButtonComp>
       <Menu
-        id="simple-menu"
+        id="NavMenu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -57,9 +60,15 @@ const NavMenu = () => {
           },
         }}
       >
-        <MyMenuItem onClick={handleClose}>Profile</MyMenuItem>
-        <MyMenuItem onClick={handleClose}>Groups</MyMenuItem>
-        <MyMenuItem onClick={handleClose}>Logout</MyMenuItem>
+        <Link to="/user">
+          <MyMenuItem onClick={handleClose}>User</MyMenuItem>
+        </Link>
+        <Link to="/groups">
+          <MyMenuItem onClick={handleClose}>Groups</MyMenuItem>
+        </Link>
+        <Link to="/login">
+          <MyMenuItem onClick={handleClose}>Logout</MyMenuItem>
+        </Link>
       </Menu>
     </Breaker>
   );
