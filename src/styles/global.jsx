@@ -16,8 +16,8 @@ export const GlobalStyle = createGlobalStyle`
 	--colorSix: #F9FBB2;
 
 	
-	--borderColor: var(--colorThree);
-	--textColor: var(--colorFour);
+	--borderColor: var(--colorFive);
+	--textColor: var(--colorTwo);
 	--shadowColor: var(--colorOne);
 }
 

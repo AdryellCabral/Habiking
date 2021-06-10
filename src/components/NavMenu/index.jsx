@@ -37,7 +37,7 @@ const NavMenu = () => {
         onClose={handleClose}
         PaperProps={{
           style: {
-            width: "60vw",
+            marginTop: "-2vh",
             background: "var(--colorOne)",
             border: "2px solid var(--borderColor)",
           },

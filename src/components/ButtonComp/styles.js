@@ -2,17 +2,19 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 
 export const MyButton = styled(Button)`
-  width: 40vw !important;
-  margin: 10vw !important;
-  padding: 2vw !important;
-  background-color: var(--colorOne) !important;
-  border: 2px double var(--borderColor) !important;
-  border-radius: 10px !important;
-  box-shadow: 0 0 10px var(--shadowColor) !important;
-  color: var(--textColor) !important;
+  && {
+    width: 40vw;
+    margin: 4vw;
+    padding: 2vw;
+    background-color: var(--colorOne);
+    border: 2px double var(--borderColor);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--shadowColor);
+    color: var(--textColor);
 
-  &:hover {
-    background-color: var(--colorThree) !important;
-    transition: 300ms !important;
+    &:hover {
+      background-color: var(--colorThree);
+      transition: 300ms;
+    }
   }
 `;

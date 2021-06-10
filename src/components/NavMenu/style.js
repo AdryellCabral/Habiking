@@ -8,17 +8,19 @@ export const Breaker = styled.div`
 `;
 
 export const MyMenuItem = styled(MenuItem)`
-  width: 40vw;
-  margin: 2vw;
-  padding: 2vw;
-  border: 2px double var(--borderColor);
-  border-radius: 10px;
-  box-shadow: 0 0 10px var(--shadowColor);
-  color: var(--textColor);
-  background-color: var(--colorOne);
+  && {
+    width: 40vw;
+    margin: 2vw;
+    padding: 2vw;
+    border: 2px double var(--borderColor);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--shadowColor);
+    color: var(--textColor);
+    background-color: var(--colorOne);
 
-  &:hover {
-    background-color: var(--colorThree);
-    transition: 300ms;
+    &:hover {
+      background-color: var(--colorThree);
+      transition: 300ms;
+    }
   }
 `;
