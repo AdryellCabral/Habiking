@@ -75,7 +75,7 @@ const GroupList = ({ setShowGroup, groups }) => {
       <DivGroups>
         <ul>
           {groupsFiltred.map((group, index) => {
-            return <Button variant="contained" key={index}>{group.name}</Button>;
+            return <Button variant="contained" onClick={() => setShowGroup(group)} key={index}>{group.name}</Button>;
           })}
         </ul>
       </DivGroups>
