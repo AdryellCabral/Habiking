@@ -17,7 +17,8 @@ export const DivContainer = styled.div`
 
 
 export const DivGroups = styled.div`
-  overflow: scroll;
+  overflow: auto;
+  overflow-x: hidden;
   height: 250px;
   margin-top: 25px;
   background-color: whitesmoke;
