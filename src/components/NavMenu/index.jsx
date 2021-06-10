@@ -7,6 +7,14 @@ import { FaCompressArrowsAlt } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
+const menuStyle = {
+  style: {
+    marginTop: "-2vh",
+    background: "var(--colorOne)",
+    border: "2px solid var(--borderColor)",
+  },
+};
+
 const NavMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -27,7 +35,7 @@ const NavMenu = () => {
         aria-haspopup="true"
         PropFunction={handleClick}
       >
-        Go To <FaCompressArrowsAlt style={{ marginLeft: "10px" }} />
+        Go To <FaCompressArrowsAlt />
       </ButtonComp>
       <Menu
         id="NavMenu"
@@ -35,13 +43,7 @@ const NavMenu = () => {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        PaperProps={{
-          style: {
-            marginTop: "-2vh",
-            background: "var(--colorOne)",
-            border: "2px solid var(--borderColor)",
-          },
-        }}
+        PaperProps={menuStyle}
       >
         <Link to="/user">
           <MyMenuItem onClick={handleClose}>User</MyMenuItem>
