@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, MenuItem, Select, TextField } from '@material-ui/core';
+import { Container, TextField } from '@material-ui/core';
 import { FormStyled } from './styles';
 import ButtonComp from '../ButtonComp'
 
@@ -25,6 +25,9 @@ const CreateGroup = () => {
     resolver: yupResolver(schema)
   });
 
+  const name = 'category';
+  const options = ['Saúde', 'Educação', 'Jogos', 'Social', 'Livros', 'Filmes e Séries', 'Esportes', 'Outros'];
+
   const submitFunction = (data) => {
     console.log(data)
   }
@@ -42,13 +45,6 @@ const CreateGroup = () => {
           {...register('description')}
           helperText={errors.description?.message} 
         />        
-
-        {/* <Select>
-            <MenuItem></MenuItem>
-            <MenuItem></MenuItem>
-            <MenuItem></MenuItem>
-            <MenuItem></MenuItem>
-        </Select> */}
 
 
         <ButtonComp type='submit' PropFunction={handleSubmit(submitFunction)}>Criar Grupo</ButtonComp>
