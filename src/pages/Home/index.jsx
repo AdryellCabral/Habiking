@@ -20,7 +20,9 @@ const HomePage = () => (
         </PStyled>
       </DivContainer4Styled>
       <DivContainer3Styled color="#18206F">
-        <ButtonStyled>Cadastre-se</ButtonStyled>
+        <Link to="/register">
+          <ButtonStyled>Cadastre-se</ButtonStyled>
+        </Link>
         <div>
           <PStyled color="white">Já possui uma conta?</PStyled>
           <Link to="/login">

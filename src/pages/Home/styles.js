@@ -26,7 +26,8 @@ export const DivContainer3Styled = styled.div`
   width: 100%;
   height: 50%;
   text-align: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 20px;
 `;
 
 export const PStyled = styled.p`
