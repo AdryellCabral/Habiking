@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const CreateGroup = () => {
+const CreateGroupForm = () => {
   const schema = yup.object().shape({
     name: yup
           .string()
@@ -54,4 +54,4 @@ const CreateGroup = () => {
   );
 }
 
-export default CreateGroup;
+export default CreateGroupForm;
