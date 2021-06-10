@@ -11,7 +11,7 @@ export const GroupsSubscriptionsProvider = ({ children }) => {
     apiKabit.get("/groups/subscriptions/", {
       Authorization: `Bearer ${token}`,
     }).then((response) => setGroups(response.data))
-  });
+  },[token]);
 
   return (
     <GroupsSubscriptionsContext.Provider value={{groups}}>
