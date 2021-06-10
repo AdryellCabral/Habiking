@@ -5,7 +5,7 @@ import { GlobalStyle } from "./styles/global";
 function App() {
   return (
     <div className="App">
-      <NavMenu />
+      {/* <NavMenu /> */}
       <Routes />
       <GlobalStyle />
     </div>
