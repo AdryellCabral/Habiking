@@ -1,31 +1,13 @@
 import { useState } from "react";
 import ButtonComp from "../ButtonComp";
-import { Breaker } from "./style";
-
+import { Breaker, MyMenuItem } from "./style";
 import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import { styled } from "@material-ui/core/styles";
+
 import { FaCompressArrowsAlt } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
 const NavMenu = () => {
-  const MyMenuItem = styled(MenuItem)({
-    width: "40vw",
-    margin: "2vw",
-    padding: "2vw",
-    border: "2px double var(--borderColor)",
-    borderRadius: "10px",
-    boxShadow: "0 0 10px var(--shadowColor)",
-    color: "var(--textColor)",
-    backgroundColor: "var(--colorOne)",
-
-    "&:hover": {
-      backgroundColor: "var(--colorThree)",
-      transition: "300ms",
-    },
-  });
-
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -55,6 +37,7 @@ const NavMenu = () => {
         onClose={handleClose}
         PaperProps={{
           style: {
+            width: "60vw",
             background: "var(--colorOne)",
             border: "2px solid var(--borderColor)",
           },

@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -15,8 +16,8 @@ export const GlobalStyle = createGlobalStyle`
 	--colorSix: #F9FBB2;
 
 	
-	--borderColor: var(--colorFive);
-	--textColor: var(--colorTwo);
+	--borderColor: var(--colorThree);
+	--textColor: var(--colorFour);
 	--shadowColor: var(--colorOne);
 }
 
