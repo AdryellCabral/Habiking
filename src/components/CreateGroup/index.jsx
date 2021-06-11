@@ -7,9 +7,14 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-// import SelectField from '../selectfield'
+import { apiKabit } from '../../utils/apis'
+
+import SelectField from '../SelectField';
 
 const CreateGroupForm = () => {
+  const category = ['Saúde', 'Educação', 'Jogos', 'Social', 'Livros', 'Filmes e Séries', 'Esportes', 'Outros'];
+  
+
   const schema = yup.object().shape({
     name: yup
           .string()
@@ -27,11 +32,21 @@ const CreateGroupForm = () => {
     resolver: yupResolver(schema)
   });
 
-  const name = 'category';
-  const options = ['Saúde', 'Educação', 'Jogos', 'Social', 'Livros', 'Filmes e Séries', 'Esportes', 'Outros'];
 
-  const submitFunction = (data) => {
-    console.log(data)
+  const submitFunction = ({ name, description, category }) => {
+    apiKabit
+    .post('/groups', {
+      name: name,
+      description: description,
+      category: category,
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .catch(
+      err => console.log(err)
+    )
   }
 
   return (
@@ -48,7 +63,11 @@ const CreateGroupForm = () => {
           helperText={errors.description?.message} 
         />        
 
-        {/* <SelectField register={register} name={name} options={options}/> */}
+        <SelectField 
+          register={register} 
+          name={'category'} 
+          options={category}
+        />
 
         <ButtonComp type='submit' PropFunction={handleSubmit(submitFunction)}>Criar Grupo</ButtonComp>
 
