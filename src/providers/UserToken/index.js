@@ -6,7 +6,7 @@ export const TokenContext = createContext();
 export const TokenProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(() => {
     const localToken = localStorage.getItem("@tokenKabit") || "";
-    return localToken;
+    return JSON.parseInt(localToken);
   });
 
   const [userId, setUserId] = useState(() => {
@@ -21,12 +21,4 @@ export const TokenProvider = ({ children }) => {
   );
 };
 
-export const useToken = () => {
-  const { userToken } = useContext(TokenContext);
-  return userToken;
-};
-
-export const useId = () => {
-  const { userId } = useContext(TokenContext);
-  return userId;
-};
+export const useToken = () => useContext(TokenContext);
