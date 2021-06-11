@@ -1,13 +1,22 @@
 import styled from "styled-components";
 
-export const DivContainer = styled.div`
+export const DivContainerLarge = styled.div`
+  background-color: var(--colorFour);
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  background-color: var(--colorFour);
+
+  div {
+    max-width: 450px;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
 
   h1 {
     font-size: 40px;
