@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DivContainerStyled = styled.div`
+export const DivContainer = styled.div`
   height: 100vh;
   width: 100%;
   background-image: linear-gradient(#485563 20%, #29323c 75%);
@@ -8,53 +8,67 @@ export const DivContainerStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  div {
+    max-width: 310px;
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+  }
+
+  p {
+    font-size: 20px;
+    padding: 0 20px;
+    color: white;
+    text-decoration: none;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  h3 {
+    font-size: 30px;
+    color: black;
+    font-family: "Roboto", sans-serif;
+  }
+
+  h4 {
+    font-size: 20px;
+    padding: 0 20px;
+    color: black;
+    text-decoration: none;
+  }
+
+  button {
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
 `;
 
-export const DivContainer2Styled = styled.div`
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  width: 85%;
-  height: 85%;
-`;
-
-export const DivContainer3Styled = styled.div`
-  background-color: ${(props) => `${props.color}`};
+export const DivButtons = styled.div`
+  background-color: var(--colorThree);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 50%;
   text-align: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 20px;
-`;
 
-export const PStyled = styled.p`
-  font-size: 20px;
-  padding: 0 20px;
-  color: ${(props) => `${props.color}`};
-  text-decoration: none;
-
-  a {
-    color: inherit;
+  div {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    height: 50%;
   }
 `;
 
-export const TitleStyled = styled.h3`
-  font-size: 30px;
-  color: black;
-  font-family: "Roboto", sans-serif;
-`;
-
-export const ButtonStyled = styled.button`
-  background-color: yellow;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 10px 20px;
-`;
-
-export const DivContainer4Styled = styled(DivContainer3Styled)`
+export const DivDescription = styled(DivButtons)`
   justify-content: space-around;
+  background-color: var(--colorTwo);
 `;
