@@ -2,15 +2,23 @@ import { useState } from "react";
 import ButtonComp from "../../components/ButtonComp";
 import GroupList from "../../components/GroupList";
 import NavMenu from "../../components/NavMenu";
-import CardGoal from "../../components/CardGoal"
+import CardGoal from "../../components/CardGoal";
 import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
 import { DivContainer, DivGroup } from "./styles";
+import CardActivities from "../../components/CardActivities";
 
 const GroupsPages = () => {
   const { groups } = useGroupsSubscriptions();
   const [showGroup, setShowGroup] = useState([]);
-  const { name, category, description, creator, users_on_group, goals } = showGroup;
-  console.log(showGroup)
+  const {
+    name,
+    category,
+    description,
+    creator,
+    users_on_group,
+    goals,
+    activities,
+  } = showGroup;
   return (
     <>
       <NavMenu />
@@ -27,22 +35,35 @@ const GroupsPages = () => {
             <p>Descrição: {description}</p>
           </div>
 
-          <div className={"infos"} id="users">
+          <div className="infos" id="users">
             <h3>Usuários</h3>
             <ul>
-              <li id="creator">{creator?.username}</li>
+              <li id="creator">Criador: {creator?.username}</li>
               {users_on_group?.map((user, index) => (
                 <li key={index}>{user.username}</li>
               ))}
             </ul>
           </div>
 
-          <div className={"infos"}>
+          <div className="infos">
             <h3>Metas</h3>
             <ul>
-              {goals?.map((goal, index) => <CardGoal goal={goal} index={index}></CardGoal>)}
+              {goals?.map((goal, index) => (
+                <CardGoal goal={goal} key={index}></CardGoal>
+              ))}
             </ul>
+          </div>
 
+          <div className="infos">
+            <h3>Atividades</h3>
+            <ul>
+              {activities?.map((activity, index) => (
+                <CardActivities
+                  activity={activity}
+                  key={index}
+                ></CardActivities>
+              ))}
+            </ul>
           </div>
         </DivGroup>
       </DivContainer>
