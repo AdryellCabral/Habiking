@@ -66,4 +66,9 @@ export const DivContainerLarge = styled.div`
     color: inherit;
     color: var(--colorFive);
   }
+
+  span {
+    color: var(--colorFive);
+    font-size: 20px;
+  }
 `;
