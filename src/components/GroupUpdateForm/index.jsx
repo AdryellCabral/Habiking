@@ -2,7 +2,7 @@ import React from 'react';
 import SelectField from '../SelectField';
 import ButtonComp from '../ButtonComp';
 import { FormStyled } from './styles'
-import apiKabit from '../../utils/apis'
+import { apiKabit } from '../../utils/apis'
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
