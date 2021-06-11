@@ -13,7 +13,6 @@ import SelectField from '../SelectField';
 
 const CreateGroupForm = () => {
   const category = ['Saúde', 'Educação', 'Jogos', 'Social', 'Livros', 'Filmes e Séries', 'Esportes', 'Outros'];
-  
 
   const schema = yup.object().shape({
     name: yup
@@ -35,7 +34,7 @@ const CreateGroupForm = () => {
 
   const submitFunction = ({ name, description, category }) => {
     apiKabit
-    .post('/groups', {
+    .post('/groups/', {
       name: name,
       description: description,
       category: category,
@@ -68,6 +67,7 @@ const CreateGroupForm = () => {
           name={'category'} 
           options={category}
         />
+        {errors.category?.message}
 
         <ButtonComp type='submit' PropFunction={handleSubmit(submitFunction)}>Criar Grupo</ButtonComp>
 
