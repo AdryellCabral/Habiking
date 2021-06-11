@@ -15,22 +15,32 @@ export const DivContainer = styled.div`
 
 export const DivGroup = styled.div`
   div#group-info {
-    h2,p {
+    h2,
+    p {
       height: 32px;
     }
   }
-h1{
-  font-size:1.5rem;
-}
+  h1 {
+    font-size: 1.5rem;
+  }
   h3 {
     text-align: center;
   }
 
-  #users {
+  .infos {
     border: 2px double var(--borderColor);
     margin-top: 15px;
     padding: 5px;
     height: 250px;
     background-color: whitesmoke;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  #users {
+    li {
+      padding: 5px;
+      border: 2px double var(--borderColor);
+    }
   }
 `;

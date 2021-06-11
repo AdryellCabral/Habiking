@@ -2,6 +2,7 @@ import { useState } from "react";
 import ButtonComp from "../../components/ButtonComp";
 import GroupList from "../../components/GroupList";
 import NavMenu from "../../components/NavMenu";
+import CardGoal from "../../components/CardGoal"
 import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
 import { DivContainer, DivGroup } from "./styles";
 
@@ -9,6 +10,7 @@ const GroupsPages = () => {
   const { groups } = useGroupsSubscriptions();
   const [showGroup, setShowGroup] = useState([]);
   const { name, category, description, creator, users_on_group, goals } = showGroup;
+  console.log(showGroup)
   return (
     <>
       <NavMenu />
@@ -25,7 +27,7 @@ const GroupsPages = () => {
             <p>Descrição: {description}</p>
           </div>
 
-          <div id="users">
+          <div className={"infos"} id="users">
             <h3>Usuários</h3>
             <ul>
               <li id="creator">{creator?.username}</li>
@@ -33,6 +35,14 @@ const GroupsPages = () => {
                 <li key={index}>{user.username}</li>
               ))}
             </ul>
+          </div>
+
+          <div className={"infos"}>
+            <h3>Metas</h3>
+            <ul>
+              {goals?.map((goal, index) => <CardGoal goal={goal} index={index}></CardGoal>)}
+            </ul>
+
           </div>
         </DivGroup>
       </DivContainer>
