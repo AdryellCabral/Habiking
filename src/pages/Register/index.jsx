@@ -5,6 +5,8 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { apiKabit } from "../../utils/apis";
+
 const formSchema = yup.object().shape({
   username: yup.string().required("Campo obrigatório!"),
   email: yup.string().required("Campo obrigatório!").email("Email inválido!"),
@@ -26,15 +28,20 @@ const RegisterPage = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitFunction = (data) => {
-    console.log(data);
+  const onSubmitFunction = ({ name, email, password }) => {
+    const user = { name, email, password };
+
+    apiKabit
+      .post("/users/", user)
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log(err));
   };
 
   return (
     <DivContainerLarge>
       <div>
         <h1>Cadastro</h1>
-        <form onSubmit={handleSubmit(onSubmitFunction)}>
+        <form onSubmit={() => handleSubmit(onSubmitFunction)}>
           <input
             type="username"
             placeholder="Nome de usuário"
@@ -56,7 +63,11 @@ const RegisterPage = () => {
             autoComplete="new-password"
           />
           <span>{errors.password?.message}</span>
-          <input type="password" placeholder="Confirmar senha" />
+          <input
+            type="password"
+            placeholder="Confirmar senha"
+            {...register("passwordConfirm")}
+          />
           <span>{errors.passwordConfirm?.message}</span>
           <button type="submit">Cadastrar</button>
         </form>
