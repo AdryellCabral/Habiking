@@ -7,6 +7,8 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+// import SelectField from '../selectfield'
+
 const CreateGroupForm = () => {
   const schema = yup.object().shape({
     name: yup
@@ -16,9 +18,9 @@ const CreateGroupForm = () => {
                   .string()
                   .min(12)
                   .required('Campo obrigatório'),                  
-    // category:  yup
-    //           .string()
-    //           .required('Campo obrigatório'),
+    category:  yup
+              .string()
+              .required('Campo obrigatório'),
   })
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -46,6 +48,7 @@ const CreateGroupForm = () => {
           helperText={errors.description?.message} 
         />        
 
+        {/* <SelectField register={register} name={name} options={options}/> */}
 
         <ButtonComp type='submit' PropFunction={handleSubmit(submitFunction)}>Criar Grupo</ButtonComp>
 
