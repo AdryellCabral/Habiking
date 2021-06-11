@@ -8,7 +8,7 @@ import { DivContainer, DivGroup } from "./styles";
 const GroupsPages = () => {
   const { groups } = useGroupsSubscriptions();
   const [showGroup, setShowGroup] = useState([]);
-  const { name, category, description, creator, users_on_group } = showGroup;
+  const { name, category, description, creator, users_on_group, goals } = showGroup;
   return (
     <>
       <NavMenu />

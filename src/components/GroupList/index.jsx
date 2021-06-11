@@ -54,7 +54,6 @@ const GroupList = ({ setShowGroup, groups }) => {
     if (groupsFiltred.length === 0) {
       setGroupsFiltred(groups);
     }
-    console.log(groupsFiltred);
   });
   return (
     <DivContainer>
