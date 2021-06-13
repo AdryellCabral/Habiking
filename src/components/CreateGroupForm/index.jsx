@@ -11,7 +11,7 @@ import { apiKabit } from '../../utils/apis'
 
 import SelectField from '../SelectField';
 
-const CreateGroupForm = () => {
+const CreateGroupForm = ({}) => {
   const category = ['Saúde', 'Educação', 'Jogos', 'Social', 'Livros', 'Filmes e Séries', 'Esportes', 'Outros'];
 
   const schema = yup.object().shape({
@@ -43,6 +43,9 @@ const CreateGroupForm = () => {
         Authorization: `Bearer ${token}`
       }
     })
+    .then(
+      (response) => console.log(response)
+    )
     .catch(
       err => console.log(err)
     )
