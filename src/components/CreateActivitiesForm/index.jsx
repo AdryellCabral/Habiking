@@ -52,7 +52,7 @@ const CreateActivitiesForm = ({ group_id }) => {
 
         <TextField
             id="datetime-local"
-            label="Next appointment"
+            label="Realization Time"
             {...register('realization_time')}
             type="datetime-local"
             defaultValue="2021-06-15T10:30"
@@ -60,6 +60,7 @@ const CreateActivitiesForm = ({ group_id }) => {
             shrink: true,
             }}
         />
+
         {errors.realization_time?.message}
 
         <ButtonComp type="submit" PropFunction={handleSubmit(onSubmitFunction)}>Criar Meta</ButtonComp>        
