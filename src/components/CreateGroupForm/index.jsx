@@ -8,11 +8,12 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { apiKabit } from '../../utils/apis'
+import { category } from '../../utils/category'
 
 import SelectField from '../SelectField';
 
 const CreateGroupForm = ({}) => {
-  const category = ['Saúde', 'Educação', 'Jogos', 'Social', 'Livros', 'Filmes e Séries', 'Esportes', 'Outros'];
+
 
   const schema = yup.object().shape({
     name: yup
