@@ -23,7 +23,7 @@ const GroupUpdateForm = ({ group_id }) => {
 
     const onSubmitFunction = ({ category }) => {
         apiKabit
-        .patch(`/groups/${group_id}`, {
+        .patch(`/groups/${group_id}/`, {
             category: category
         }, {
             headers: {

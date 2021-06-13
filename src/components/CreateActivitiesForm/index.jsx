@@ -25,7 +25,7 @@ const CreateActivitiesForm = ({ group_id }) => {
 
     const onSubmitFunction = ({ title, realization_time }) => {
         apiKabit
-        .post(`/goals/`, {
+        .post(`/activities/`, {
             title: title,
             realization_time: realization_time,
             group: group_id
@@ -55,7 +55,7 @@ const CreateActivitiesForm = ({ group_id }) => {
             label="Next appointment"
             {...register('realization_time')}
             type="datetime-local"
-            defaultValue="2017-05-24T10:30"
+            defaultValue="2021-06-15T10:30"
             InputLabelProps={{
             shrink: true,
             }}
