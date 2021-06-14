@@ -1,6 +1,12 @@
+import { TokenProvider } from "./UserToken";
 import { GroupsSubscriptionsProvider } from "./groupsSubscriptions";
+
 const Providers = ({ children }) => {
-  return <GroupsSubscriptionsProvider>{children}</GroupsSubscriptionsProvider>;
+  return (
+    <TokenProvider>
+      <GroupsSubscriptionsProvider>{children}</GroupsSubscriptionsProvider>
+    </TokenProvider>
+  );
 };
 
 export default Providers;
