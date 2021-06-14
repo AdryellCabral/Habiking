@@ -14,6 +14,14 @@ export const Container = styled.div`
   border: 2px solid var(--borderColor);
   box-shadow: 0 0 10px var(--shadowColor);
   background-color: var(--colorOne);
+
+  h1 {
+    border: 2px solid var(--borderColor);
+    padding: 10px;
+    margin: 10px;
+    min-width: 70vw;
+    color: var(--colorSix);
+  }
 `;
 
 export const GroupContainer = styled.div`
