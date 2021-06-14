@@ -7,8 +7,13 @@ import CreateActivitiesForm from '../../components/CreateActivitiesForm';
 const EditGroupPage = () => {
   return (
     <ContainerStyled>
+      <h2>Alterar Categoria</h2>
       <GroupUpdateForm />
+      <hr />
+      <h2>Criar Nova Meta</h2>
       <CreateGoalForm />
+      <hr />
+      <h2>Criar Novo Evento</h2>
       <CreateActivitiesForm />
     </ContainerStyled>
   );

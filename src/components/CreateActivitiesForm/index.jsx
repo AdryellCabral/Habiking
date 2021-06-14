@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const CreateActivitiesForm = ({ group_id }) => {
+const CreateActivitiesForm = () => {
     const { userToken } = useContext(TokenContext);
 
     const schema = yup.object().shape({

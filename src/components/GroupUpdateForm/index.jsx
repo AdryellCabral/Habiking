@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const GroupUpdateForm = ({ group_id }) => {
+const GroupUpdateForm = () => {
     const { userToken } = useContext(TokenContext);
 
     const schema = yup.object().shape({
