@@ -10,9 +10,11 @@ export const TokenProvider = ({ children }) => {
   });
 
   const [userId, setUserId] = useState(() => {
-    const decoded = jwt_decode(userToken);
-    const { user_id } = decoded;
-    return user_id;
+    if (useToken !== "") {
+      const decoded = jwt_decode(userToken);
+      const { user_id } = decoded;
+      return user_id;
+    }
   });
 
   return (
