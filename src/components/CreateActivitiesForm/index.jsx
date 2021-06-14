@@ -24,10 +24,12 @@ const CreateActivitiesForm = ({ group_id }) => {
     });
 
     const onSubmitFunction = ({ title, realization_time }) => {
+        const day = new Date(realization_time - 10800000)
+
         apiKabit
         .post(`/activities/`, {
             title: title,
-            realization_time: realization_time,
+            realization_time: day,
             group: group_id
         }, {
             headers: {
