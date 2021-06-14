@@ -6,13 +6,22 @@ export const TokenContext = createContext();
 export const TokenProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(() => {
     const localToken = localStorage.getItem("@tokenKabit") || "";
-    return JSON.parse(localToken);
+
+    if (localToken !== "") {
+      return JSON.parse(localToken);
+    }
+
+    return "";
   });
 
   const [userId, setUserId] = useState(() => {
-    const decoded = jwt_decode(userToken);
-    const { user_id } = decoded;
-    return user_id;
+    if (userToken !== "") {
+      const decoded = jwt_decode(userToken);
+      const { user_id } = decoded;
+      return user_id;
+    }
+
+    return "";
   });
 
   return (
