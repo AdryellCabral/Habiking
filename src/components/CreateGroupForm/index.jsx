@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, TextField } from '@material-ui/core';
 import { FormStyled } from './styles';
 import ButtonComp from '../ButtonComp'
@@ -7,13 +7,15 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { TokenContext } from '../../providers/UserToken'
+
 import { apiKabit } from '../../utils/apis'
 import { category } from '../../utils/category'
 
 import SelectField from '../SelectField';
 
-const CreateGroupForm = ({}) => {
-
+const CreateGroupForm = () => {
+  const { userToken } = useContext(TokenContext); 
 
   const schema = yup.object().shape({
     name: yup
@@ -41,7 +43,7 @@ const CreateGroupForm = ({}) => {
       category: category,
     }, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${userToken}`
       }
     })
     .then(
