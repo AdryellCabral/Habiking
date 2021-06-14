@@ -1,13 +1,16 @@
 import ButtonComp from "../ButtonComp";
+import { Container, GroupContainer } from "./styles";
 
-const CardGroup = ({ group, action }) => {
+const CardGroup = ({ group }) => {
   return (
-    <div>
-      <h2>{group?.name}</h2>
-      <span>{group?.category}</span>
-      <p>{group?.description}</p>
+    <Container>
+      <GroupContainer>
+        <h2>Título: {group?.name}</h2>
+        <span>Tema: {group?.category}</span>
+        <p>Descrição: {group?.description}</p>
+      </GroupContainer>
       <ButtonComp>Inscrever-se</ButtonComp>
-    </div>
+    </Container>
   );
 };
 

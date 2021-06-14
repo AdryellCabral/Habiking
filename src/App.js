@@ -1,6 +1,5 @@
 import Routes from "./routes";
 import { GlobalStyle } from "./styles/global";
-import SearchGroup from "./pages/SearchGroup";
 
 function App() {
   return (
