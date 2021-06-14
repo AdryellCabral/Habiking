@@ -5,16 +5,16 @@ export const DivContainer = styled.div`
     width: 100%;
     color: white;
 
-    label, svg {
+    label,
+    svg {
       color: white;
     }
-  
+
     fieldset {
       border-color: white;
     }
   }
 `;
-
 
 export const DivGroups = styled.div`
   overflow: auto;
@@ -23,8 +23,10 @@ export const DivGroups = styled.div`
   margin-top: 25px;
   background-color: whitesmoke;
   padding: 5px;
-
+  p {
+    color: black;
+  }
   button {
     margin-bottom: 15px;
   }
-`
+`;

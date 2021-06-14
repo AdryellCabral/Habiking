@@ -35,17 +35,18 @@ const GroupList = ({ setShowGroup, groups }) => {
       value: "Book Happy",
     },
   ];
+
   const [category, setCategory] = useState(categorys[0].value);
   const [groupsFiltred, setGroupsFiltred] = useState([]);
   const handleChange = (e) => {
     setCategory(e.target.value);
-    if (e.target.value === "todos") {
+    if (e.target.value === "Todos") {
       setGroupsFiltred(groups);
     } else {
       const newList = groups.filter(
         (group) => group.category === e.target.value
       );
-
+      console.log(newList);
       setGroupsFiltred(newList);
     }
   };
@@ -54,7 +55,9 @@ const GroupList = ({ setShowGroup, groups }) => {
     if (groupsFiltred.length === 0) {
       setGroupsFiltred(groups);
     }
-  });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [groups]);
   return (
     <DivContainer>
       <TextField
@@ -72,11 +75,21 @@ const GroupList = ({ setShowGroup, groups }) => {
       </TextField>
 
       <DivGroups>
-        <ul>
-          {groupsFiltred.map((group, index) => {
-            return <Button variant="contained" onClick={() => setShowGroup(group)} key={index}>{group.name}</Button>;
-          })}
-        </ul>
+        {groupsFiltred.length === 0 ? (
+          <p>Nenhum grupo encontrado :/</p>
+        ) : (
+          <ul>
+            {groupsFiltred.map((group, index) => (
+              <Button
+                variant="contained"
+                onClick={() => setShowGroup(group)}
+                key={index}
+              >
+                {group.name}
+              </Button>
+            ))}
+          </ul>
+        )}
       </DivGroups>
     </DivContainer>
   );

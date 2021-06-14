@@ -48,7 +48,7 @@ const GroupsPages = () => {
             <ul>
               <li id="creator">Criador: {creator?.username}</li>
               {users_on_group?.map((user, index) => (
-                <li key={index}>{user.username}</li>
+                index > 0 && <li key={index}>{user.username}</li>
               ))}
             </ul>
           </div>
