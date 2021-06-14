@@ -7,19 +7,19 @@ const CardGoal = ({ goal }) => {
   const { title, difficulty, achieved, id } = goal;
   const [isCompleted, setIsCompleted] = useState(achieved);
 
-  const {userToken} = useToken()
-
+  const { userToken } = useToken();
   const handleClick = () => {
     apiKabit
-      .post(
+      .patch(
         `/goals/${id}/`,
         { achieved: true },
         {
-          Authorization: `Bearer ${userToken}`,
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
         }
       )
       .then((response) => {
-        console.log(isCompleted);
         setIsCompleted(true);
       });
   };
