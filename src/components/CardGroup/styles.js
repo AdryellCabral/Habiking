@@ -14,25 +14,21 @@ export const Container = styled.div`
   border: 2px solid var(--borderColor);
   box-shadow: 0 0 10px var(--shadowColor);
   background-color: var(--colorOne);
-  color: var(--colorSix);
 `;
 
 export const GroupContainer = styled.div`
-  span {
+  h1 {
     border: 2px solid var(--borderColor);
     padding: 10px;
-    margin: 20px;
-  }
-
-  h2 {
+    margin: 10px;
     min-width: 70vw;
-    margin: 30px;
-    font-size: 2rem;
+    color: var(--colorSix);
   }
 
   p {
     margin: 0;
-    margin: 30px;
-    font-size: 1rem;
+    margin: 10px;
+    font-size: 1.2rem;
+    color: var(--textColor);
   }
 `;

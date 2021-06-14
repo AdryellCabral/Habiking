@@ -6,10 +6,10 @@ const CardGroup = ({ group }) => {
     <Container>
       <GroupContainer>
         <h1>Título</h1>
-        <h2>{group?.name}</h2>
-        <span>Categoria</span>
+        <p>{group?.name}</p>
+        <h1>Categoria</h1>
         <p>{group?.category}</p>
-        <span>Descrição</span>
+        <h1>Descrição</h1>
         <p>{group?.description}</p>
       </GroupContainer>
       <ButtonComp>Inscrever-se</ButtonComp>
