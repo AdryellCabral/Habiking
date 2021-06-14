@@ -4,6 +4,10 @@ export const DivContainer = styled.div`
   width: 80%;
   margin: 0 auto;
 
+  a {
+    color: white;
+  }
+
   && {
     button {
       width: 100%;

@@ -6,9 +6,10 @@ import CardGoal from "../../components/CardGoal";
 import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
 import { DivContainer, DivGroup } from "./styles";
 import CardActivities from "../../components/CardActivities";
+import { Link } from "react-router-dom";
 
 const GroupsPages = () => {
-  const { groups } = useGroupsSubscriptions();
+  const { groups, setEditGroupId } = useGroupsSubscriptions();
   const [showGroup, setShowGroup] = useState([]);
   const {
     name,
@@ -18,13 +19,20 @@ const GroupsPages = () => {
     users_on_group,
     goals,
     activities,
+    id,
   } = showGroup;
+
   return (
     <>
       <NavMenu />
       <DivContainer>
-        <ButtonComp>Criar Novo Grupo</ButtonComp>
-        <ButtonComp>Buscar Novo Grupo</ButtonComp>
+        <ButtonComp>
+          <Link to="creategroup"> Criar Novo Grupo </Link>
+        </ButtonComp>
+
+        <ButtonComp>
+          <Link to="searchgroup"> Buscar Novo Grupo </Link>
+        </ButtonComp>
 
         <GroupList setShowGroup={setShowGroup} groups={groups} />
         <DivGroup>
@@ -65,6 +73,8 @@ const GroupsPages = () => {
               ))}
             </ul>
           </div>
+
+          <ButtonComp onCLick={() => setEditGroupId(id)}><Link to="editgroup"> Editar </Link></ButtonComp>
         </DivGroup>
       </DivContainer>
     </>
