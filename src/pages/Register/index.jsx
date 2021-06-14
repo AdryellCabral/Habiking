@@ -1,5 +1,5 @@
 import { DivContainerLarge } from "./styles";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -28,12 +28,15 @@ const RegisterPage = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitFunction = ({ name, email, password }) => {
-    const user = { name, email, password };
+  const history = useHistory();
+
+  const onSubmitFunction = ({ username, email, password }) => {
+    const user = { username, email, password };
 
     apiKabit
       .post("/users/", user)
-      .then((response) => console.log(response.data))
+      .then(console.log("Cadastro efetuado com sucesso!"))
+      .then(history.push("/login"))
       .catch((err) => console.log(err));
   };
 
@@ -41,20 +44,14 @@ const RegisterPage = () => {
     <DivContainerLarge>
       <div>
         <h1>Cadastro</h1>
-        <form onSubmit={() => handleSubmit(onSubmitFunction)}>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
           <input
             type="username"
             placeholder="Nome de usuário"
-            autoComplete="on"
             {...register("username")}
           />
           <span>{errors.name?.message}</span>
-          <input
-            type="email"
-            placeholder="Email"
-            {...register("email")}
-            autoComplete="on"
-          />
+          <input type="email" placeholder="Email" {...register("email")} />
           <span>{errors.email?.message}</span>
           <input
             type="password"
@@ -78,4 +75,5 @@ const RegisterPage = () => {
     </DivContainerLarge>
   );
 };
+
 export default RegisterPage;
