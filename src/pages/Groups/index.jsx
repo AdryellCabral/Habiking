@@ -27,7 +27,7 @@ const GroupsPages = () => {
       <NavMenu />
       <DivContainer>
         <ButtonComp>
-          <Link to="creategroup"> Criar Novo Grupo </Link>
+          <Link to="/create-group"> Criar Novo Grupo </Link>
         </ButtonComp>
 
         <ButtonComp>
