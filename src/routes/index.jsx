@@ -6,11 +6,11 @@ import LoginPage from "../pages/Login";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/register">
-        <RegisterPage />
-      </Route>
       <Route exact path="/">
         <HomePage />
+      </Route>
+      <Route path="/register">
+        <RegisterPage />
       </Route>
       <Route path="/login">
         <LoginPage />
