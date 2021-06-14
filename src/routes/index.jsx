@@ -2,6 +2,8 @@ import { Route, Switch } from "react-router";
 import RegisterPage from "../pages/Register";
 import HomePage from "../pages/Home";
 import LoginPage from "../pages/Login";
+import GroupsPages from "../pages/Groups"
+import CreateGroupPage from "../pages/CreateGroupPage";
 
 const Routes = () => {
   return (
@@ -14,6 +16,12 @@ const Routes = () => {
       </Route>
       <Route path="/login">
         <LoginPage />
+      </Route>
+      <Route path="/groups">
+        <GroupsPages />
+      </Route>
+      <Route path="/create-group">
+        <CreateGroupPage />
       </Route>
     </Switch>
   );
