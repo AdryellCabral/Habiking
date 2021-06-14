@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useToken } from "../../providers/UserToken";
 import { apiKabit } from "../../utils/apis";
 import ButtonComp from "../ButtonComp";
 
@@ -6,8 +7,7 @@ const CardGoal = ({ goal }) => {
   const { title, difficulty, achieved, id } = goal;
   const [isCompleted, setIsCompleted] = useState(achieved);
 
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNzY5MjA1LCJqdGkiOiI3NGFkYjk5NmUyYzM0MzM2OWM2MzIwMjIyNjg1MjUyNCIsInVzZXJfaWQiOjY4MX0.CYFmrpSSwhVJo9FScQis_LJAxKE1vxTmeK-PfmOxbSM";
+  const {userToken} = useToken()
 
   const handleClick = () => {
     apiKabit
@@ -15,7 +15,7 @@ const CardGoal = ({ goal }) => {
         `/goals/${id}/`,
         { achieved: true },
         {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${userToken}`,
         }
       )
       .then((response) => {

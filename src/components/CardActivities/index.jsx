@@ -1,6 +1,5 @@
 const CardActivities = ({activity}) => {
     const {title, realization_time} = activity
-    console.log(activity)
     return (
         <div>
             <h3>{title}</h3>

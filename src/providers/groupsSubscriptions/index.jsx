@@ -1,5 +1,6 @@
 import {apiKabit} from "../../utils/apis"
 import { createContext, useState, useContext, useEffect } from "react";
+import { useToken } from "../UserToken";
 
 export const GroupsSubscriptionsContext = createContext([]);
 
@@ -7,12 +8,13 @@ export const GroupsSubscriptionsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [editGroupId, setEditGroupId] = useState(0);
 
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNzY5MjA1LCJqdGkiOiI3NGFkYjk5NmUyYzM0MzM2OWM2MzIwMjIyNjg1MjUyNCIsInVzZXJfaWQiOjY4MX0.CYFmrpSSwhVJo9FScQis_LJAxKE1vxTmeK-PfmOxbSM";
+  const {userToken} = useToken()
+
   useEffect(() => {
     apiKabit.get("/groups/subscriptions/", {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${userToken}`,
     }).then((response) => setGroups(response.data))
-  },[token]);
+  },[userToken]);
 
   return (
     <GroupsSubscriptionsContext.Provider value={{groups, editGroupId, setEditGroupId}}>
