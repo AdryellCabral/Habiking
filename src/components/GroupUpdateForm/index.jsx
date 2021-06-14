@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SelectField from '../SelectField';
 import ButtonComp from '../ButtonComp';
 import { FormStyled } from './styles'
 import { apiKabit } from '../../utils/apis'
+import { TokenContext } from '../../providers/UserToken';
+import { category } from '../../utils/category';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const GroupUpdateForm = ({ group_id }) => {
-    const category = ['Saúde', 'Educação', 'Jogos', 'Social', 'Livros', 'Filmes e Séries', 'Esportes', 'Outros'];
+    const { userToken } = useContext(TokenContext);
 
     const schema = yup.object().shape({
         category: yup
@@ -27,7 +29,7 @@ const GroupUpdateForm = ({ group_id }) => {
             category: category
         }, {
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${userToken}`,
               },
         })
         .then((response) => {

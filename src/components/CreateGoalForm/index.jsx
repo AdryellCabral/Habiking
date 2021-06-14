@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FormStyled } from './styles';
 import ButtonComp from '../ButtonComp';
 import SelectField from "../SelectField";
 import { TextField } from '@material-ui/core';
 import { apiKabit } from '../../utils/apis';
+import { TokenContext } from '../../providers/UserToken';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const CreateGoalForm = ({ group_id }) => {
+    const { userToken } = useContext(TokenContext);
+
     const schema = yup.object().shape({
         title: yup
                 .string()
@@ -32,7 +35,7 @@ const CreateGoalForm = ({ group_id }) => {
             group: group_id,
         }, {
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${userToken}`,
               },
         })
         .then((response) => {

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FormStyled } from './styles';
 import ButtonComp from '../ButtonComp';
 import { TextField } from '@material-ui/core';
 import { apiKabit } from '../../utils/apis';
+import { TokenContext } from '../../providers/UserToken';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const CreateActivitiesForm = ({ group_id }) => {
+    const { userToken } = useContext(TokenContext);
 
     const schema = yup.object().shape({
         title: yup
@@ -24,16 +26,14 @@ const CreateActivitiesForm = ({ group_id }) => {
     });
 
     const onSubmitFunction = ({ title, realization_time }) => {
-        const day = new Date(realization_time - 10800000)
-
         apiKabit
         .post(`/activities/`, {
             title: title,
-            realization_time: day,
+            realization_time: realization_time,
             group: group_id
         }, {
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${userToken}`,
               },
         })
         .then((response) => {
