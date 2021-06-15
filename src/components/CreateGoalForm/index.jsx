@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FormStyled } from './styles';
 import ButtonComp from '../ButtonComp';
 import SelectField from "../SelectField";
 import { TextField } from '@material-ui/core';
 import { apiKabit } from '../../utils/apis';
-import { TokenContext } from '../../providers/UserToken';
+import { useToken } from '../../providers/UserToken';
 import { useGroupsSubscriptions } from '../../providers/groupsSubscriptions';
 
 import { useForm } from 'react-hook-form';
@@ -12,7 +12,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const CreateGoalForm = () => {
-    const { userToken } = useContext(TokenContext);
+    const { userToken } = useToken();
     const { editGroupId, newRequestGroupsSubscription } = useGroupsSubscriptions();
     const difficulty = ['Muito fácil', 'Fácil', 'Intermediário', 'Difícil', 'Muito difícil'];
 

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import SelectField from '../SelectField';
 import ButtonComp from '../ButtonComp';
 import { FormStyled } from './styles'
 import { apiKabit } from '../../utils/apis'
-import { TokenContext } from '../../providers/UserToken';
+import { useToken } from '../../providers/UserToken';
 import { category } from '../../utils/category';
 import { useGroupsSubscriptions } from '../../providers/groupsSubscriptions';
 
@@ -12,7 +12,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const GroupUpdateForm = () => {
-    const { userToken } = useContext(TokenContext);
+    const { userToken } = useToken();
     const { editGroupId, newRequestGroupsSubscription } = useGroupsSubscriptions();
 
     const schema = yup.object().shape({
