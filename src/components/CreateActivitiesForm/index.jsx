@@ -4,6 +4,7 @@ import ButtonComp from '../ButtonComp';
 import { TextField } from '@material-ui/core';
 import { apiKabit } from '../../utils/apis';
 import { TokenContext } from '../../providers/UserToken';
+import { GroupsSubscriptionsContext } from '../../providers/groupsSubscriptions';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -11,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 const CreateActivitiesForm = () => {
     const { userToken } = useContext(TokenContext);
+    const { editGroupId } = useContext(GroupsSubscriptionsContext)
 
     const schema = yup.object().shape({
         title: yup
@@ -30,7 +32,7 @@ const CreateActivitiesForm = () => {
         .post(`/activities/`, {
             title: title,
             realization_time: realization_time,
-            group: group_id
+            group: editGroupId
         }, {
             headers: {
                 Authorization: `Bearer ${userToken}`,

@@ -5,6 +5,7 @@ import { FormStyled } from './styles'
 import { apiKabit } from '../../utils/apis'
 import { TokenContext } from '../../providers/UserToken';
 import { category } from '../../utils/category';
+import { GroupsSubscriptionsContext } from '../../providers/groupsSubscriptions';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -12,6 +13,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 const GroupUpdateForm = () => {
     const { userToken } = useContext(TokenContext);
+    const { editGroupId } = useContext(GroupsSubscriptionsContext)
 
     const schema = yup.object().shape({
         category: yup
@@ -25,7 +27,7 @@ const GroupUpdateForm = () => {
 
     const onSubmitFunction = ({ category }) => {
         apiKabit
-        .patch(`/groups/${group_id}/`, {
+        .patch(`/groups/${editGroupId}/`, {
             category: category
         }, {
             headers: {

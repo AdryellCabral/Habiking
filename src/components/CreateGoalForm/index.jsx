@@ -5,6 +5,7 @@ import SelectField from "../SelectField";
 import { TextField } from '@material-ui/core';
 import { apiKabit } from '../../utils/apis';
 import { TokenContext } from '../../providers/UserToken';
+import { GroupsSubscriptionsContext } from '../../providers/groupsSubscriptions';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -12,6 +13,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 const CreateGoalForm = () => {
     const { userToken } = useContext(TokenContext);
+    const { editGroupId } = useContext(GroupsSubscriptionsContext)
 
     const schema = yup.object().shape({
         title: yup
@@ -32,7 +34,7 @@ const CreateGoalForm = () => {
             title: title,
             difficulty: difficulty,
             how_much_achieved: 0,
-            group: group_id,
+            group: editGroupId,
         }, {
             headers: {
                 Authorization: `Bearer ${userToken}`,
