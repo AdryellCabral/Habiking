@@ -1,22 +1,23 @@
 import styled from "styled-components";
 
-export const DivContainerLarge = styled.div`
+export const DivBackground = styled.div`
   background-color: var(--colorFour);
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
 
-  div {
-    max-width: 450px;
-    width: 100%;
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
+export const DivContainer = styled.div`
+  max-width: 450px;
+  max-height: 450px;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 
   h1 {
     font-size: 40px;
@@ -61,6 +62,22 @@ export const DivContainerLarge = styled.div`
   span {
     color: var(--colorFive);
     font-size: 20px;
+    height: 25px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: none;
+    width: 100%;
+
+    form {
+      width: 100%;
+      border: none;
+      border-radius: 0;
+    }
+
+    input {
+      max-width: 450px;
+    }
   }
 
   @media (min-width: 768px) {
