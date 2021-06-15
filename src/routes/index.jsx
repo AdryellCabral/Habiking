@@ -2,6 +2,9 @@ import { Route, Switch } from "react-router";
 import RegisterPage from "../pages/Register";
 import HomePage from "../pages/Home";
 import LoginPage from "../pages/Login";
+import GroupsPages from "../pages/Groups";
+import CreateGroupPage from "../pages/CreateGroupPage";
+import EditGroupPage from "../pages/EditGroupPage";
 import SearchGroup from "../pages/SearchGroup";
 
 const Routes = () => {
@@ -16,8 +19,17 @@ const Routes = () => {
       <Route path="/login">
         <LoginPage />
       </Route>
-      <Route path="/searchGroup">
+      <Route path="/groups">
+        <GroupsPages />
+      </Route>
+      <Route path="/search-group">
         <SearchGroup />
+      </Route>
+      <Route path="/create-group">
+        <CreateGroupPage />
+      </Route>
+      <Route exact path="/edit-group">
+        <EditGroupPage />
       </Route>
     </Switch>
   );

@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 
 const SearchGroup = () => {
   const [loaded, setLoaded] = useState(false);
-
   const [groups, setGroups] = useState(() => {
     axios
       .get("https://kabit-api.herokuapp.com/groups/")
