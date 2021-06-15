@@ -19,10 +19,12 @@ const HomePage = () => (
         </h4>
       </DivDescription>
       <DivButtons>
-        <Link to="/register">
+        <div>
           <p>Não tem uma conta ainda?</p>
-          <ButtonComp>Cadastre-se</ButtonComp>
-        </Link>
+          <Link to="/register">
+            <ButtonComp>Cadastre-se</ButtonComp>
+          </Link>
+        </div>
         <div>
           <p>Já possui uma conta?</p>
           <Link to="/login">
