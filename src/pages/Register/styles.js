@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const DivBackground = styled.div`
   background-color: var(--colorFour);
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -70,5 +70,19 @@ export const DivContainer = styled.div`
   span {
     color: var(--colorFive);
     font-size: 20px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: none;
+
+    form {
+      width: 100%;
+      border: none;
+      border-radius: 0;
+    }
+
+    input {
+      max-width: 450px;
+    }
   }
 `;
