@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FormStyled } from './styles';
 import ButtonComp from '../ButtonComp';
 import { TextField } from '@material-ui/core';
 import { apiKabit } from '../../utils/apis';
-import { TokenContext } from '../../providers/UserToken';
-import { GroupsSubscriptionsContext } from '../../providers/groupsSubscriptions';
+import { useToken} from '../../providers/UserToken';
+import { useGroupsSubscriptions } from '../../providers/groupsSubscriptions';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const CreateActivitiesForm = () => {
-    const { userToken } = useContext(TokenContext);
-    const { editGroupId } = useContext(GroupsSubscriptionsContext)
+    const { userToken } = useToken();
+    const { editGroupId, newRequestGroupsSubscription } = useGroupsSubscriptions();
 
     const schema = yup.object().shape({
         title: yup
@@ -39,7 +39,7 @@ const CreateActivitiesForm = () => {
               },
         })
         .then((response) => {
-            console.log(response)
+            newRequestGroupsSubscription()
         })
         .catch((error) => {
             console.log(error);
