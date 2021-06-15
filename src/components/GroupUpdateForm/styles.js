@@ -6,4 +6,14 @@ export const FormStyled = styled.form`
     justify-content: center;
     max-width: 80%;
     margin: 15px auto;
+    align-items: center;
+
+    input {
+        max-width: 200px;
+        height: 40px;
+    }
+
+    @media (min-width:768px) {
+        width: 100%;
+    }
 `
