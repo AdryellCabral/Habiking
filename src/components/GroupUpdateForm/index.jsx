@@ -46,7 +46,7 @@ const GroupUpdateForm = () => {
     <FormStyled>
         <SelectField register={register} name='category' options={category} />
 
-        <ButtonComp type='submit' PropFunction={handleSubmit(onSubmitFunction)}>Alterar Categoria</ButtonComp>
+        <ButtonComp type='submit' PropFunction={handleSubmit(onSubmitFunction)}>Alterar</ButtonComp>
     </FormStyled>
   );
 }
