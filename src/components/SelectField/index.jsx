@@ -1,9 +1,10 @@
 import React from 'react';
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { InputLabel, MenuItem, Select } from '@material-ui/core';
+import { FormControlStyled } from './styles';
 
 const SelectField =  ({register, name, options, ...rest}) => {
     return (
-        <FormControl variant='filled'>
+        <FormControlStyled variant='filled'>
             <InputLabel id={name + '-label'}>
                 {name}
             </InputLabel>
@@ -21,7 +22,7 @@ const SelectField =  ({register, name, options, ...rest}) => {
                 ))}
             </Select>            
         
-        </FormControl>
+        </FormControlStyled>
 
     );
 }
