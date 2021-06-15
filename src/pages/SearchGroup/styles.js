@@ -33,11 +33,11 @@ export const SearchButton = styled(Button)`
 
   @media (min-width: 768px) {
     && {
+      height: 37px;
       width: 20vw;
-      min-height: 3vh;
       margin: 2vw;
       margin-left: 0;
-      padding: 1.4vw;
+      padding: 0;
     }
   }
 `;
@@ -96,9 +96,7 @@ export const GroupContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     width: 80vw;
-    height: 46vh;
-
-    overflow-y: hidden;
+    height: 48vh;
 
     ::-webkit-scrollbar {
       width: 10px;
