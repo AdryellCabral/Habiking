@@ -1,5 +1,6 @@
 import { DivContainerLarge } from "./styles";
 import { Link, useHistory } from "react-router-dom";
+import ButtonComp from "../../components/ButtonComp";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -60,7 +61,7 @@ const LoginPage = () => {
           />
           <span>{errors.password?.message}</span>
 
-          <button type="submit">Login</button>
+          <ButtonComp type="submit">Login</ButtonComp>
         </form>
         <p>
           Não possui uma conta? <Link to="/register">cadastre-se</Link>
