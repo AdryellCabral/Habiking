@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const SearchButton = styled(Button)`
   && {
     width: 40vw;
-    height: 5vh;
+    height: 34px;
     margin: 4vw;
     margin-left: 0;
     padding: 2vw;
@@ -44,12 +44,13 @@ export const SearchButton = styled(Button)`
 
 export const TextField = styled.textarea`
   width: 80vw;
-  height: 4.3vh;
+  height: 30px;
 
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-family: "Roboto", sans-serif;
 
   margin: 10px 0 10px 10px;
+  text-align: center;
 
   border: 2px solid var(--borderColor);
   border-right: 0;
@@ -57,7 +58,7 @@ export const TextField = styled.textarea`
   background-color: var(--colorTwo);
 
   @media (min-width: 768px) {
-    height: 5.4vh;
+    height: 33px;
     width: 20vw;
   }
 `;
