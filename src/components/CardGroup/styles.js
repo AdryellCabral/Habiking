@@ -1,36 +1,19 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-
-  align-self: center;
-  width: 90vw;
-  height: 65vh;
-  padding: 50px;
-
-  border: 2px solid var(--borderColor);
-  box-shadow: 0 0 10px var(--shadowColor);
-  background-color: var(--colorOne);
-
-  h1 {
-    border: 2px solid var(--borderColor);
-    padding: 10px;
-    margin: 10px;
-    min-width: 70vw;
-    color: var(--colorSix);
-  }
+export const Infos = styled.div`
+  border: 2px solid var(--borderColorOne);
+  margin: 20px;
+  box-shadow: 0 0 4px var(--borderColorOne);
+  border-radius: 6px;
 `;
 
 export const GroupContainer = styled.div`
   h1 {
-    border: 2px solid var(--borderColor);
+    border: 2px solid var(--borderColorOne);
     padding: 10px;
     margin: 10px;
     min-width: 70vw;
-    color: var(--colorSix);
+    color: var(--colorTwo);
   }
 
   p {

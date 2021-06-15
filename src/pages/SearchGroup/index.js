@@ -1,52 +1,73 @@
 import NavMenu from "../../components/NavMenu";
-import axios from "axios";
 import CardGroup from "../../components/CardGroup";
 import ButtonComp from "../../components/ButtonComp";
 
-import { Breaker, TextField, SearchButton, Container } from "./styles";
+import {
+  Breaker,
+  TextField,
+  SearchButton,
+  Container,
+  GroupContainer,
+} from "./styles";
 import { useEffect, useState } from "react";
 
+import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
+import { apiKabit } from "../../utils/apis";
+import { useToken } from "../../providers/UserToken";
+
 const SearchGroup = () => {
+  const { groups } = useGroupsSubscriptions();
+  const { userToken } = useToken();
+
   const [loaded, setLoaded] = useState(false);
-  const [groups, setGroups] = useState(() => {
-    axios
-      .get("https://kabit-api.herokuapp.com/groups/")
-      .then((response) => setGroups(response.data.results));
-  });
-  const [userGroups, setUserGroups] = useState(() => {
-    axios
-      .get("https://kabit-api.herokuapp.com/groups/subscriptions/")
-      .then((response) => setUserGroups(response.data))
+  const [allGroups, setAllGroups] = useState(() => {
+    apiKabit
+      .get("/groups/")
+      .then((response) => response.data.results)
+      .then((response) =>
+        setAllGroups(
+          response.filter(
+            (elem) => !groups.find((elem2) => elem2.id === elem.id)
+          )
+        )
+      )
       .then((response) => setLoaded(true));
   });
-  const [currentGroup, setCurrentGroup] = useState(0);
+  const [searching, setSearching] = useState(false);
   const [userSearch, setUserSearch] = useState("");
-  const [userIsIn, setUserIsIn] = useState(true);
 
-  useEffect(() => {
-    if (loaded) {
-      if (userGroups.find((elem) => elem.id === groups[currentGroup]) === -1) {
-        setUserIsIn(false);
-      } else {
-        setUserIsIn(true);
-      }
-    }
-  }, [currentGroup]);
+  const handleGroupSearch = (name) => {
+    setAllGroups([allGroups.find((elem) => elem.name === name)]);
+    setSearching(true);
+  };
 
-  const handleGroupNav = (action) =>
-    action
-      ? currentGroup < groups.length - 1 && setCurrentGroup(currentGroup + 1)
-      : currentGroup > 0 && setCurrentGroup(currentGroup - 1);
-
-  const handleGroupSearch = (name) =>
-    setCurrentGroup(groups.indexOf(groups.find((elem) => elem.name === name)));
+  const handleGoBack = () => {
+    apiKabit
+      .get("/groups/")
+      .then((response) => response.data.results)
+      .then((response) =>
+        setAllGroups(
+          response.filter(
+            (elem) => !groups.find((elem2) => elem2.id === elem.id)
+          )
+        )
+      );
+    setSearching(false);
+    setUserSearch("");
+  };
 
   const handleSubs = (group) => {
-    if (userGroups.find((elem) => elem.id === group.id) === -1) {
-      axios
-        .post(`https://kabit-api.herokuapp.com/groups/${group.id}/subscribe/`)
-        .catch((e) => console.log(e));
-    }
+    const config = {
+      headers: {
+        null: "",
+        Authorization: `Bearer ${userToken}`,
+      },
+    };
+
+    apiKabit
+      .post(`/groups/${group.id}/subscribe/`, config)
+      .then((response) => console.log(response))
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -57,26 +78,24 @@ const SearchGroup = () => {
           value={userSearch}
           onChange={(e) => setUserSearch(e.target.value)}
         />
-        <SearchButton onClick={() => handleGroupSearch(userSearch)}>
-          Procurar!
-        </SearchButton>
+        {searching ? (
+          <SearchButton onClick={() => handleGoBack()}>Voltar</SearchButton>
+        ) : (
+          <SearchButton onClick={() => handleGroupSearch(userSearch)}>
+            Procurar!
+          </SearchButton>
+        )}
       </Breaker>
 
-      <Breaker>
-        <ButtonComp PropFunction={() => handleGroupNav(false)}>
-          Anterior
-        </ButtonComp>
-        <ButtonComp PropFunction={() => handleGroupNav(true)}>
-          Próximo
-        </ButtonComp>
-      </Breaker>
-
-      <CardGroup
-        loaded={loaded}
-        isIn={userIsIn}
-        action={() => handleSubs(groups[currentGroup])}
-        group={groups && groups[currentGroup]}
-      />
+      <GroupContainer>
+        {allGroups?.map((elem) => (
+          <CardGroup
+            key={elem.id}
+            action={() => handleSubs(elem)}
+            group={elem}
+          />
+        ))}
+      </GroupContainer>
     </Container>
   );
 };

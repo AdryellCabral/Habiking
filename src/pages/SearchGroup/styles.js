@@ -26,7 +26,7 @@ export const SearchButton = styled(Button)`
     color: var(--textColor);
 
     &:hover {
-      background-color: var(--colorThree);
+      background-color: var(--hoverColor);
       transition: 300ms;
     }
   }
@@ -45,4 +45,31 @@ export const TextField = styled.textarea`
   border-right: 0;
   border-radius: 10px 0 0 10px;
   background-color: var(--colorTwo);
+`;
+
+export const GroupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  align-self: center;
+  width: 90vw;
+  height: 76vh;
+
+  overflow: auto;
+
+  border: 2px solid var(--borderColorOne);
+  box-shadow: 0 0 10px var(--shadowColor);
+  background-color: var(--colorOne);
+
+  h1 {
+    border: 2px solid var(--borderColorOne);
+    border-radius: 0 0 20px 20px;
+    padding: 10px;
+    margin: 10px;
+    min-width: 70vw;
+    color: var(--colorTwo);
+    text-transform: uppercase;
+  }
 `;

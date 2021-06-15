@@ -9,14 +9,16 @@ export const GlobalStyle = createGlobalStyle`
 :root {
 	--colorOne: #1D1E18;
 	--colorTwo: #C8BFC7;
-	--colorThree: #18206F;
+	--colorThree: #29323c;
 	--colorFour: #A31621;
 	--colorFive: #FCDC4D;
 	--colorSix: #F9FBB2;
 
 	
-	--borderColor: var(--colorFive);
+	--borderColorOne: var(--colorThree);
+	--borderColorTwo: var(--colorTwo);
 	--textColor: var(--colorTwo);
+	--hoverColor: var(--colorTwo);
 	--shadowColor: var(--colorOne);
 }
 

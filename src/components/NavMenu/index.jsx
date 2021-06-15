@@ -11,7 +11,7 @@ const menuStyle = {
   style: {
     marginTop: "-2vh",
     background: "var(--colorOne)",
-    border: "2px solid var(--borderColor)",
+    border: "2px solid var(--borderColorOne)",
   },
 };
 
