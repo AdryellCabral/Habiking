@@ -7,9 +7,12 @@ import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
 import { DivContainer, DivGroup } from "./styles";
 import CardActivities from "../../components/CardActivities";
 import { Link } from "react-router-dom";
+import { useToken } from "../../providers/UserToken";
 
 const GroupsPages = () => {
   const { groups } = useGroupsSubscriptions();
+  const { userId } = useToken();
+
   const [showGroup, setShowGroup] = useState([]);
   const {
     name,
@@ -19,8 +22,8 @@ const GroupsPages = () => {
     users_on_group,
     goals,
     activities,
+    id,
   } = showGroup;
-
   return (
     <>
       <NavMenu />
@@ -73,9 +76,11 @@ const GroupsPages = () => {
               ))}
             </ul>
           </div>
-          <Link to="/edit-group">
-            <ButtonComp>Editar</ButtonComp>
-          </Link>
+          {creator?.id === userId && (
+            <Link to="/edit-group">
+              <ButtonComp>Editar</ButtonComp>
+            </Link>
+          )}
         </DivGroup>
       </DivContainer>
     </>
