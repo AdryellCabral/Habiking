@@ -1,4 +1,4 @@
-import { DivContainerLarge } from "./styles";
+import { DivBackground, DivContainer } from "./styles";
 import { Link, useHistory } from "react-router-dom";
 
 import * as yup from "yup";
@@ -41,8 +41,8 @@ const RegisterPage = () => {
   };
 
   return (
-    <DivContainerLarge>
-      <div>
+    <DivBackground>
+      <DivContainer>
         <h1>Cadastro</h1>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <input
@@ -71,8 +71,8 @@ const RegisterPage = () => {
         <p>
           Já possui uma conta? Faça <Link to="/login">login</Link>
         </p>
-      </div>
-    </DivContainerLarge>
+      </DivContainer>
+    </DivBackground>
   );
 };
 

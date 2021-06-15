@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
-export const DivContainerLarge = styled.div`
+export const DivBackground = styled.div`
   background-color: var(--colorFour);
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
 
-  div {
-    max-width: 450px;
-    width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
+export const DivContainer = styled.div`
+  max-width: 450px;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 
   h1 {
     font-size: 40px;
