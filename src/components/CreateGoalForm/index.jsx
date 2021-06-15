@@ -5,7 +5,7 @@ import SelectField from "../SelectField";
 import { TextField } from '@material-ui/core';
 import { apiKabit } from '../../utils/apis';
 import { TokenContext } from '../../providers/UserToken';
-import { GroupsSubscriptionsContext } from '../../providers/groupsSubscriptions';
+import { useGroupsSubscriptions } from '../../providers/groupsSubscriptions';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -13,7 +13,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 const CreateGoalForm = () => {
     const { userToken } = useContext(TokenContext);
-    const { editGroupId } = useContext(GroupsSubscriptionsContext)
+    const { editGroupId, newRequestGroupsSubscription } = useGroupsSubscriptions();
 
     const schema = yup.object().shape({
         title: yup
@@ -41,7 +41,7 @@ const CreateGoalForm = () => {
               },
         })
         .then((response) => {
-            console.log(response)
+            newRequestGroupsSubscription()
         })
         .catch((error) => {
             console.log(error);
