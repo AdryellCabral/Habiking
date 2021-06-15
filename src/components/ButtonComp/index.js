@@ -1,7 +1,7 @@
 import { MyButton } from "./styles";
 
-const ButtonComp = ({ PropFunction, children }) => {
-  return <MyButton onClick={PropFunction}>{children}</MyButton>;
+const ButtonComp = ({ PropFunction, children, ...rest }) => {
+  return <MyButton onClick={PropFunction} {...rest}>{children}</MyButton>;
 };
 
 export default ButtonComp;
