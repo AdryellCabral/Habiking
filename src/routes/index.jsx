@@ -4,6 +4,7 @@ import HomePage from "../pages/Home";
 import LoginPage from "../pages/Login";
 import GroupsPages from "../pages/Groups"
 import CreateGroupPage from "../pages/CreateGroupPage";
+import EditGroupPage from "../pages/EditGroupPage";
 
 const Routes = () => {
   return (
@@ -22,6 +23,9 @@ const Routes = () => {
       </Route>
       <Route path="/create-group">
         <CreateGroupPage />
+      </Route>
+      <Route exact path="/edit-group">
+        <EditGroupPage />
       </Route>
     </Switch>
   );
