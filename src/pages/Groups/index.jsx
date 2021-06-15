@@ -9,7 +9,7 @@ import CardActivities from "../../components/CardActivities";
 import { Link } from "react-router-dom";
 
 const GroupsPages = () => {
-  const { groups, setEditGroupId } = useGroupsSubscriptions();
+  const { groups } = useGroupsSubscriptions();
   const [showGroup, setShowGroup] = useState([]);
   const {
     name,
@@ -19,7 +19,6 @@ const GroupsPages = () => {
     users_on_group,
     goals,
     activities,
-    id,
   } = showGroup;
 
   return (
@@ -47,9 +46,10 @@ const GroupsPages = () => {
             <h3>Usuários</h3>
             <ul>
               <li id="creator">Criador: {creator?.username}</li>
-              {users_on_group?.map((user, index) => (
-                index > 0 && <li key={index}>{user.username}</li>
-              ))}
+              {users_on_group?.map(
+                (user, index) =>
+                  index > 0 && <li key={index}>{user.username}</li>
+              )}
             </ul>
           </div>
 
@@ -73,8 +73,9 @@ const GroupsPages = () => {
               ))}
             </ul>
           </div>
-
-          <ButtonComp onCLick={() => setEditGroupId(id)}><Link to="editgroup"> Editar </Link></ButtonComp>
+          <Link to="/edit-group">
+            <ButtonComp>Editar</ButtonComp>
+          </Link>
         </DivGroup>
       </DivContainer>
     </>
