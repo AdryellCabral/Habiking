@@ -14,11 +14,11 @@ export const GlobalStyle = createGlobalStyle`
 	--colorFive: #FCDC4D;
 	--colorSix: #F9FBB2;
 
-	
+
 	--borderColorOne: var(--colorThree);
 	--borderColorTwo: var(--colorTwo);
 	--textColor: var(--colorTwo);
-	--hoverColor: var(--colorTwo);
+	--hoverColor: var(--colorThree);
 	--shadowColor: var(--colorOne);
 }
 

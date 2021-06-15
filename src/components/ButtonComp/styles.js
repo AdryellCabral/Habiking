@@ -17,4 +17,12 @@ export const MyButton = styled(Button)`
       transition: 300ms;
     }
   }
+
+  @media (min-width: 768px) {
+    && {
+      width: 20vw;
+      margin: 2vw;
+      padding: 1vw;
+    }
+  }
 `;

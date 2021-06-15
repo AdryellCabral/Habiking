@@ -27,4 +27,11 @@ export const MyMenuItem = styled(MenuItem)`
       transition: 300ms;
     }
   }
+
+  @media (min-width: 768px) {
+    && {
+    width: 20vw;
+    margin: 1vw;
+    padding: 1vw;
+  }
 `;
