@@ -48,15 +48,6 @@ export const DivContainer = styled.div`
     font-size: 20px;
   }
 
-  form button {
-    background-color: var(--colorFive);
-    padding: 15px 30px;
-    font-size: 20px;
-    border: 2px solid var(--colorFive);
-    border-radius: 10px;
-    color: var(--colorOne);
-  }
-
   p {
     font-size: 20px;
     color: var(--colorOne);
@@ -86,6 +77,16 @@ export const DivContainer = styled.div`
 
     input {
       max-width: 450px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    && {
+      button {
+        width: 225px;
+        height: 80px;
+        margin: 0;
+      }
     }
   }
 `;
