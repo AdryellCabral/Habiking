@@ -35,8 +35,7 @@ const LoginPage = () => {
           JSON.stringify(response.data.access)
         )
       )
-      .then(console.log("Logado com sucesso"))
-      .then(history.push("/user"))
+      .then(() => history.push("/user"))
       .catch((err) => console.log("usuário ou senha inválidos!", err));
   };
 
