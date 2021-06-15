@@ -14,6 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 const CreateGoalForm = () => {
     const { userToken } = useContext(TokenContext);
     const { editGroupId, newRequestGroupsSubscription } = useGroupsSubscriptions();
+    const difficulty = ['Muito fácil', 'Fácil', 'Intermediário', 'Difícil', 'Muito difícil'];
 
     const schema = yup.object().shape({
         title: yup
@@ -59,7 +60,7 @@ const CreateGoalForm = () => {
         <SelectField 
             register={register} 
             name='difficulty' 
-            options={['Muito fácil', 'Fácil', 'Intermediário', 'Difícil', 'Muito difícil']}
+            options={difficulty}
         />
         {errors.difficulty?.message}
 
