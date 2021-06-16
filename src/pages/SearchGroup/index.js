@@ -19,22 +19,24 @@ const SearchGroup = () => {
   const { groups } = useGroupsSubscriptions();
   const { userToken } = useToken();
 
+  const [URL, setURL] = useState("/groups/");
+
   const [loaded, setLoaded] = useState(false);
-  const [allGroups, setAllGroups] = useState(() => {
-    apiKabit
-      .get("/groups/")
-      .then((response) => response.data.results)
-      .then((response) =>
-        setAllGroups(
-          response.filter(
-            (elem) => !groups.find((elem2) => elem2.id === elem.id)
-          )
-        )
-      )
-      .then((response) => setLoaded(true));
-  });
   const [searching, setSearching] = useState(false);
   const [userSearch, setUserSearch] = useState("");
+  const [allGroups, setAllGroups] = useState([]);
+  const [groupsNoSubscription, setGroupsNoSubscription] = useState([])
+
+  
+
+  useEffect(() => {
+    apiKabit
+      .get("/groups/")
+      .then((response) => setAllGroups(response.data.results))
+      .then((response) => console.log(console.log(allGroups)))
+      .then((response) => setLoaded(true))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[URL]);
 
   const handleGroupSearch = (name) => {
     setAllGroups([allGroups.find((elem) => elem.name === name)]);
@@ -43,7 +45,7 @@ const SearchGroup = () => {
 
   const handleGoBack = () => {
     apiKabit
-      .get("/groups/")
+      .get(URL)
       .then((response) => response.data.results)
       .then((response) =>
         setAllGroups(
@@ -88,7 +90,7 @@ const SearchGroup = () => {
       </Breaker>
 
       <GroupContainer>
-        {allGroups?.map((elem) => (
+        {groupsNoSubscription?.map((elem) => (
           <CardGroup
             key={elem.id}
             action={() => handleSubs(elem)}
