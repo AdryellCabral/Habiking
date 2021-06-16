@@ -80,16 +80,18 @@ export const DivButtons = styled.div`
     color: inherit;
   }
 
-  button {
-    background-color: yellow;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 10px 20px;
-  }
-
   @media (min-width: 768px) {
     height: 100%;
     width: 75%;
+
+    && {
+      a {
+        button {
+          width: 225px;
+          height: 80px;
+          margin: 0;
+        }
+      }
+    }
   }
 `;

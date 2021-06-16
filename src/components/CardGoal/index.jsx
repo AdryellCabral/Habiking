@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useToken } from "../../providers/UserToken";
 import { apiKabit } from "../../utils/apis";
 import ButtonComp from "../ButtonComp";
+import {DivContainer} from "./styles"
 
 const CardGoal = ({ goal }) => {
   const { title, difficulty, achieved, id } = goal;
@@ -24,15 +25,15 @@ const CardGoal = ({ goal }) => {
       });
   };
   return (
-    <div>
-      <h2>{title}</h2>
+    <DivContainer>
+      <h2>Titulo: {title}</h2>
       <h3>Dificuldade: {difficulty}</h3>
       {isCompleted ? (
-        <h3>Completado</h3>
+        <h3 className="completed">Completado</h3>
       ) : (
         <ButtonComp PropFunction={handleClick}>Completar</ButtonComp>
       )}
-    </div>
+    </DivContainer>
   );
 };
 
