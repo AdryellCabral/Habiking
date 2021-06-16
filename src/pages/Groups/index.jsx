@@ -8,10 +8,11 @@ import { DivContainer, DivGroup } from "./styles";
 import CardActivities from "../../components/CardActivities";
 import { Link } from "react-router-dom";
 import { useToken } from "../../providers/UserToken";
+import { Redirect } from "react-router";
 
 const GroupsPages = () => {
   const { groups } = useGroupsSubscriptions();
-  const { userId } = useToken();
+  const { userId, userToken } = useToken();
 
   const [showGroup, setShowGroup] = useState([]);
   const {
@@ -24,6 +25,9 @@ const GroupsPages = () => {
     activities,
     id,
   } = showGroup;
+  if (!userToken) {
+    return <Redirect to="/login" />;
+  }
   return (
     <>
       <NavMenu />
