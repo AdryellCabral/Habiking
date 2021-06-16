@@ -26,6 +26,7 @@ export const DesktopMenuContainer = styled.div`
       border-bottom: 2px solid var(--colorOne);
       border-radius: 0 0 10px 10px;
       padding: 10px;
+      -webkit-text-stroke: 1px #eea904;
 
       &:hover {
         color: var(--colorTwo);
