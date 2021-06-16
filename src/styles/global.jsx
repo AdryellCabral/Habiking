@@ -8,18 +8,8 @@ export const GlobalStyle = createGlobalStyle`
 
 :root {
 	--colorOne: #1D1E18;
-	--colorTwo: #C8BFC7;
-	--colorThree: #29323c;
-	--colorFour: #A31621;
-	--colorFive: #FCDC4D;
-	--colorSix: #F9FBB2;
-
-	
-	--borderColorOne: var(--colorThree);
-	--borderColorTwo: var(--colorTwo);
-	--textColor: var(--colorTwo);
-	--hoverColor: var(--colorTwo);
-	--shadowColor: var(--colorOne);
+	--colorTwo: #EEA904;
+	--colorThree: #363635;	
 }
 
 html, body, div, span, applet, object, iframe,
@@ -57,16 +47,16 @@ body {
 	line-height: 1;
     height: 100%;
     margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-	background: #485563;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: var(--colorTwo);
 
 font-family: "Roboto", sans-serif;
 
 	
 }
+* {
+	user-select: none;
+}
+
 ol, ul {
 	list-style: none;
 }
