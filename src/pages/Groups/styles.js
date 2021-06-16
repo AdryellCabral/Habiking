@@ -19,11 +19,16 @@ export const DivContainer = styled.div`
   }
 
   @media (min-width: 768px) {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 10px;
+
     #buttons-container {
       display: flex;
       justify-content: space-around;
       max-width: 800px;
       margin: 0 auto;
+
       button {
         width: 250px;
         margin: 15px 0;
@@ -38,12 +43,6 @@ export const DivContainer = styled.div`
       }
     }
   }
-
-  @media (min-width: 768px) {
-    width: 100%;
-    padding-left: 30px;
-    padding-right: 10px;
-  }
 `;
 
 export const DivGroup = styled.div`
@@ -56,7 +55,6 @@ export const DivGroup = styled.div`
   h1 {
     font-size: 1.5rem;
   }
-  
 
   && {
     div > a > button {
@@ -73,8 +71,8 @@ export const DivGroup = styled.div`
     overflow: auto;
     overflow-x: hidden;
     > h3 {
-    text-align: center;
-  }
+      text-align: center;
+    }
   }
 
   #users {
@@ -87,6 +85,7 @@ export const DivGroup = styled.div`
   @media (min-width: 768px) {
     padding-left: 25px;
     width: 100%;
+
     #cards-container {
       display: flex;
 
@@ -95,10 +94,6 @@ export const DivGroup = styled.div`
       }
     }
 
-    .infos {
-      height: 340px;
-      margin: 0 5px;
-    }
     #edit-group {
       text-align: center;
     }
@@ -110,6 +105,12 @@ export const DivGroup = styled.div`
       }
     }
   }
+
+    .infos {
+      height: 340px;
+      margin: 0 5px;
+    }
+ 
 `;
 
 export const Li = styled.li`

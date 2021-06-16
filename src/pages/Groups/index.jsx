@@ -33,7 +33,7 @@ const GroupsPages = () => {
           </ButtonComp>
 
           <ButtonComp>
-            <Link to="searchgroup"> Buscar Novo Grupo </Link>
+            <Link to="/search-group"> Buscar Novo Grupo </Link>
           </ButtonComp>
         </div>
 
