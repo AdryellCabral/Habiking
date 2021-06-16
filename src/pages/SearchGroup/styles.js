@@ -10,6 +10,11 @@ export const Breaker = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  #buttons-container{
+    display:flex;
+    justify-content: center;
+  }
 `;
 
 export const SearchButton = styled(Button)`

@@ -32,13 +32,13 @@ const GroupsPages = () => {
       <NavMenu />
       <DivContainer>
         <div id="buttons-container">
-          <ButtonComp>
-            <Link to="/create-group"> Criar Novo Grupo </Link>
-          </ButtonComp>
+          <Link to="/create-group">
+            <ButtonComp>Criar Novo Grupo</ButtonComp>
+          </Link>
 
-          <ButtonComp>
-            <Link to="/search-group"> Buscar Novo Grupo </Link>
-          </ButtonComp>
+          <Link to="/search-group">
+            <ButtonComp>Buscar Novo Grupo</ButtonComp>
+          </Link>
         </div>
 
         <div id="group-container">
@@ -60,7 +60,11 @@ const GroupsPages = () => {
                   <li id="creator">Criador: {creator?.username}</li>
                   {users_on_group?.map(
                     (user, index) =>
-                      index > 0 && <Li key={index} index={index}>{user.username}</Li>
+                      index > 0 && (
+                        <Li key={index} index={index}>
+                          {user.username}
+                        </Li>
+                      )
                   )}
                 </ul>
               </div>

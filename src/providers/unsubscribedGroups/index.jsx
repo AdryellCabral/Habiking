@@ -31,16 +31,23 @@ const { groups } = useGroupsSubscriptions();
     setUnsubscribedGroups(newList)
   };
 
+  const setStates = (response) => {
+    setAllGroups(response.data.results)
+    setPreviousPag(response.data.previous)
+    setNextPag(response.data.next)
+  }
+
   useEffect(() => {
     apiKabit
       .get(URL)
-      .then((response) => setAllGroups(response.data.results))
-      .then((response) => filterOnlyNoSubscriptions())
-      .then((response) => setNextPag(response.data.next) )
-      .then((response) => setPreviousPag(response.data.previous))
+      .then((response) => setStates(response))
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[URL, groups]);
+  },[URL]);
 
+  useEffect(() => {
+    filterOnlyNoSubscriptions()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[allGroups])
 
   return (
     <UnsubscribedGroupsContext.Provider
