@@ -47,20 +47,21 @@ export const DivContainer = styled.div`
     font-size: 20px;
   }
 
+  form p {
+    color: var(--colorFive);
+    font-size: 20px;
+  }
+
   p {
     font-size: 20px;
     color: var(--colorOne);
+    height: 25px;
   }
 
   a {
     font-weight: bold;
     color: inherit;
     color: var(--colorFive);
-  }
-
-  span {
-    color: var(--colorFive);
-    font-size: 20px;
   }
 
   @media (min-width: 768px) {
