@@ -48,6 +48,12 @@ export const DivContainer = styled.div`
     font-size: 20px;
   }
 
+  form p {
+    height: 25px;
+    font-size: 20px;
+    color: var(--colorFive);
+  }
+
   p {
     font-size: 20px;
     color: var(--colorOne);
