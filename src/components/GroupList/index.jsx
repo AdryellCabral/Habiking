@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import { useEffect } from "react";
 import { useState } from "react";
 import { DivContainer, DivGroups } from "./styles";
+import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
 
 const GroupList = ({ setShowGroup, groups }) => {
   const categorys = [
@@ -35,6 +36,7 @@ const GroupList = ({ setShowGroup, groups }) => {
       value: "Book Happy",
     },
   ];
+  const { setEditGroupId } = useGroupsSubscriptions();
 
   const [category, setCategory] = useState(categorys[0].value);
   const [groupsFiltred, setGroupsFiltred] = useState([]);
@@ -58,6 +60,11 @@ const GroupList = ({ setShowGroup, groups }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups]);
+
+  const handleClick = (group) => {
+      setEditGroupId(group.id)
+      setShowGroup(group)
+  }
   return (
     <DivContainer>
       <TextField
@@ -82,7 +89,7 @@ const GroupList = ({ setShowGroup, groups }) => {
             {groupsFiltred.map((group, index) => (
               <Button
                 variant="contained"
-                onClick={() => setShowGroup(group)}
+                onClick={() => handleClick(group)}
                 key={index}
               >
                 {group.name}

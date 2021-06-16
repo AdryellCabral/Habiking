@@ -1,9 +1,16 @@
-import { DivContainer, DivButtons, DivDescription } from "./styles";
+import {
+  DivContainer,
+  DivButtons,
+  DivDescription,
+  DivBackground,
+} from "./styles";
+import ButtonComp from "../../components/ButtonComp";
+
 import { Link } from "react-router-dom";
 
 const HomePage = () => (
-  <DivContainer>
-    <div>
+  <DivBackground>
+    <DivContainer>
       <DivDescription>
         <h3>Gestor de Hábitos</h3>
         <h4>
@@ -12,17 +19,20 @@ const HomePage = () => (
         </h4>
       </DivDescription>
       <DivButtons>
-        <Link to="/register">
-          <button>Cadastre-se</button>
-        </Link>
+        <div>
+          <p>Não tem uma conta ainda?</p>
+          <Link to="/register">
+            <ButtonComp>Cadastre-se</ButtonComp>
+          </Link>
+        </div>
         <div>
           <p>Já possui uma conta?</p>
           <Link to="/login">
-            <button>Login</button>
+            <ButtonComp>Login</ButtonComp>
           </Link>
         </div>
       </DivButtons>
-    </div>
-  </DivContainer>
+    </DivContainer>
+  </DivBackground>
 );
 export default HomePage;

@@ -1,5 +1,6 @@
-import { DivContainerLarge } from "./styles";
+import { DivBackground, DivContainer } from "./styles";
 import { Link, useHistory } from "react-router-dom";
+import ButtonComp from "../../components/ButtonComp";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -35,14 +36,13 @@ const LoginPage = () => {
           JSON.stringify(response.data.access)
         )
       )
-      .then(console.log("Logado com sucesso"))
-      .then(history.push("/user"))
+      .then(() => history.push("/user"))
       .catch((err) => console.log("usuário ou senha inválidos!", err));
   };
 
   return (
-    <DivContainerLarge>
-      <div>
+    <DivBackground>
+      <DivContainer>
         <h1>Login</h1>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <input
@@ -61,13 +61,13 @@ const LoginPage = () => {
           />
           <span>{errors.password?.message}</span>
 
-          <button type="submit">Login</button>
+          <ButtonComp type="submit">Login</ButtonComp>
         </form>
         <p>
           Não possui uma conta? <Link to="/register">cadastre-se</Link>
         </p>
-      </div>
-    </DivContainerLarge>
+      </DivContainer>
+    </DivBackground>
   );
 };
 export default LoginPage;

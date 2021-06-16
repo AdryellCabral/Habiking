@@ -1,5 +1,6 @@
-import { DivContainerLarge } from "./styles";
+import { DivBackground, DivContainer } from "./styles";
 import { Link, useHistory } from "react-router-dom";
+import ButtonComp from "../../components/ButtonComp";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -41,8 +42,8 @@ const RegisterPage = () => {
   };
 
   return (
-    <DivContainerLarge>
-      <div>
+    <DivBackground>
+      <DivContainer>
         <h1>Cadastro</h1>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <input
@@ -66,13 +67,13 @@ const RegisterPage = () => {
             {...register("passwordConfirm")}
           />
           <span>{errors.passwordConfirm?.message}</span>
-          <button type="submit">Cadastrar</button>
+          <ButtonComp type="submit">Cadastrar</ButtonComp>
         </form>
         <p>
           Já possui uma conta? Faça <Link to="/login">login</Link>
         </p>
-      </div>
-    </DivContainerLarge>
+      </DivContainer>
+    </DivBackground>
   );
 };
 

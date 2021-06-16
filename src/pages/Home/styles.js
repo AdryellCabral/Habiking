@@ -1,31 +1,36 @@
 import styled from "styled-components";
 
-export const DivContainer = styled.div`
+export const DivBackground = styled.div`
   height: 100vh;
   width: 100%;
-  background-image: linear-gradient(#485563 20%, #29323c 75%);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
 
-  div {
-    max-width: 310px;
-    display: flex;
-    flex-direction: column;
-    height: 85%;
-  }
+export const DivContainer = styled.div`
+  max-width: 310px;
+  display: flex;
+  flex-direction: column;
+  height: 85%;
 
-  p {
-    font-size: 20px;
-    padding: 0 20px;
-    color: white;
-    text-decoration: none;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    max-width: 80%;
+    height: 80%;
   }
+`;
 
-  a {
-    color: inherit;
-  }
+export const DivDescription = styled.div`
+  justify-content: space-around;
+  background-color: var(--colorTwo);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  padding: 20px;
 
   h3 {
     font-size: 30px;
@@ -40,12 +45,9 @@ export const DivContainer = styled.div`
     text-decoration: none;
   }
 
-  button {
-    background-color: yellow;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 10px 20px;
+  @media (min-width: 768px) {
+    height: 100%;
+    justify-content: space-evenly;
   }
 `;
 
@@ -58,17 +60,38 @@ export const DivButtons = styled.div`
   height: 50%;
   text-align: center;
   justify-content: space-evenly;
-  padding: 20px;
 
   div {
     width: 80%;
     display: flex;
     justify-content: space-evenly;
-    height: 50%;
+    flex-direction: column;
   }
-`;
 
-export const DivDescription = styled(DivButtons)`
-  justify-content: space-around;
-  background-color: var(--colorTwo);
+  p {
+    font-size: 20px;
+    padding: 0 20px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 25px;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  @media (min-width: 768px) {
+    height: 100%;
+    width: 75%;
+
+    && {
+      a {
+        button {
+          width: 225px;
+          height: 80px;
+          margin: 0;
+        }
+      }
+    }
+  }
 `;

@@ -4,9 +4,10 @@ import HomePage from "../pages/Home";
 import LoginPage from "../pages/Login";
 import GroupsPages from "../pages/Groups"
 import CreateGroupPage from "../pages/CreateGroupPage";
-import HabitCard from "../components/HabitCard/HabitCard";
-import Users from "../pages/Users";
-import CreateHabit from "../pages/CreateHabit";
+import EditGroupPage from "../pages/EditGroupPage";
+import Users from '../pages/Users'
+import CreateHabit from '../pages/CreateHabitPage'
+import EditHabit from "../pages/EditHabitPage";
 
 const Routes = () => {
   return (
@@ -23,14 +24,20 @@ const Routes = () => {
       <Route exact path="/user">
         <Users/>
       </Route>
-      <Route exact path="/criarHabito">
+      <Route exact path="/create-habit">
         <CreateHabit/>
+      </Route>
+      <Route exact path="/edit-habit">
+        <EditHabit/>
       </Route>
       <Route path="/groups">
         <GroupsPages />
       </Route>
       <Route path="/create-group">
         <CreateGroupPage />
+      </Route>
+      <Route exact path="/edit-group">
+        <EditGroupPage />
       </Route>
     </Switch>
   );
