@@ -13,10 +13,9 @@ export const DivContainer = styled.div`
   max-width: 450px;
   max-height: 450px;
   width: 100%;
-  height: 60%;
+  height: 59%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
 
   h1 {
@@ -55,6 +54,8 @@ export const DivContainer = styled.div`
     border: none;
     border-radius: 15px;
     font-size: 20px;
+    margin: 20px;
+    margin-bottom: 0;
   }
 
   p {

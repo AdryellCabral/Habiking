@@ -68,10 +68,10 @@ const RegisterPage = () => {
           />
           <span>{errors.passwordConfirm?.message}</span>
           <ButtonComp type="submit">Cadastrar</ButtonComp>
+          <p>
+            Já possui uma conta? Faça <Link to="/login">login</Link>
+          </p>
         </form>
-        <p>
-          Já possui uma conta? Faça <Link to="/login">login</Link>
-        </p>
       </DivContainer>
     </DivBackground>
   );
