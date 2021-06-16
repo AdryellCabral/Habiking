@@ -3,10 +3,37 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 export const Breaker = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   background-color: var(--colorThree);
   border-bottom: 2px dotted var(--colorTwo);
   box-shadow: 0 2px 10px var(--colorOne);
+  margin-bottom: 4vh;
+`;
+
+export const DesktopMenuContainer = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 50vw;
+    margin-left: -100px;
+
+    button {
+      font-size: 2rem;
+      background: transparent;
+      text-transform: uppercase;
+      color: var(--colorOne);
+      border-bottom: 2px solid var(--colorOne);
+      border-radius: 0 0 10px 10px;
+      padding: 10px;
+
+      &:hover {
+        color: var(--colorTwo);
+        border-bottom: 2px solid var(--colorTwo);
+        transition: 300ms;
+      }
+    }
+  }
 `;
 
 export const LogoContainer = styled.div`

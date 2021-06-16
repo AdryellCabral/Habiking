@@ -62,10 +62,10 @@ const LoginPage = () => {
           <span>{errors.password?.message}</span>
 
           <ButtonComp type="submit">Login</ButtonComp>
+          <p>
+            Não possui uma conta? <Link to="/register">cadastre-se</Link>
+          </p>
         </form>
-        <p>
-          Não possui uma conta? <Link to="/register">cadastre-se</Link>
-        </p>
       </DivContainer>
     </DivBackground>
   );

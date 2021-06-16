@@ -21,42 +21,53 @@ export const DivContainer = styled.div`
 
   h1 {
     font-size: 40px;
-    color: var(--colorOne);
+    color: var(--colorTwo);
+    background-color: var(--colorOne);
+    width: 60%;
+    padding: 1vh;
+
+    border: 2px solid var(--colorThree);
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    font-family: "Staatliches", cursive;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0 2px 10px var(--colorOne);
   }
 
   form {
-    width: 80%;
-    height: 60%;
+    width: 80vw;
     background-color: var(--colorOne);
-    justify-content: space-around;
     display: flex;
     flex-direction: column;
     text-align: center;
-    border-radius: 40px;
+    border-radius: 40px 40px 0 0;
     padding: 0 20px;
     align-items: center;
     padding: 20px;
+    border: 2px solid var(--colorThree);
+    box-shadow: 0 2px 10px var(--colorOne);
   }
 
-  form input {
+  input {
     width: 80%;
     padding: 10px 20px;
-    background-color: var(--colorTwo);
     border: none;
     border-radius: 15px;
-    color: var(--colorOne);
     font-size: 20px;
   }
 
   p {
-    font-size: 20px;
-    color: var(--colorOne);
+    font-size: 1.2rem;
+    color: var(--colorTwo);
+    margin-top: 4vh;
   }
 
   a {
     font-weight: bold;
     color: inherit;
     color: var(--colorFive);
+    text-transform: uppercase;
   }
 
   span {
