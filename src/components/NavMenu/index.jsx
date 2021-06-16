@@ -28,6 +28,11 @@ const NavMenu = () => {
     }, 200);
   };
 
+  const handleLogout = () => {
+    localStorage.clear()
+    handleClose()
+  }
+
   return (
     <Breaker>
       <ButtonComp
@@ -52,7 +57,7 @@ const NavMenu = () => {
           <MyMenuItem onClick={handleClose}>Groups</MyMenuItem>
         </Link>
         <Link to="/login">
-          <MyMenuItem onClick={handleClose}>Logout</MyMenuItem>
+          <MyMenuItem onClick={handleLogout}>Logout</MyMenuItem>
         </Link>
       </Menu>
     </Breaker>

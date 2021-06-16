@@ -4,6 +4,8 @@ import {
   DivDescription,
   DivBackground,
 } from "./styles";
+import ButtonComp from "../../components/ButtonComp";
+
 import { Link } from "react-router-dom";
 
 const HomePage = () => (
@@ -17,14 +19,16 @@ const HomePage = () => (
         </h4>
       </DivDescription>
       <DivButtons>
-        <Link to="/register">
+        <div>
           <p>Não tem uma conta ainda?</p>
-          <button>Cadastre-se</button>
-        </Link>
+          <Link to="/register">
+            <ButtonComp>Cadastre-se</ButtonComp>
+          </Link>
+        </div>
         <div>
           <p>Já possui uma conta?</p>
           <Link to="/login">
-            <button>Login</button>
+            <ButtonComp>Login</ButtonComp>
           </Link>
         </div>
       </DivButtons>
