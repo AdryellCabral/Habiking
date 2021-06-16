@@ -25,7 +25,7 @@ export const DivContainer = styled.div`
 
   form {
     width: 80%;
-    height: 60%;
+    height: 65%;
     background-color: var(--colorOne);
     justify-content: space-around;
     display: flex;
@@ -48,6 +48,7 @@ export const DivContainer = styled.div`
   }
 
   form p {
+    height: 25px;
     color: var(--colorFive);
     font-size: 20px;
   }
@@ -55,7 +56,6 @@ export const DivContainer = styled.div`
   p {
     font-size: 20px;
     color: var(--colorOne);
-    height: 25px;
   }
 
   a {

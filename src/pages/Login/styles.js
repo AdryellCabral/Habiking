@@ -26,7 +26,7 @@ export const DivContainer = styled.div`
 
   form {
     width: 80%;
-    height: 60%;
+    height: 65%;
     background-color: var(--colorOne);
     justify-content: space-around;
     display: flex;
