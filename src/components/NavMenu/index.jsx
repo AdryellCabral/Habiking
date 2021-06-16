@@ -1,9 +1,8 @@
 import { useState } from "react";
 import ButtonComp from "../ButtonComp";
-import { Breaker, MyMenuItem } from "./style";
+import { Breaker, LogoContainer, MyMenuItem } from "./style";
 import Menu from "@material-ui/core/Menu";
-
-import { FaCompressArrowsAlt } from "react-icons/fa";
+import Logo from "../../assets/imgs/logo.png";
 
 import { Link } from "react-router-dom";
 
@@ -29,18 +28,22 @@ const NavMenu = () => {
   };
 
   const handleLogout = () => {
-    localStorage.clear()
-    handleClose()
-  }
+    localStorage.clear();
+    handleClose();
+  };
 
   return (
     <Breaker>
+      <LogoContainer>
+        <img src={Logo} alt="siteLogo" />
+        <h3>Habiking</h3>
+      </LogoContainer>
       <ButtonComp
         aria-controls="NavMenu"
         aria-haspopup="true"
         PropFunction={handleClick}
       >
-        Go To <FaCompressArrowsAlt />
+        Menu
       </ButtonComp>
       <Menu
         id="NavMenu"

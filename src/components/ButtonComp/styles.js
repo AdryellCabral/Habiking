@@ -18,5 +18,11 @@ export const MyButton = styled(Button)`
       color: var(--colorOne);
       transition: 300ms;
     }
+
+    @media (min-width: 768px) {
+      width: 20vw;
+      margin: 2vw;
+      padding: 1vw;
+    }
   }
 `;
