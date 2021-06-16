@@ -59,16 +59,10 @@ export const DivContainer = styled.div`
     }
   }
 
-  form p {
-    height: 25px;
-    color: var(--colorFive);
-    font-size: 20px;
-  }
-
   p {
     font-size: 1.2rem;
     color: var(--colorTwo);
-    margin: 20px;
+    margin: 10px;
   }
 
   a {
