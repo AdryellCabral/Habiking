@@ -1,54 +1,64 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useToken } from '../../providers/UserToken'
 import './styles.css'
+import {apiKabit} from "../../utils/apis"
 
 const HabitCard = (props) => {
 
-  const {userToken} = useToken()
-  const [habitos, setHabitos] = useState()
+  const {userToken, userId} = useToken()
+  const [habitos, setHabitos] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [user, setUser] = useState({})
 
   useEffect(() => {
-
     let config = {headers:{'Authorization': 'Bearer ' + userToken }}
 
-    axios.get('https://kabit-api.herokuapp.com/habits/personal/', config)
-    .then(response => setHabitos(response.data))
-  })
-  
-  
-
-    return(<>
+    apiKabit.get('/habits/personal/', config)
+    .then(response => console.log(response.data))
+    .then(setLoading(true))
     
+    apiKabit.get('/users/')
+    .then(response => setUser(response.data.results.find((user) => user.id === userId)))
+
+    
+  },[])
+  console.log(loading)
+    return(<>
     <div className="container">
 
-          <h1>Nome de usuario</h1>
+        {loading && <div>{user.username === undefined ? <h1>{user.username}</h1>: null}</div> }
         <div className="cardhabit">
 
         <h1>Habitos</h1>
-        <button className="button">Criar Habito</button>
+        <Link to="/criarHabito"><button>Criar Habito</button></Link>
         <p>lista de habitos</p>
         <div className="caixaHabitos">
-        {habitos.map(habit => <div className="card">
+        {loading && habitos.map((habit,index) =>
+        <div className="card" key={index}>
+        <div className="title">
             <h1>{habit.title}</h1>
+            </div>
+            <div className="conteudo">
+          <div className="desc">
             <h2>{habit.category}</h2>
-            <h2>{habit.difficulty}</h2>
-            <h2>{habit.frequency}</h2>
-            </div>)}
+            <p>{habit.difficulty}</p>
+            <p>{habit.frequency}</p>
+            </div>
+            <div className="botoes">
+              <button>Deletar</button>
+              <button>Editar</button>
+            </div>
             
+              <div className="check">
+                <input type="checkbox"/>
+                </div>
+                </div>
         </div>
+        )}
+             </div>
         </div>
-        <div className="cardsEvents">
-            <h2>eventos</h2>
-          <div className="caixaEvents">
-            {/*setHabitos(response.data)*/}
-            <h3>1</h3>
-            <h3>2</h3>
-            <h3>3</h3>
-            <h3>4</h3>
-            <h3>5</h3>
-          </div> 
-        </div>
+        
     </div>
     </>)
 }
