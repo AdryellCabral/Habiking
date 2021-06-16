@@ -36,8 +36,7 @@ const RegisterPage = () => {
 
     apiKabit
       .post("/users/", user)
-      .then(console.log("Cadastro efetuado com sucesso!"))
-      .then(history.push("/login"))
+      .then(() => history.push("/login"))
       .catch((err) => console.log(err));
   };
 
