@@ -52,15 +52,17 @@ const CreateGoalForm = () => {
     return (
     <FormStyled>
         <TextField
-            label='title' 
+            label='Nome da Meta' 
             {...register('title')}
             helperText={errors.title?.message} 
+            variant='outlined'
         />
 
         <SelectField 
             register={register} 
             name='difficulty' 
             options={difficulty}
+            label='Dificuldade'
         />
         {errors.difficulty?.message}
 

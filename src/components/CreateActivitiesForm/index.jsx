@@ -49,14 +49,16 @@ const CreateActivitiesForm = () => {
     return (
     <FormStyled>
         <TextField
-            label='title' 
+            label='Nome da Atividade' 
             {...register('title')}
-            helperText={errors.title?.message} 
+            helperText={errors.title?.message}
+            variant='outlined'
         />
 
         <TextField
             id="datetime-local"
-            label="Realization Time"
+            variant='outlined'
+            label="Horário"
             {...register('realization_time')}
             type="datetime-local"
             defaultValue="2021-06-15T10:30"

@@ -2,23 +2,36 @@ import styled from 'styled-components';
 
 export const FormStyled = styled.form`
     display: flex;
-    flex-direction: column;
+    margin: 40px auto;
+    align-self: center;
+    width: 90%;
+    border: 2px double var(--borderColor);
     border-radius: 10px;
-    margin: 25px auto;
+    color: var(--textColor);
+    text-align: center;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 80%;
+    max-height: 600px;
 
-    input {
+    >div {
         width: 210px;
         height: 40px;
-        margin-top: 15px;
+        margin: 15px 0;
     }
 
     @media (min-width:768px){
-        input {
+        width: 100%;
+        border-right: none;
+        border-left: none;
+        border-radius: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        >div {
             width: 400px;
-            height: 50px;
+            height: 50px;    
         }
     }
 `
