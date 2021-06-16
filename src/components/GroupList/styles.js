@@ -20,7 +20,7 @@ export const DivGroups = styled.div`
   overflow: auto;
   overflow-x: hidden;
   height: 250px;
-  margin-top: 25px;
+  margin-top: 64px;
   background-color: whitesmoke;
   padding: 5px;
   p {
@@ -28,5 +28,9 @@ export const DivGroups = styled.div`
   }
   button {
     margin-bottom: 15px;
+  }
+
+  @media (min-width: 768px) {
+    height: 400px;
   }
 `;
