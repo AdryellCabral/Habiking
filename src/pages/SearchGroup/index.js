@@ -10,19 +10,16 @@ import {
 } from "./styles";
 import { useState } from "react";
 
-import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
-import { useToken } from "../../providers/UserToken";
 import { useUnsubscribedGroups } from "../../providers/unsubscribedGroups";
 import ButtonComp from "../../components/ButtonComp";
 
 const SearchGroup = () => {
-  const { groups } = useGroupsSubscriptions();
-  const { userToken } = useToken();
-  const { unsubscribedGroups, URL, setURL, nextPag, previousPag } =
+  const { unsubscribedGroups, setURL, nextPag, previousPag } =
     useUnsubscribedGroups();
   const [userSearch, setUserSearch] = useState("");
-  const handleGroupSearch = (name) => {};
 
+  const [groupsFiltred, setGroupsFiltred] = useState([]);
+  const [filtered, setFiltered] = useState(false);
   const handleChangePag = (url) => {
     const index = url.indexOf("?");
     const endPoint = url.slice(index);
@@ -33,6 +30,19 @@ const SearchGroup = () => {
     }
   };
 
+  const handleGroupSearch = (name) => {
+    const newList = unsubscribedGroups.filter((group) => group.name.toUpperCase() === name.toUpperCase());
+    setGroupsFiltred(newList);
+    setFiltered(true)
+  };
+
+  const handleClearFilter = () => {
+    setGroupsFiltred([])
+    setFiltered(false)
+    setUserSearch("")
+
+  }
+
   return (
     <Container>
       <NavMenu />
@@ -42,9 +52,15 @@ const SearchGroup = () => {
           onChange={(e) => setUserSearch(e.target.value)}
         />
 
-        <SearchButton onClick={() => handleGroupSearch(userSearch)}>
-          Procurar!
-        </SearchButton>
+        {filtered ? (
+          <SearchButton onClick={handleClearFilter}>
+            Ver todos grupo
+          </SearchButton>
+        ) : (
+          <SearchButton onClick={() => handleGroupSearch(userSearch)}>
+            Procurar!
+          </SearchButton>
+        )}
       </Breaker>
       <div id="buttons-container">
         <ButtonComp
@@ -57,13 +73,17 @@ const SearchGroup = () => {
           disabled={nextPag === null}
           onClick={() => handleChangePag(nextPag)}
         >
-          Proxima Página
+          Próxima Página
         </ButtonComp>
       </div>
       <GroupContainer>
-        {unsubscribedGroups?.map((elem) => (
-          <CardGroup key={elem.id} group={elem} />
-        ))}
+        {groupsFiltred?.length > 0
+          ? groupsFiltred.map((elem) => (
+              <CardGroup key={elem.id} group={elem} />
+            ))
+          : unsubscribedGroups?.map((elem) => (
+              <CardGroup key={elem.id} group={elem} />
+            ))}
       </GroupContainer>
     </Container>
   );
