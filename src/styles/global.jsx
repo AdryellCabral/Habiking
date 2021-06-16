@@ -55,6 +55,22 @@ font-family: "Roboto", sans-serif;
 }
 * {
 	user-select: none;
+	::-webkit-scrollbar {
+	width: 14px;
+	}
+
+	::-webkit-scrollbar-track {
+	background: var(--colorOne);
+	}
+
+	::-webkit-scrollbar-thumb {
+	background: var(--colorTwo);
+	border-radius: 10px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+	background: var(--colorTwo);
+	}
 }
 
 ol, ul {
