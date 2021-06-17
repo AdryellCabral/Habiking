@@ -13,10 +13,9 @@ export const DivContainer = styled.div`
   max-width: 450px;
   max-height: 450px;
   width: 100%;
-  height: 60%;
+  height: 59%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
 
   h1 {
@@ -36,12 +35,7 @@ export const DivContainer = styled.div`
   }
 
   form {
-<<<<<<< HEAD
     width: 80vw;
-=======
-    width: 80%;
-    height: 65%;
->>>>>>> 8a8185340c49eb42234042eabfb1f1c50dfedb78
     background-color: var(--colorOne);
     display: flex;
     flex-direction: column;
@@ -60,12 +54,8 @@ export const DivContainer = styled.div`
     border: none;
     border-radius: 15px;
     font-size: 20px;
-  }
-
-  form p {
-    height: 25px;
-    font-size: 20px;
-    color: var(--colorFive);
+    margin: 20px;
+    margin-bottom: 0;
   }
 
   p {

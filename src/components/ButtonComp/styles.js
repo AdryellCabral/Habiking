@@ -12,11 +12,19 @@ export const MyButton = styled(Button)`
     box-shadow: 0 0 10px var(--colorOne);
     color: var(--colorTwo);
 
+    span {
+      color: var(--colorTwo);
+    }
+
     &:hover {
       border: 2px double var(--colorOne);
       background-color: var(--colorTwo);
       color: var(--colorOne);
       transition: 300ms;
+
+      span {
+        color: var(--colorOne);
+      }
     }
 
     @media (min-width: 768px) {
