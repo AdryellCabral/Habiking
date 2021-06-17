@@ -1,11 +1,40 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { useToken } from '../../providers/UserToken'
+import { apiKabit } from '../../utils/apis'
+import ButtonComp from '../ButtonComp';
 import './styles.css'
 
 
-const HabitCard = ({setHabitos,habitos}) => {
+const HabitCard = ({achieved,habit,setHabitos,habitos}) => {
+  const { userToken } = useToken();
+  const [isCompleted,setIsCompleted] = useState(achieved);
+const  handleClick = () =>{
+
+  const config = { headers: { Authorization: "Bearer " + userToken } }; 
+
+  apiKabit.delete(`/habits/${habit.id}/`,config)
+
+  setHabitos(habitos.filter(habito => habito.id !== habit.id))
+}
+
+const handleComplete = () => {
+  apiKabit
+    .patch(
+      `/habits/${habit.id}/`,
+      { achieved: true },
+      {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      }
+    )
+    .then((response) => {
+      setIsCompleted(true);
+    })
+    .catch(err => console.log(err))
+};
 
 return(<>
-  {habitos.map( habit =>
               <div className="card">
                 <div className="title">
                   <h1>{habit.title}</h1>
@@ -17,15 +46,15 @@ return(<>
                       <p>{habit.frequency}</p>
                     </div>
                       <div className="botoes">
-                        <button onClick={() => setHabitos(habitos.filter(habito => habito.id !== habit.id))}>Deletar</button>
+                        <button onClick={handleClick}>Deletar</button>
                       </div>
             
                         <div className="check">
-                          <input type="checkbox"/>
+                         {isCompleted ? <h1>Completado</h1> : <ButtonComp PropFunction={handleComplete}>✔</ButtonComp>}
                         </div>
                   </div>
               </div>
-              )}
+              
 </>)
 }
 
