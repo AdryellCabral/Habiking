@@ -10,6 +10,9 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+
 const CreateGoalForm = () => {
   const { userToken } = useToken();
   const { editGroupId, newRequestGroupsSubscription } =
@@ -35,29 +38,27 @@ const CreateGoalForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = ({ title, difficulty }) => {
-    apiKabit
-      .post(
-        `/goals/`,
-        {
-          title: title,
-          difficulty: difficulty,
-          how_much_achieved: 0,
-          group: editGroupId,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        }
-      )
-      .then((response) => {
-        newRequestGroupsSubscription();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    const onSubmitFunction = ({ title, difficulty }) => {
+        apiKabit
+        .post(`/goals/`, {
+            title: title,
+            difficulty: difficulty,
+            how_much_achieved: 0,
+            group: editGroupId,
+        }, {
+            headers: {
+                Authorization: `Bearer ${userToken}`,
+              },
+        })
+        .then((response) => {
+            newRequestGroupsSubscription();
+            toast.success('Categoria alterada com sucesso.')
+        })
+        .catch((error) => {
+            console.log(error);
+            toast.error('Ocorreu algum erro, tente novamente depois.')
+        })
+    }
 
   return (
     <FormStyled>
@@ -76,9 +77,14 @@ const CreateGoalForm = () => {
       />
       {errors.difficulty?.message}
 
+<<<<<<< HEAD
       <ButtonComp type="submit" PropFunction={handleSubmit(onSubmitFunction)}>
         Criar Meta
       </ButtonComp>
+=======
+        <ButtonComp type="submit" PropFunction={handleSubmit(onSubmitFunction)}>Criar Meta</ButtonComp>
+        <ToastContainer />        
+>>>>>>> 2719c4936ed9ed3decf647cb958bad0f0ab99aa6
     </FormStyled>
   );
 };

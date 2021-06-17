@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useToken } from "../../providers/UserToken";
 import { apiKabit } from "../../utils/apis";
 import ButtonComp from "../ButtonComp";
-import {DivContainer} from "./styles"
+import { DivContainer } from "./styles";
 
-const CardGoal = ({ goal }) => {
+const CardGoal = ({ goal, isCreator }) => {
   const { title, difficulty, achieved, id } = goal;
   const [isCompleted, setIsCompleted] = useState(achieved);
 
@@ -28,10 +28,16 @@ const CardGoal = ({ goal }) => {
     <DivContainer>
       <h2>Titulo: {title}</h2>
       <h3>Dificuldade: {difficulty}</h3>
-      {isCompleted ? (
+      {isCreator ? (
+        isCompleted ? (
+          <h3 className="completed">Completado</h3>
+        ) : (
+          <ButtonComp PropFunction={handleClick}>Completar</ButtonComp>
+        )
+      ) : isCompleted ? (
         <h3 className="completed">Completado</h3>
       ) : (
-        <ButtonComp PropFunction={handleClick}>Completar</ButtonComp>
+        <h3>Incompleto</h3>
       )}
     </DivContainer>
   );
