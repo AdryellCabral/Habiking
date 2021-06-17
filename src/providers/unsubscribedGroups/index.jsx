@@ -42,7 +42,7 @@ const { groups } = useGroupsSubscriptions();
       .get(URL)
       .then((response) => setStates(response))
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[URL]);
+  },[URL,groups]);
 
   useEffect(() => {
     filterOnlyNoSubscriptions()
