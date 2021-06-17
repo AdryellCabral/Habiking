@@ -10,16 +10,7 @@ import NavMenu from '../../components/NavMenu'
 const Users = (props) => {
  
     const {userToken, userId} = useToken()
-    const [habitos, setHabitos] = useState([{
-      "id": 2037,
-      "title": "Kata JS nivel 3",
-      "category": "JS",
-      "difficulty": "Difícil",
-      "frequency": "Diária",
-      "achieved": false,
-      "how_much_achieved": 30,
-      "user": 719
-    }])
+    const [habitos, setHabitos] = useState([])
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -27,15 +18,17 @@ const Users = (props) => {
   
       apiKabit.get('/habits/personal/', config)
       .then(response => { 
-        console.log(response.data)
+        console.log(response)
         setLoading(true)
         })
       
     },[userToken])
     
+    console.log(habitos)
   return(<>
   <NavMenu/>
     <div className="container">
+      {/* nome do usuario aqui*/}
     
       <div className="cardhabit">
         <div className="criacao">
@@ -45,6 +38,7 @@ const Users = (props) => {
   
         <div className="lista">
           <p>lista de habitos</p>
+            {habitos[0] === undefined ?<h1>Sem habitos</h1> : null}
             {loading ? <div className="caixaHabitos"><HabitCard habit={habitos} setHabitos={setHabitos} habitos={habitos}/> </div> : <p>loading...</p>} 
         </div>
       </div>

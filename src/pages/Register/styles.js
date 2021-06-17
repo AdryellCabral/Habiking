@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const DivBackground = styled.div`
-  background-color: var(--colorFour);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -12,56 +11,69 @@ export const DivBackground = styled.div`
 export const DivContainer = styled.div`
   max-width: 450px;
   width: 100%;
-  height: 80%;
+  height: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
 
   h1 {
     font-size: 40px;
-    color: var(--colorOne);
+    color: var(--colorTwo);
+    background-color: var(--colorOne);
+    width: 60%;
+    padding: 1vh;
+
+    border: 2px solid var(--colorThree);
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    font-family: "Staatliches", cursive;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0 2px 10px var(--colorOne);
   }
 
   form {
-    width: 80%;
-    height: 65%;
+    width: 80vw;
     background-color: var(--colorOne);
-    justify-content: space-around;
     display: flex;
     flex-direction: column;
     text-align: center;
-    border-radius: 40px;
-    padding: 0 20px;
+    border-radius: 40px 40px 0 0;
     align-items: center;
     padding: 20px;
+    border: 2px solid var(--colorThree);
+    box-shadow: 0 2px 10px var(--colorOne);
   }
 
-  form input {
+  input {
     width: 80%;
     padding: 10px 20px;
-    background-color: var(--colorTwo);
     border: none;
     border-radius: 15px;
-    color: var(--colorOne);
     font-size: 20px;
-  }
+    margin: 20px;
+    margin-bottom: 0;
 
-  form p {
-    height: 25px;
-    color: var(--colorFive);
-    font-size: 20px;
+    @media (min-width: 768px) {
+      margin-bottom: 20px;
+    }
   }
 
   p {
-    font-size: 20px;
-    color: var(--colorOne);
+    font-size: 1.2rem;
+    color: var(--colorTwo);
+    margin: 10px;
   }
 
   a {
     font-weight: bold;
-    color: inherit;
-    color: var(--colorFive);
+    color: var(--colorTwo);
+    text-transform: uppercase;
+  }
+
+  span {
+    color: var(--colorTwo);
+    font-size: 20px;
   }
 
   @media (min-width: 768px) {

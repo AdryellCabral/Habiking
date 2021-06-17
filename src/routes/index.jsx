@@ -2,11 +2,12 @@ import { Route, Switch } from "react-router";
 import RegisterPage from "../pages/Register";
 import HomePage from "../pages/Home";
 import LoginPage from "../pages/Login";
-import GroupsPages from "../pages/Groups"
+import GroupsPages from "../pages/Groups";
 import CreateGroupPage from "../pages/CreateGroupPage";
 import EditGroupPage from "../pages/EditGroupPage";
-import Users from '../pages/Users'
-import CreateHabit from '../pages/CreateHabitPage'
+import SearchGroup from "../pages/SearchGroup";
+import CreateHabit from "../pages/CreateHabitPage";
+import Users from "../pages/Users";
 
 const Routes = () => {
   return (
@@ -28,6 +29,9 @@ const Routes = () => {
       </Route>
       <Route path="/groups">
         <GroupsPages />
+      </Route>
+      <Route path="/search-group">
+        <SearchGroup />
       </Route>
       <Route path="/create-group">
         <CreateGroupPage />
