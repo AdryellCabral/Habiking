@@ -50,11 +50,12 @@ export const DivGroup = styled.div`
   div#group-info {
     color: var(--colorTwo);
 
-    h1 {
+   > h1 {
       align-self: center;
       margin-bottom: 20px;
       border-bottom: 2px solid var(--colorTwo);
       border-radius: 0 0 10px 0;
+      height: 26px;
     }
 
     h2,
