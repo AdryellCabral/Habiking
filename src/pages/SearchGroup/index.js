@@ -66,7 +66,6 @@ const SearchGroup = () => {
 
     apiKabit
       .post(`/groups/${group.id}/subscribe/`, config)
-      .then((response) => console.log(response))
       .catch((e) => console.log(e));
   };
 
@@ -76,6 +75,7 @@ const SearchGroup = () => {
       <Breaker>
         <TextField
           value={userSearch}
+          placeholder="Nome do Grupo"
           onChange={(e) => setUserSearch(e.target.value)}
         />
         {searching ? (
