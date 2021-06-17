@@ -119,10 +119,39 @@ export const GroupContainer = styled.div`
   background-color: var(--colorOne);
   border-radius: 10px;
 
+  p {
+    padding: 5px;
+    font-size: 1.2rem;
+    color: var(--colorTwo);
+    border-bottom: 2px solid var(--colorTwo);
+    border-radius: 10px;
+    width: 60vw;
+    margin: auto;
+
+    @media (min-width: 768px) {
+      width: 14vw;
+    }
+  }
+
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 66vw;
+    height: 60vh;
+  }
+
+  h5 {
+    font-size: 1.4rem;
+    color: var(--colorTwo);
+    padding: 5px;
+    border-bottom: 2px solid var(--colorTwo);
+    border-radius: 10px;
+
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+      width: 10vw;
+      margin: auto;
+    }
   }
 `;
