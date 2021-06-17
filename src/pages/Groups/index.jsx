@@ -47,8 +47,7 @@ const GroupsPages = () => {
           </div>
           <DivGroup>
             <div id="group-info">
-              <h1>Grupo</h1>
-              <h2>Nome: {name}</h2>
+              <h1>{name}</h1>
               <h2>Categoria: {category}</h2>
               <p>Descrição: {description}</p>
             </div>
@@ -60,7 +59,11 @@ const GroupsPages = () => {
                   <li id="creator">Criador: {creator?.username}</li>
                   {users_on_group?.map(
                     (user, index) =>
-                      index > 0 && <Li key={index} index={index}>{user.username}</Li>
+                      index > 0 && (
+                        <Li key={index} index={index}>
+                          {user.username}
+                        </Li>
+                      )
                   )}
                 </ul>
               </div>
@@ -78,10 +81,7 @@ const GroupsPages = () => {
                 <h3>Atividades</h3>
                 <ul>
                   {activities?.map((activity, index) => (
-                    <CardActivities
-                      activity={activity}
-                      key={index}
-                    ></CardActivities>
+                    <CardActivities activity={activity} key={index} />
                   ))}
                 </ul>
               </div>

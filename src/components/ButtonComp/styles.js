@@ -16,11 +16,19 @@ export const MyButton = styled(Button)`
       color: var(--colorTwo);
     }
 
+    a {
+      color: var(--colorTwo);
+    }
+
     &:hover {
       border: 2px double var(--colorOne);
       background-color: var(--colorTwo);
       color: var(--colorOne);
       transition: 300ms;
+
+      a {
+        color: var(--colorOne);
+      }
 
       span {
         color: var(--colorOne);
