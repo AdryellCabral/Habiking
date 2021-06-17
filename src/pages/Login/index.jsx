@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { apiKabit } from "../../utils/apis";
 
 import "react-toastify/dist/ReactToastify.css";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useToken } from "../../providers/UserToken";
 
 const formSchema = yup.object().shape({
@@ -76,7 +76,6 @@ const LoginPage = () => {
           </p>
         </form>
       </DivContainer>
-      <ToastContainer />
     </DivBackground>
   );
 };
