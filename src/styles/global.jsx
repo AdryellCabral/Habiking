@@ -47,7 +47,9 @@ body {
 	line-height: 1;
     height: 100%;
     margin: 0;
-	background: var(--colorTwo);
+	background: linear-gradient(
+          rgba(0, 0, 0, 0.4), 
+          rgba(0, 0, 0, 0.4)), var(--colorTwo);
 
 font-family: "Roboto", sans-serif;
 
