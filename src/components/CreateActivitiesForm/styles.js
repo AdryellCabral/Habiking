@@ -1,11 +1,22 @@
 import styled from "styled-components";
+import { TextField } from "@material-ui/core";
+
+export const StyledTextField = styled(TextField)`
+  && {
+    * {
+      color: var(--colorTwo);
+      border-color: var(--colorTwo);
+    }
+  }
+`;
 
 export const FormStyled = styled.form`
   display: flex;
   margin: 40px auto;
+  margin-top: 0;
+  margin-bottom: 0;
   align-self: center;
   width: 90%;
-  border: 2px double var(--colorOne);
   border-radius: 10px;
   color: var(--colorTwo);
   text-align: center;
