@@ -8,10 +8,14 @@ import { useToken } from "../../providers/UserToken";
 import { Redirect } from "react-router-dom";
 
 const EditGroupPage = () => {
-  const { userToken } = useToken();
+  const { userToken, setUserToken } = useToken();
 
-  if (!userToken) {
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken === "") {
     return <Redirect to="/login" />;
+  } else {
+    setUserToken(localToken);
   }
   return (
     <>

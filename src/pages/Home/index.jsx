@@ -13,11 +13,17 @@ import Logo from "../../assets/imgs/logo.png";
 import { useToken } from "../../providers/UserToken";
 
 const HomePage = () => {
-  const { userToken } = useToken();
+  const { userToken, setUserToken } = useToken();
 
-  if (userToken) {
+ 
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken) {
     return <Redirect to="/user" />;
+  } else {
+    setUserToken(localToken);
   }
+  
   return (
     <DivBackground>
       <DivContainer>
