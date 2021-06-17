@@ -12,10 +12,9 @@ export const DivContainer = styled.div`
   && {
     button {
       width: 100%;
-      margin-left: 0;
+      margin: 0 0 20px 0;
       padding: 0;
       height: 50px;
-      margin-right: 0;
     }
   }
 
@@ -50,11 +49,12 @@ export const DivGroup = styled.div`
   div#group-info {
     color: var(--colorTwo);
 
-    h1 {
+   > h1 {
       align-self: center;
       margin-bottom: 20px;
       border-bottom: 2px solid var(--colorTwo);
       border-radius: 0 0 10px 0;
+      height: 26px;
     }
 
     h2,

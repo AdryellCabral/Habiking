@@ -24,6 +24,8 @@ const GroupsPages = () => {
     goals,
     activities,
   } = showGroup;
+
+  const isCreator = creator?.id === userId
   if (!userToken) {
     return <Redirect to="/login" />;
   }
@@ -32,13 +34,13 @@ const GroupsPages = () => {
       <NavMenu />
       <DivContainer>
         <div id="buttons-container">
-          <ButtonComp>
-            <Link to="/create-group"> Criar Novo Grupo </Link>
-          </ButtonComp>
+          <Link to="/create-group">
+            <ButtonComp>Criar Novo Grupo</ButtonComp>
+          </Link>
 
-          <ButtonComp>
-            <Link to="/search-group"> Buscar Novo Grupo </Link>
-          </ButtonComp>
+          <Link to="/search-group">
+            <ButtonComp>Buscar Novo Grupo</ButtonComp>
+          </Link>
         </div>
 
         <div id="group-container">
@@ -72,7 +74,7 @@ const GroupsPages = () => {
                 <h3>Metas</h3>
                 <ul>
                   {goals?.map((goal, index) => (
-                    <CardGoal goal={goal} key={index}></CardGoal>
+                    <CardGoal goal={goal} key={index} isCreator={isCreator}></CardGoal>
                   ))}
                 </ul>
               </div>
@@ -86,7 +88,7 @@ const GroupsPages = () => {
                 </ul>
               </div>
             </div>
-            {creator?.id === userId && (
+            { isCreator && (
               <div id="edit-group">
                 <Link to="/edit-group">
                   <ButtonComp>Editar</ButtonComp>

@@ -83,7 +83,7 @@ const GroupList = ({ setShowGroup, groups }) => {
 
       <DivGroups>
         {groupsFiltred.length === 0 ? (
-          <p>Nenhum grupo encontrado :/</p>
+          <p>Nenhum grupo encontrado.</p>
         ) : (
           <ul>
             {groupsFiltred.map((group, index) => (

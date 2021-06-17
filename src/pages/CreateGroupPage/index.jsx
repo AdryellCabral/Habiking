@@ -12,10 +12,12 @@ const CreateGroupPage = () => {
     return <Redirect to="/login" />;
   }
   return (
-    <ContainerStyled>
+    <>
       <NavMenu />
-      <CreateGroupForm />
-    </ContainerStyled>
+      <ContainerStyled>
+        <CreateGroupForm />
+      </ContainerStyled>
+    </>
   );
 };
 

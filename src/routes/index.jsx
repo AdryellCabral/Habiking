@@ -39,6 +39,11 @@ const Routes = () => {
       <Route exact path="/edit-group">
         <EditGroupPage />
       </Route>
+      
+      <Route >
+        <NotFound />
+      </Route>
+
     </Switch>
   );
 };
