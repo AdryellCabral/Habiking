@@ -2,11 +2,11 @@ import React from 'react';
 import { InputLabel, MenuItem, Select } from '@material-ui/core';
 import { FormControlStyled } from './styles';
 
-const SelectField =  ({register, name, options, ...rest}) => {
+const SelectField =  ({register, name, options, label, ...rest}) => {
     return (
-        <FormControlStyled variant='filled'>
+        <FormControlStyled variant='outlined'>
             <InputLabel id={name + '-label'}>
-                {name}
+                {label}
             </InputLabel>
             
             <Select

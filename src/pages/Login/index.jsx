@@ -8,12 +8,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { apiKabit } from "../../utils/apis";
 
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+
 const formSchema = yup.object().shape({
   username: yup.string().required("Campo obrigatório!"),
   password: yup
     .string()
-    .min(6, "Mínimo de 6 dígitos!")
-    .required("Campo obrigatório!"),
+    .required("Campo obrigatório!")
+    .min(6, "Mínimo de 6 dígitos!"),
 });
 
 const LoginPage = () => {
@@ -37,7 +40,7 @@ const LoginPage = () => {
         )
       )
       .then(() => history.push("/user"))
-      .catch((err) => console.log("usuário ou senha inválidos!", err));
+      .catch(() => toast.error("Usuário ou senha incorretos."));
   };
 
   return (
@@ -51,7 +54,7 @@ const LoginPage = () => {
             autoComplete="on"
             {...register("username")}
           />
-          <span>{errors.name?.message}</span>
+          <p>{errors.username?.message}</p>
 
           <input
             type="password"
@@ -59,7 +62,7 @@ const LoginPage = () => {
             {...register("password")}
             autoComplete="off"
           />
-          <span>{errors.password?.message}</span>
+          <p>{errors.password?.message}</p>
 
           <ButtonComp type="submit">Login</ButtonComp>
           <p>
@@ -67,6 +70,7 @@ const LoginPage = () => {
           </p>
         </form>
       </DivContainer>
+      <ToastContainer />
     </DivBackground>
   );
 };

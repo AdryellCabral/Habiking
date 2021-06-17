@@ -5,7 +5,7 @@ export const FormControlStyled = styled(FormControl)`
     && {
         width: 210px;
         height: 40px;
-        margin-top: 25px;
+        margin-bottom: 20px;
 
     @media (min-width:768px) {
         width: 400px;

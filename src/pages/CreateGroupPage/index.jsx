@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import CreateGroupForm from "../../components/CreateGroupForm";
+import NavMenu from "../../components/NavMenu";
 import { useToken } from "../../providers/UserToken";
 import { ContainerStyled } from "./styles";
 
@@ -12,6 +13,7 @@ const CreateGroupPage = () => {
   }
   return (
     <ContainerStyled>
+      <NavMenu />
       <CreateGroupForm />
     </ContainerStyled>
   );

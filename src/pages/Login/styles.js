@@ -36,7 +36,12 @@ export const DivContainer = styled.div`
   }
 
   form {
+<<<<<<< HEAD
     width: 80vw;
+=======
+    width: 80%;
+    height: 65%;
+>>>>>>> 8a8185340c49eb42234042eabfb1f1c50dfedb78
     background-color: var(--colorOne);
     display: flex;
     flex-direction: column;
@@ -55,6 +60,12 @@ export const DivContainer = styled.div`
     border: none;
     border-radius: 15px;
     font-size: 20px;
+  }
+
+  form p {
+    height: 25px;
+    font-size: 20px;
+    color: var(--colorFive);
   }
 
   p {
