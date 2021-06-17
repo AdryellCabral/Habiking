@@ -10,6 +10,17 @@ export const Breaker = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  #buttons-container {
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      button {
+        height: 40px;
+      }
+    }
+  }
 `;
 
 export const SearchButton = styled(Button)`
@@ -49,19 +60,20 @@ export const SearchButton = styled(Button)`
         color: var(--colorOne);
       }
     }
+  }
 
-    @media (min-width: 768px) {
-      width: 10vw;
-      margin: 2vw;
-      margin-top: 0;
-      margin-left: 0;
-      padding: 1vw;
+  @media (min-width: 768px) {
+    && {
+      width: 12vw;
+      height: 37px;
+      padding: 0;
+      margin: 0;
     }
   }
 `;
 
 export const TextField = styled.textarea`
-  width: 240px;
+  width: 200px;
   height: 32px;
 
   font-size: 1.2rem;
@@ -81,10 +93,10 @@ export const TextField = styled.textarea`
   text-align: center;
 
   @media (min-width: 768px) {
-    height: 34px;
-    margin: 2vw;
-    margin-right: 0;
-    margin-top: 0;
+    width: 300px;
+    height: 33px;
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -105,6 +117,7 @@ export const GroupContainer = styled.div`
   border: 2px solid var(--colorThree);
   box-shadow: 0 0 10px var(--colorOne);
   background-color: var(--colorOne);
+  border-radius: 10px;
 
   @media (min-width: 768px) {
     flex-direction: row;

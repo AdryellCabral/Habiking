@@ -88,4 +88,11 @@ export const MyMenuItem = styled(MenuItem)`
       padding: 1vw;
     }
   }
+
+  @media (min-width: 768px) {
+    && {
+    width: 20vw;
+    margin: 1vw;
+    padding: 1vw;
+  }
 `;

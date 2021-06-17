@@ -1,10 +1,13 @@
 import { TokenProvider } from "./UserToken";
 import { GroupsSubscriptionsProvider } from "./groupsSubscriptions";
+import { UnsubscribedGroupsProvider } from "./unsubscribedGroups";
 
 const Providers = ({ children }) => {
   return (
     <TokenProvider>
-      <GroupsSubscriptionsProvider>{children}</GroupsSubscriptionsProvider>
+      <GroupsSubscriptionsProvider>
+        <UnsubscribedGroupsProvider>{children}</UnsubscribedGroupsProvider>
+      </GroupsSubscriptionsProvider>
     </TokenProvider>
   );
 };
