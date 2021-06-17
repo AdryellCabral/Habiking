@@ -12,7 +12,7 @@ import { Redirect } from "react-router";
 
 const GroupsPages = () => {
   const { groups } = useGroupsSubscriptions();
-  const { userId, userToken } = useToken();
+  const { userId, userToken, setUserToken } = useToken();
 
   const [showGroup, setShowGroup] = useState([]);
   const {
@@ -25,10 +25,14 @@ const GroupsPages = () => {
     activities,
   } = showGroup;
 
-  const isCreator = creator?.id === userId
+  const isCreator = creator?.id === userId;
 
-  if (userToken === "") {
-    return <Redirect to="/login" />;
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken === "") {
+    return <Redirect to="/" />;
+  } else {
+    setUserToken(localToken);
   }
   return (
     <>
@@ -75,7 +79,11 @@ const GroupsPages = () => {
                 <h3>Metas</h3>
                 <ul>
                   {goals?.map((goal, index) => (
-                    <CardGoal goal={goal} key={index} isCreator={isCreator}></CardGoal>
+                    <CardGoal
+                      goal={goal}
+                      key={index}
+                      isCreator={isCreator}
+                    ></CardGoal>
                   ))}
                 </ul>
               </div>
@@ -89,7 +97,7 @@ const GroupsPages = () => {
                 </ul>
               </div>
             </div>
-            { isCreator && (
+            {isCreator && (
               <div id="edit-group">
                 <Link to="/edit-group">
                   <ButtonComp>Editar</ButtonComp>

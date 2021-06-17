@@ -6,11 +6,16 @@ import { useToken } from "../../providers/UserToken";
 import { ContainerStyled } from "./styles";
 
 const CreateGroupPage = () => {
-  const { userToken } = useToken();
+  const { userToken, setUserToken } = useToken();
 
-  if (!userToken) {
-    return <Redirect to="/login" />;
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken === "") {
+    return <Redirect to="/" />;
+  } else {
+    setUserToken(localToken);
   }
+
   return (
     <>
       <NavMenu />

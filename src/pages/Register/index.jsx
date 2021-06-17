@@ -33,7 +33,7 @@ const RegisterPage = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-  const { userToken } = useToken();
+  const { userToken, setUserToken } = useToken();
 
   const history = useHistory();
 
@@ -46,9 +46,15 @@ const RegisterPage = () => {
       .catch(() => toast.error("Este nome de usuário já está em uso!"));
   };
 
-  if (userToken) {
+  
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken) {
     return <Redirect to="/user" />;
+  } else {
+    setUserToken(localToken);
   }
+
   return (
     <DivBackground>
       <DivContainer>

@@ -13,10 +13,13 @@ import { useEffect, useState } from "react";
 import { useUnsubscribedGroups } from "../../providers/unsubscribedGroups";
 import ButtonComp from "../../components/ButtonComp";
 import Loader from "../../components/Loader";
+import { Redirect } from "react-router-dom";
+import { useToken } from "../../providers/UserToken";
 
 const SearchGroup = () => {
   const { unsubscribedGroups, setURL, nextPag, previousPag } =
     useUnsubscribedGroups();
+    const {setUserToken} = useToken()
   const [userSearch, setUserSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [groupsFiltred, setGroupsFiltred] = useState([]);
@@ -54,6 +57,14 @@ const SearchGroup = () => {
   useEffect(() => {
     setIsLoading(false);
   }, [unsubscribedGroups]);
+
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken === "") {
+    return <Redirect to="/" />;
+  } else {
+    setUserToken(localToken);
+  }
 
   return (
     <Container>

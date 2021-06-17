@@ -10,9 +10,10 @@ import { TextFieldStyled } from "../../components/CreateGroupForm/styles";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { ContainerHab, Breaker, StyledSelectField } from "./styles";
+import { Redirect } from "react-router-dom";
 
 const CreateHabit = () => {
-  const { userToken, userId } = useToken();
+  const { userToken, setUserToken, userId } = useToken();
 
   const handleForm = ({ title, frequency, category, difficulty }) => {
     const config = { headers: { Authorization: "Bearer " + userToken } };
@@ -57,6 +58,15 @@ const CreateHabit = () => {
     "Muito difícil",
   ];
   const frequencies = ["Diario", "Semanal", "Mensal"];
+
+  
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken === "") {
+    return <Redirect to="/" />;
+  } else {
+    setUserToken(localToken);
+  }
 
   return (
     <>

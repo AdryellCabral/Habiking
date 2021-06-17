@@ -28,7 +28,7 @@ const LoginPage = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-  const { userToken, setUsername } = useToken();
+  const { userToken, setUsername, setUserToken } = useToken();
 
   const history = useHistory();
 
@@ -46,8 +46,12 @@ const LoginPage = () => {
       .catch(() => toast.error("Usuário ou senha incorretos."));
   };
 
-  if (userToken !== "") {
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken) {
     return <Redirect to="/user" />;
+  } else {
+    setUserToken(localToken);
   }
 
   return (

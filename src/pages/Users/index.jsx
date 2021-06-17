@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { useToken } from "../../providers/UserToken";
 import { apiKabit } from "../../utils/apis";
 import HabitCard from "../../components/HabitCard/HabitCard";
@@ -13,15 +13,7 @@ const Users = (props) => {
   const [habitos, setHabitos] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const localToken = localStorage.getItem("@tokenKabit") || "";
-
-    if (localToken !== "") {
-      setUserToken(JSON.parse(localToken));
-    }
-  });
-
-  useEffect(() => {
+    useEffect(() => {
     if (userToken !== "") {
       const config = { headers: { Authorization: "Bearer " + userToken } };
 
@@ -32,6 +24,14 @@ const Users = (props) => {
     }
   }, [userToken]);
 
+
+  const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
+
+  if (localToken === "") {
+    return <Redirect to="/" />;
+  } else {
+    setUserToken(localToken);
+  }
   return (
     <>
       <NavMenu />
