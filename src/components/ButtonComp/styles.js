@@ -7,14 +7,22 @@ export const MyButton = styled(Button)`
     margin: 4vw;
     padding: 2vw;
     background-color: var(--colorOne);
-    border: 2px double var(--borderColor);
+    border: 2px double var(--colorTwo);
     border-radius: 10px;
-    box-shadow: 0 0 10px var(--shadowColor);
-    color: var(--textColor);
+    box-shadow: 0 0 10px var(--colorOne);
+    color: var(--colorTwo);
 
     &:hover {
-      background-color: var(--colorThree);
+      border: 2px double var(--colorOne);
+      background-color: var(--colorTwo);
+      color: var(--colorOne);
       transition: 300ms;
+    }
+
+    @media (min-width: 768px) {
+      width: 20vw;
+      margin: 2vw;
+      padding: 1vw;
     }
   }
 `;

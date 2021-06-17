@@ -65,10 +65,10 @@ const LoginPage = () => {
           <p>{errors.password?.message}</p>
 
           <ButtonComp type="submit">Login</ButtonComp>
+          <p>
+            Não possui uma conta? <Link to="/register">cadastre-se</Link>
+          </p>
         </form>
-        <p>
-          Não possui uma conta? <Link to="/register">cadastre-se</Link>
-        </p>
       </DivContainer>
       <ToastContainer />
     </DivBackground>
