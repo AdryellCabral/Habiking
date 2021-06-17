@@ -18,7 +18,7 @@ const Users = (props) => {
   
       apiKabit.get('/habits/personal/', config)
       .then(response => { 
-        console.log(response)
+        setHabitos(response.data)
         setLoading(true)
         })
       
