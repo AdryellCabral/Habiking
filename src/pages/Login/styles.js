@@ -56,7 +56,7 @@ export const DivContainer = styled.div`
     border: none;
     border-radius: 15px;
     font-size: 20px;
-    margin: 20px;
+    margin: 0;
     margin-bottom: 0;
   }
 

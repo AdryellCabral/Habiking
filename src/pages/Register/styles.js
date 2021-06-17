@@ -58,10 +58,6 @@ export const DivContainer = styled.div`
     border-radius: 15px;
     font-size: 20px;
     margin-bottom: 0;
-
-    @media (min-width: 768px) {
-      margin-bottom: 20px;
-    }
   }
 
   p {
