@@ -9,13 +9,13 @@ const CardGroup = ({ group }) => {
   const handleSubs = () => {
     const config = {
       headers: {
-        null: "",
+        
         Authorization: `Bearer ${userToken}`,
       },
     };
 
     apiKabit
-      .post(`/groups/${group.id}/subscribe/`, config)
+      .post(`/groups/${group.id}/subscribe/`, null,config)
       .then((response) => console.log(response))
       .catch((e) => console.log(e));
   };
