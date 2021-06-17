@@ -61,11 +61,6 @@ export const DivDescription = styled.div`
     align-self: center;
     height: 80%;
     justify-content: space-evenly;
-
-    h4 {
-      wid
-
-    }
   }
 `;
 
@@ -128,9 +123,10 @@ export const DivButtons = styled.div`
     && {
       a {
         button {
-          width: 225px;
+          width: 100%;
           height: 80px;
           margin: 0;
+          max-width: 285px;
         }
       }
     }

@@ -13,8 +13,7 @@ import Logo from "../../assets/imgs/logo.png";
 import { useToken } from "../../providers/UserToken";
 
 const HomePage = () => {
-
-  const {userToken } = useToken();
+  const { userToken } = useToken();
 
   if (userToken) {
     return <Redirect to="/user" />;
@@ -28,9 +27,8 @@ const HomePage = () => {
             <h3>Habiking</h3>
           </LogoContainer>
           <h4>
-            Gestor de hábitos é uma aplicação onde você pode gerir seu
-            lifestyle, tanto sozinho quanto em grupos que você pode entrar ou
-            criar novos.
+            Habiking é uma aplicação onde você pode gerir seu lifestyle, tanto
+            sozinho quanto em grupos que você pode entrar ou criar novos.
           </h4>
         </DivDescription>
         <DivButtons>
