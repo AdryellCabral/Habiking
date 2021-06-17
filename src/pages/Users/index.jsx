@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useToken } from "../../providers/UserToken";
-import "./styles.css";
 import { apiKabit } from "../../utils/apis";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import NavMenu from "../../components/NavMenu";
@@ -34,22 +33,22 @@ const Users = (props) => {
   return (
     <>
       <NavMenu />
-      <div className="container">
+      <div>
         {username}
 
-        <div className="cardhabit">
-          <div className="criacao">
+        <div>
+          <div>
             <h1>Habitos</h1>
             <Link to="/create-habit">
               <button>Criar Habito</button>
             </Link>
           </div>
 
-          <div className="lista">
+          <div>
             <p>lista de habitos</p>
             {habitos[0] === undefined ? <h1>Sem habitos</h1> : null}
             {loading ? (
-              <div className="caixaHabitos">
+              <div>
                 <HabitCard
                   habit={habitos}
                   setHabitos={setHabitos}
