@@ -98,7 +98,6 @@ export const GroupContainer = styled.div`
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: flex-start;
     width: 80vw;
     height: 48vh;

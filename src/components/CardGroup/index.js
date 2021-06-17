@@ -6,7 +6,7 @@ import { GroupContainer, Infos } from "./styles";
 const CardGroup = ({ group }) => {
   const { userToken } = useToken();
 
-  const handleSubs = (group) => {
+  const handleSubs = () => {
     const config = {
       headers: {
         null: "",
@@ -29,7 +29,7 @@ const CardGroup = ({ group }) => {
         <h1>Descrição</h1>
         <p>{group?.description}</p>
       </GroupContainer>
-      <ButtonComp PropFunction={handleSubs}>Inscrever-se</ButtonComp>
+      <ButtonComp PropFunction={() => handleSubs()}>Inscrever-se</ButtonComp>
     </Infos>
   );
 };
