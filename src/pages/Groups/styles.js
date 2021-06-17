@@ -12,10 +12,9 @@ export const DivContainer = styled.div`
   && {
     button {
       width: 100%;
-      margin-left: 0;
+      margin: 0 0 20px 0;
       padding: 0;
       height: 50px;
-      margin-right: 0;
     }
   }
 
