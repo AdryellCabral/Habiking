@@ -15,8 +15,8 @@ const SelectField =  ({register, name, options, label, ...rest}) => {
                 {...register(name)} 
                 {...rest}
             >
-                {options.map(item => (
-                    <MenuItem value={item}>
+                {options.map((item, index) => (
+                    <MenuItem key={index} value={item}>
                     {item}
                     </MenuItem>
                 ))}
