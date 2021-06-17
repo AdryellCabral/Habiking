@@ -72,7 +72,7 @@ export const SearchButton = styled(Button)`
   }
 `;
 
-export const TextField = styled.textarea`
+export const TextField = styled.input`
   width: 200px;
   height: 32px;
 
@@ -86,8 +86,8 @@ export const TextField = styled.textarea`
   overflow-y: hidden;
 
   border: 2px solid var(--colorTwo);
-  border-radius: 10px 0 0 10px;
-  border-right: 0;
+  border-radius: 10px;
+  /* border-right: 0; */
   color: var(--colorTwo);
   background-color: var(--colorOne);
   text-align: center;

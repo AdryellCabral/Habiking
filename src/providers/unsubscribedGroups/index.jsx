@@ -42,12 +42,12 @@ export const UnsubscribedGroupsProvider = ({ children }) => {
   useEffect(() => {
     apiKabit.get(URL).then((response) => setStates(response));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [URL, groups]);
+  }, [URL]);
 
   useEffect(() => {
     filterOnlyNoSubscriptions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allGroups]);
+  }, [allGroups,groups]);
 
   return (
     <UnsubscribedGroupsContext.Provider
