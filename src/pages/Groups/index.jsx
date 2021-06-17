@@ -24,6 +24,8 @@ const GroupsPages = () => {
     goals,
     activities,
   } = showGroup;
+
+  const isCreator = creator?.id === userId
   if (!userToken) {
     return <Redirect to="/login" />;
   }
@@ -32,13 +34,13 @@ const GroupsPages = () => {
       <NavMenu />
       <DivContainer>
         <div id="buttons-container">
-          <ButtonComp>
-            <Link to="/create-group"> Criar Novo Grupo </Link>
-          </ButtonComp>
+          <Link to="/create-group">
+            <ButtonComp>Criar Novo Grupo</ButtonComp>
+          </Link>
 
-          <ButtonComp>
-            <Link to="/search-group"> Buscar Novo Grupo </Link>
-          </ButtonComp>
+          <Link to="/search-group">
+            <ButtonComp>Buscar Novo Grupo</ButtonComp>
+          </Link>
         </div>
 
         <div id="group-container">
@@ -47,8 +49,7 @@ const GroupsPages = () => {
           </div>
           <DivGroup>
             <div id="group-info">
-              <h1>Grupo</h1>
-              <h2>Nome: {name}</h2>
+              <h1>{name}</h1>
               <h2>Categoria: {category}</h2>
               <p>Descrição: {description}</p>
             </div>
@@ -60,7 +61,11 @@ const GroupsPages = () => {
                   <li id="creator">Criador: {creator?.username}</li>
                   {users_on_group?.map(
                     (user, index) =>
-                      index > 0 && <Li key={index} index={index}>{user.username}</Li>
+                      index > 0 && (
+                        <Li key={index} index={index}>
+                          {user.username}
+                        </Li>
+                      )
                   )}
                 </ul>
               </div>
@@ -69,7 +74,7 @@ const GroupsPages = () => {
                 <h3>Metas</h3>
                 <ul>
                   {goals?.map((goal, index) => (
-                    <CardGoal goal={goal} key={index}></CardGoal>
+                    <CardGoal goal={goal} key={index} isCreator={isCreator}></CardGoal>
                   ))}
                 </ul>
               </div>
@@ -78,15 +83,12 @@ const GroupsPages = () => {
                 <h3>Atividades</h3>
                 <ul>
                   {activities?.map((activity, index) => (
-                    <CardActivities
-                      activity={activity}
-                      key={index}
-                    ></CardActivities>
+                    <CardActivities activity={activity} key={index} />
                   ))}
                 </ul>
               </div>
             </div>
-            {creator?.id === userId && (
+            { isCreator && (
               <div id="edit-group">
                 <Link to="/edit-group">
                   <ButtonComp>Editar</ButtonComp>

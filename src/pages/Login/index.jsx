@@ -1,5 +1,5 @@
 import { DivBackground, DivContainer } from "./styles";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import ButtonComp from "../../components/ButtonComp";
 
 import * as yup from "yup";
@@ -10,6 +10,7 @@ import { apiKabit } from "../../utils/apis";
 
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
+import { useToken } from "../../providers/UserToken";
 
 const formSchema = yup.object().shape({
   username: yup.string().required("Campo obrigatório!"),
@@ -27,6 +28,7 @@ const LoginPage = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
+  const { userToken } = useToken();
 
   const history = useHistory();
 
@@ -42,6 +44,10 @@ const LoginPage = () => {
       .then(() => history.push("/user"))
       .catch(() => toast.error("Usuário ou senha incorretos."));
   };
+
+  if (userToken) {
+    return <Redirect to="/user" />;
+  }
 
   return (
     <DivBackground>
@@ -65,10 +71,10 @@ const LoginPage = () => {
           <p>{errors.password?.message}</p>
 
           <ButtonComp type="submit">Login</ButtonComp>
+          <p>
+            Não possui uma conta? <Link to="/register">cadastre-se</Link>
+          </p>
         </form>
-        <p>
-          Não possui uma conta? <Link to="/register">cadastre-se</Link>
-        </p>
       </DivContainer>
       <ToastContainer />
     </DivBackground>
