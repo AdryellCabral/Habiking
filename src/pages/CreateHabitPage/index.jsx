@@ -1,4 +1,3 @@
-import {  useState } from "react"
 import NavMenu from "../../components/NavMenu"
 import { useToken } from "../../providers/UserToken";
 import { apiKabit } from "../../utils/apis";
@@ -9,7 +8,9 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import ButtonComp from "../../components/ButtonComp";
-import { FormStyled, TextFieldStyled } from "../../components/CreateGroupForm/styles";
+import { TextFieldStyled } from "../../components/CreateGroupForm/styles";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const CreateHabit = () =>{
     const { userToken, userId } = useToken();
@@ -28,12 +29,14 @@ const CreateHabit = () =>{
         user:userId
     }
     console.log('oi')
-    apiKabit.post('/habits/',data,config).then((response) => console.log(response)).catch((err) => console.log(err))
+    apiKabit.post('/habits/',data,config)
+    .then((response) => toast.success("Habito criado com sucesso."))
+    .catch((err) => toast.error("Ocorreu algum erro, tente novamente depois."))
   
 
 }
   const schema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
+    title: yup.string().required("Campo obrigatório"),
     category: yup.string().required("Campo obrigatório"),
     difficulty: yup.string().required("Campo obrigatório"),
     frequency: yup.string().required("Campo obrigatório")
@@ -53,7 +56,7 @@ const CreateHabit = () =>{
     return(<>
         <NavMenu/>
         <div className="criacao">
-        <form>
+        <form onSubmit={handleSubmit(handleForm)}>
         <TextFieldStyled
         {...register("title")}
         helperText={errors.name?.message}
@@ -63,7 +66,7 @@ const CreateHabit = () =>{
         <SelectField register={register} name='category' options={category} label='Categoria'/>
         <SelectField register={register} name='difficulty' options={difficulties} label='Dificuldades'/>
         <SelectField register={register} name='frequency' options={frequencies} label='Frequencia'/>
-        <ButtonComp type='submit' PropFunction={handleSubmit(handleForm)}>Criar</ButtonComp>
+        <ButtonComp type='submit'>Criar</ButtonComp>
         </form>
         </div>
     </>)
