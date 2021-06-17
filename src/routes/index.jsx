@@ -6,6 +6,7 @@ import GroupsPages from "../pages/Groups";
 import CreateGroupPage from "../pages/CreateGroupPage";
 import EditGroupPage from "../pages/EditGroupPage";
 import SearchGroup from "../pages/SearchGroup";
+import NotFound from "../pages/NotFound";
 
 const Routes = () => {
   return (
