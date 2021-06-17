@@ -76,7 +76,7 @@ const SearchGroup = () => {
               <CardGroup key={elem.id} group={elem} />
             ))
           ) : (
-            <p style={{ color: "white" }}>Nenhum grupo encontrado</p> // gambiarra
+            <h5>Nenhum grupo encontrado</h5> // gambiarra
           )
         ) : (
           unsubscribedGroups?.map((elem) => (
