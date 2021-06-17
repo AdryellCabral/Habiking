@@ -8,6 +8,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { apiKabit } from "../../utils/apis";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+
 const formSchema = yup.object().shape({
   username: yup.string().required("Campo obrigatório!"),
   email: yup.string().required("Campo obrigatório!").email("Email inválido!"),
@@ -38,7 +41,7 @@ const RegisterPage = () => {
     apiKabit
       .post("/users/", user)
       .then(() => history.push("/login"))
-      .catch((err) => console.log(err));
+      .catch(() => toast.error("Este nome de usuário já está em uso!"));
   };
 
   return (
@@ -73,6 +76,7 @@ const RegisterPage = () => {
           </p>
         </form>
       </DivContainer>
+      <ToastContainer />
     </DivBackground>
   );
 };
