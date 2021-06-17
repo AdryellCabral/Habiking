@@ -20,6 +20,7 @@ const SearchGroup = () => {
 
   const [groupsFiltred, setGroupsFiltred] = useState([]);
   const [filtered, setFiltered] = useState(false);
+  
   const handleChangePag = (url) => {
     const index = url.indexOf("?");
     const endPoint = url.slice(index);
