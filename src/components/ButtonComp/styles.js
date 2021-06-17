@@ -6,11 +6,11 @@ export const MyButton = styled(Button)`
     width: 40vw;
     margin: 4vw;
     padding: 2vw;
-    background-color: var(--colorOne);
     border: 2px double var(--colorTwo);
     border-radius: 10px;
     box-shadow: 0 0 10px var(--colorOne);
-    color: var(--colorTwo);
+    background-color: ${(props) =>
+      props.disabled ? "var(--colorThree)" : "var(--colorOne)"};
 
     span {
       color: var(--colorTwo);
