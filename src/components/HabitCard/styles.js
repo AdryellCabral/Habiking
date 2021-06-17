@@ -29,8 +29,33 @@ export const CardContainer = styled.div`
     padding: 2px;
   }
 
-  p:nth-child(1) {
-    color: red;
+  p:nth-child(3)::before {
+    content: "Dificuldade:";
+    border-left: 2px solid var(--colorThree);
+    border-bottom: 2px solid var(--colorThree);
+    border-radius: 4px;
+    margin-right: 5px;
+    padding: 2px;
+  }
+
+  p:nth-child(4)::before {
+    content: "Frequência:";
+    border-left: 2px solid var(--colorThree);
+    border-bottom: 2px solid var(--colorThree);
+    border-radius: 4px;
+    margin-right: 5px;
+    padding: 2px;
+  }
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--colorTwo);
+    border: 2px solid var(--colorThree);
+    margin: 10px;
+    padding: 10px;
+    width: 30vw;
   }
 `;
 
@@ -44,6 +69,10 @@ export const Breaker = styled.div`
 
   button {
     height: 5vh;
+  }
+
+  h1 {
+    margin: 0 !important;
   }
 
   input {

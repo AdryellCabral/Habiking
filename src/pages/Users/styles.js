@@ -23,6 +23,12 @@ export const GeneralContainer = styled.div`
     padding: 4px;
     color: var(--colorTwo);
   }
+
+  @media (min-width: 768px) {
+    h1 {
+      width: 20vw;
+    }
+  }
 `;
 
 export const HabitList = styled.div`
@@ -42,11 +48,8 @@ export const HabitList = styled.div`
   }
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    width: 80vw;
+    width: 60vw;
+    max-height: 50vh;
     min-height: 56vh;
 
     h1:nth-child(2) {

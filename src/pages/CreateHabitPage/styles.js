@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import SelectField from "../../components/SelectField";
+
+export const StyledSelectField = styled(SelectField)``;
 
 export const Breaker = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-export const ContainerHab = styled.div`
+export const ContainerHab = styled.form`
   display: flex;
   align-self: center;
   flex-direction: column;
@@ -13,6 +16,11 @@ export const ContainerHab = styled.div`
   width: 86vw;
   border: 2px solid var(--colorThree);
   background-color: var(--colorOne);
+
+  .MuiFormControl-root {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 
   h1 {
     text-align: center;
@@ -27,14 +35,10 @@ export const ContainerHab = styled.div`
   }
 
   input {
-    width: 80%;
-    padding: 10px 20px;
-    border: 2px solid var(--colorTwo);
+    width: 190px;
     color: var(--colorTwo);
     border-radius: 15px;
     font-size: 20px;
-    margin: 20px;
-    margin-bottom: 0;
     background-color: var(--colorOne);
 
     &::placeholder {
@@ -61,15 +65,15 @@ export const ContainerHab = styled.div`
     }
 
     input {
-      width: 80%;
-      padding: 10px 20px;
-      border: 2px solid var(--colorTwo);
+      width: 380px;
       color: var(--colorTwo);
       border-radius: 15px;
       font-size: 20px;
-      margin: 20px;
-      margin-bottom: 0;
       background-color: var(--colorOne);
+
+      &::placeholder {
+        color: grey;
+      }
     }
   }
 `;

@@ -2,7 +2,6 @@ import NavMenu from "../../components/NavMenu";
 import { useToken } from "../../providers/UserToken";
 import { apiKabit } from "../../utils/apis";
 import { category } from "../../utils/category";
-import SelectField from "../../components/SelectField";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,6 +9,7 @@ import ButtonComp from "../../components/ButtonComp";
 import { TextFieldStyled } from "../../components/CreateGroupForm/styles";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { ContainerHab, Breaker, StyledSelectField } from "./styles";
 
 const CreateHabit = () => {
   const { userToken, userId } = useToken();
@@ -61,35 +61,35 @@ const CreateHabit = () => {
   return (
     <>
       <NavMenu />
-      <div className="criacao">
-        <form onSubmit={handleSubmit(handleForm)}>
+      <Breaker>
+        <ContainerHab onSubmit={handleSubmit(handleForm)}>
           <TextFieldStyled
             {...register("title")}
             helperText={errors.name?.message}
             label="Nome do Habito"
             variant="outlined"
           />
-          <SelectField
+          <StyledSelectField
             register={register}
             name="category"
             options={category}
             label="Categoria"
           />
-          <SelectField
+          <StyledSelectField
             register={register}
             name="difficulty"
             options={difficulties}
             label="Dificuldades"
           />
-          <SelectField
+          <StyledSelectField
             register={register}
             name="frequency"
             options={frequencies}
             label="Frequencia"
           />
           <ButtonComp type="submit">Criar</ButtonComp>
-        </form>
-      </div>
+        </ContainerHab>
+      </Breaker>
     </>
   );
 };
