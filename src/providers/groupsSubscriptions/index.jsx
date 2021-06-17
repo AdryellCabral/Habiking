@@ -11,23 +11,30 @@ export const GroupsSubscriptionsProvider = ({ children }) => {
   const { userToken } = useToken();
 
   const newRequestGroupsSubscription = () => {
-    apiKabit
-    .get("/groups/subscriptions/", {
-      headers: {
-        Authorization: `Bearer ${userToken}`
-      },
-    })
-    .then((response) => setGroups(response.data));
-  }
+    if (userToken !== "") {
+      apiKabit
+        .get("/groups/subscriptions/", {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
+        .then((response) => setGroups(response.data));
+    }
+  };
 
   useEffect(() => {
-    newRequestGroupsSubscription()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    newRequestGroupsSubscription();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userToken]);
 
   return (
     <GroupsSubscriptionsContext.Provider
-      value={{ groups, editGroupId, setEditGroupId, newRequestGroupsSubscription }}
+      value={{
+        groups,
+        editGroupId,
+        setEditGroupId,
+        newRequestGroupsSubscription,
+      }}
     >
       {children}
     </GroupsSubscriptionsContext.Provider>

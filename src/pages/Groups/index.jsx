@@ -24,7 +24,10 @@ const GroupsPages = () => {
     goals,
     activities,
   } = showGroup;
-  if (!userToken) {
+
+  const isCreator = creator?.id === userId
+
+  if (userToken === "") {
     return <Redirect to="/login" />;
   }
   return (
@@ -47,8 +50,7 @@ const GroupsPages = () => {
           </div>
           <DivGroup>
             <div id="group-info">
-              <h1>Grupo</h1>
-              <h2>Nome: {name}</h2>
+              <h1>{name}</h1>
               <h2>Categoria: {category}</h2>
               <p>Descrição: {description}</p>
             </div>
@@ -73,7 +75,7 @@ const GroupsPages = () => {
                 <h3>Metas</h3>
                 <ul>
                   {goals?.map((goal, index) => (
-                    <CardGoal goal={goal} key={index}></CardGoal>
+                    <CardGoal goal={goal} key={index} isCreator={isCreator}></CardGoal>
                   ))}
                 </ul>
               </div>
@@ -82,15 +84,12 @@ const GroupsPages = () => {
                 <h3>Atividades</h3>
                 <ul>
                   {activities?.map((activity, index) => (
-                    <CardActivities
-                      activity={activity}
-                      key={index}
-                    ></CardActivities>
+                    <CardActivities activity={activity} key={index} />
                   ))}
                 </ul>
               </div>
             </div>
-            {creator?.id === userId && (
+            { isCreator && (
               <div id="edit-group">
                 <Link to="/edit-group">
                   <ButtonComp>Editar</ButtonComp>

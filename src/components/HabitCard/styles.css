@@ -1,0 +1,75 @@
+.button {
+    border: 0;
+    width: 100px;
+    border-radius: 3px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.container > h1{ 
+    text-align: center;
+    font-size: xx-large;
+}
+.cardhabit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: red;
+    margin: 5vh 10vw;
+    border-radius: 10px;
+    
+}
+.caixaHabitos{
+    border: 2px solid black;
+    width: 70%;
+    margin: 15%;
+    background-color: black;
+    margin-top: 5%;
+    
+}
+.lista > p{
+    text-align: center;
+}
+
+.cardsEvents{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    margin: 5vh 10vw;
+    border-radius: 10px;
+    
+}
+.caixaEvents{
+    border: 2px solid black;
+    width: 70%;
+    margin: 15%;
+    
+}
+.card{
+    margin: 10px;
+    border: 2px black solid;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+.title > h1{
+    margin: 5px;
+    text-align: center;
+    background-color:black ;
+}
+.conteudo{
+    display: flex;
+    justify-content: space-between;
+}
+.check > input{
+   border: none;
+    
+}
+.botoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

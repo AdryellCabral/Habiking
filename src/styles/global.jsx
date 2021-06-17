@@ -8,18 +8,8 @@ export const GlobalStyle = createGlobalStyle`
 
 :root {
 	--colorOne: #1D1E18;
-	--colorTwo: #C8BFC7;
-	--colorThree: #29323c;
-	--colorFour: #A31621;
-	--colorFive: #FCDC4D;
-	--colorSix: #F9FBB2;
-
-
-	--borderColorOne: var(--colorThree);
-	--borderColorTwo: var(--colorTwo);
-	--textColor: var(--colorTwo);
-	--hoverColor: var(--colorThree);
-	--shadowColor: var(--colorOne);
+	--colorTwo: #EEA904;
+	--colorThree: #363635;	
 }
 
 html, body, div, span, applet, object, iframe,
@@ -57,16 +47,34 @@ body {
 	line-height: 1;
     height: 100%;
     margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-	background: #485563;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(
+          rgba(0, 0, 0, 0.2), 
+          rgba(0, 0, 0, 0.2)), var(--colorThree);
 
 font-family: "Roboto", sans-serif;
 
 	
 }
+* {
+	user-select: none;
+	::-webkit-scrollbar {
+	width: 14px;
+	}
+
+	::-webkit-scrollbar-track {
+	background: var(--colorOne);
+	}
+
+	::-webkit-scrollbar-thumb {
+	background: var(--colorTwo);
+	border-radius: 10px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+	background: var(--colorTwo);
+	}
+}
+
 ol, ul {
 	list-style: none;
 }

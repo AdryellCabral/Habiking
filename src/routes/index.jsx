@@ -6,6 +6,9 @@ import GroupsPages from "../pages/Groups";
 import CreateGroupPage from "../pages/CreateGroupPage";
 import EditGroupPage from "../pages/EditGroupPage";
 import SearchGroup from "../pages/SearchGroup";
+import CreateHabit from "../pages/CreateHabitPage";
+import Users from "../pages/Users";
+import NotFound from "../pages/NotFound";
 
 const Routes = () => {
   return (
@@ -19,6 +22,12 @@ const Routes = () => {
       <Route path="/login">
         <LoginPage />
       </Route>
+      <Route exact path="/user">
+        <Users/>
+      </Route>
+      <Route exact path="/create-habit">
+        <CreateHabit/>
+      </Route>
       <Route path="/groups">
         <GroupsPages />
       </Route>
@@ -31,6 +40,11 @@ const Routes = () => {
       <Route exact path="/edit-group">
         <EditGroupPage />
       </Route>
+      
+      <Route >
+        <NotFound />
+      </Route>
+
     </Switch>
   );
 };

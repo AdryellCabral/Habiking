@@ -1,6 +1,6 @@
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import ButtonComp from "../ButtonComp";
 import { useEffect } from "react";
 import { useState } from "react";
 import { DivContainer, DivGroups } from "./styles";
@@ -62,9 +62,9 @@ const GroupList = ({ setShowGroup, groups }) => {
   }, [groups]);
 
   const handleClick = (group) => {
-      setEditGroupId(group.id)
-      setShowGroup(group)
-  }
+    setEditGroupId(group.id);
+    setShowGroup(group);
+  };
   return (
     <DivContainer>
       <TextField
@@ -83,17 +83,17 @@ const GroupList = ({ setShowGroup, groups }) => {
 
       <DivGroups>
         {groupsFiltred.length === 0 ? (
-          <p>Nenhum grupo encontrado :/</p>
+          <p>Nenhum grupo encontrado.</p>
         ) : (
           <ul>
             {groupsFiltred.map((group, index) => (
-              <Button
+              <ButtonComp
                 variant="contained"
                 onClick={() => handleClick(group)}
                 key={index}
               >
                 {group.name}
-              </Button>
+              </ButtonComp>
             ))}
           </ul>
         )}
