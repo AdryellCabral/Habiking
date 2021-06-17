@@ -1,6 +1,5 @@
 import NavMenu from "../../components/NavMenu";
 import CardGroup from "../../components/CardGroup";
-import ButtonComp from "../../components/ButtonComp";
 
 import {
   Breaker,
@@ -9,92 +8,81 @@ import {
   Container,
   GroupContainer,
 } from "./styles";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
-import { apiKabit } from "../../utils/apis";
-import { useToken } from "../../providers/UserToken";
+import { useUnsubscribedGroups } from "../../providers/unsubscribedGroups";
+import ButtonComp from "../../components/ButtonComp";
 
 const SearchGroup = () => {
-  const { groups } = useGroupsSubscriptions();
-  const { userToken } = useToken();
-
-  const [loaded, setLoaded] = useState(false);
-  const [allGroups, setAllGroups] = useState(() => {
-    apiKabit
-      .get("/groups/")
-      .then((response) => response.data.results)
-      .then((response) =>
-        setAllGroups(
-          response.filter(
-            (elem) => !groups.find((elem2) => elem2.id === elem.id)
-          )
-        )
-      )
-      .then((response) => setLoaded(true));
-  });
-  const [searching, setSearching] = useState(false);
+  const { unsubscribedGroups, setURL, nextPag, previousPag } =
+    useUnsubscribedGroups();
   const [userSearch, setUserSearch] = useState("");
 
+  const [groupsFiltred, setGroupsFiltred] = useState([]);
+  const [filtered, setFiltered] = useState(false);
+  const handleChangePag = (url) => {
+    const index = url.indexOf("?");
+    const endPoint = url.slice(index);
+    if (index === -1) {
+      setURL("/groups/");
+    } else {
+      setURL(`/groups/${endPoint}`);
+    }
+  };
+
   const handleGroupSearch = (name) => {
-    setAllGroups([allGroups.find((elem) => elem.name === name)]);
-    setSearching(true);
+    const newList = unsubscribedGroups.filter(
+      (group) => group.name.toUpperCase() === name.toUpperCase()
+    );
+    setGroupsFiltred(newList);
+    setFiltered(true);
   };
 
-  const handleGoBack = () => {
-    apiKabit
-      .get("/groups/")
-      .then((response) => response.data.results)
-      .then((response) =>
-        setAllGroups(
-          response.filter(
-            (elem) => !groups.find((elem2) => elem2.id === elem.id)
-          )
-        )
-      );
-    setSearching(false);
-    setUserSearch("");
-  };
-
-  const handleSubs = (group) => {
-    const config = {
-      headers: {
-        null: "",
-        Authorization: `Bearer ${userToken}`,
-      },
-    };
-
-    apiKabit
-      .post(`/groups/${group.id}/subscribe/`, config)
-      .then((response) => console.log(response))
-      .catch((e) => console.log(e));
+  const handleChange = (e) => {
+    setUserSearch(e.target.value);
+    if (e.target.value === "") {
+      setGroupsFiltred([]);
+      setFiltered(false);
+    }
   };
 
   return (
     <Container>
       <NavMenu />
       <Breaker>
-        <TextField
-          value={userSearch}
-          onChange={(e) => setUserSearch(e.target.value)}
-        />
-        {searching ? (
-          <SearchButton onClick={() => handleGoBack()}>Voltar</SearchButton>
-        ) : (
-          <SearchButton onClick={() => handleGroupSearch(userSearch)}>
-            Procurar!
-          </SearchButton>
-        )}
+        <TextField value={userSearch} onChange={(e) => handleChange(e)} />
+        <SearchButton onClick={() => handleGroupSearch(userSearch)}>
+          Procurar!
+        </SearchButton>
       </Breaker>
-
+      <div id="buttons-container">
+        <ButtonComp
+          disabled={previousPag === null}
+          onClick={() => handleChangePag(previousPag)}
+        >
+          Página anterior
+        </ButtonComp>
+        <ButtonComp
+          disabled={nextPag === null}
+          onClick={() => handleChangePag(nextPag)}
+        >
+          Próxima Página
+        </ButtonComp>
+      </div>
       <GroupContainer>
-        {allGroups?.map((elem) => (
-          <CardGroup
-            key={elem.id}
-            action={() => handleSubs(elem)}
-            group={elem}
-          />
-        ))}
+        {filtered ? (
+          groupsFiltred.length > 0 ? (
+            groupsFiltred.map((elem) => (
+              <CardGroup key={elem.id} group={elem} />
+            ))
+          ) : (
+            <h5>Nenhum grupo encontrado</h5> // gambiarra
+          )
+        ) : (
+          unsubscribedGroups?.map((elem) => (
+            <CardGroup key={elem.id} group={elem} />
+          ))
+        )}
       </GroupContainer>
     </Container>
   );

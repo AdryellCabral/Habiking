@@ -1,7 +1,24 @@
+import { useToken } from "../../providers/UserToken";
+import { apiKabit } from "../../utils/apis";
 import ButtonComp from "../ButtonComp";
 import { GroupContainer, Infos } from "./styles";
 
-const CardGroup = ({ group, action }) => {
+const CardGroup = ({ group }) => {
+  const { userToken } = useToken();
+
+  const handleSubs = () => {
+    const config = {
+      headers: {
+        
+        Authorization: `Bearer ${userToken}`,
+      },
+    };
+
+    apiKabit
+      .post(`/groups/${group.id}/subscribe/`, null,config)
+      .then((response) => console.log(response))
+      .catch((e) => console.log(e));
+  };
   return (
     <Infos>
       <GroupContainer>
@@ -12,7 +29,7 @@ const CardGroup = ({ group, action }) => {
         <h1>Descrição</h1>
         <p>{group?.description}</p>
       </GroupContainer>
-      <ButtonComp PropFunction={action}>Inscrever-se</ButtonComp>
+      <ButtonComp PropFunction={() => handleSubs()}>Inscrever-se</ButtonComp>
     </Infos>
   );
 };
