@@ -33,7 +33,7 @@ const SearchGroup = () => {
     }
   };
 
-  const handleGroupSearch = (name) => {
+  const GroupSearch = (name) => {
     const newList = unsubscribedGroups.filter(
       (group) => group.name.toUpperCase() === name.toUpperCase()
     );
@@ -41,26 +41,25 @@ const SearchGroup = () => {
     setFiltered(true);
   };
 
-  const handleChange = (e) => {
-    setUserSearch(e.target.value);
-    if (e.target.value === "") {
+  const handleChange = (value) => {
+    setUserSearch(value);
+    if (value === "") {
       setGroupsFiltred([]);
       setFiltered(false);
+    } else {
+      GroupSearch(value);
     }
   };
 
   useEffect(() => {
-    setIsLoading(false)
-  }, [unsubscribedGroups])
+    setIsLoading(false);
+  }, [unsubscribedGroups]);
 
   return (
     <Container>
       <NavMenu />
       <Breaker>
-        <TextField value={userSearch} onChange={(e) => handleChange(e)} />
-        <SearchButton onClick={() => handleGroupSearch(userSearch)}>
-          Procurar!
-        </SearchButton>
+        <TextField value={userSearch} onChange={(e) => handleChange(e.target.value)} placeholder="Filtrar grupos por nome"/>
       </Breaker>
       <div id="buttons-container">
         <ButtonComp
