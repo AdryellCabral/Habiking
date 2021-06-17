@@ -7,7 +7,6 @@ import CreateGroupPage from "../pages/CreateGroupPage";
 import EditGroupPage from "../pages/EditGroupPage";
 import Users from '../pages/Users'
 import CreateHabit from '../pages/CreateHabitPage'
-import EditHabit from "../pages/EditHabitPage";
 
 const Routes = () => {
   return (
@@ -26,9 +25,6 @@ const Routes = () => {
       </Route>
       <Route exact path="/create-habit">
         <CreateHabit/>
-      </Route>
-      <Route exact path="/edit-habit">
-        <EditHabit/>
       </Route>
       <Route path="/groups">
         <GroupsPages />

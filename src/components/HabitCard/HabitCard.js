@@ -17,7 +17,6 @@ return(<>
                       <p>{habit.frequency}</p>
                     </div>
                       <div className="botoes">
-                      <Link to="/edit-habit"><button>Editar</button></Link>
                         <button onClick={() => setHabitos(habitos.filter(habito => habito.id !== habit.id))}>Deletar</button>
                       </div>
             
