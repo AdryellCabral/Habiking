@@ -8,4 +8,4 @@ export const ContainerStyled = styled(Container)`
     width: 100%;
     padding: 0;
   }
-`
+`;

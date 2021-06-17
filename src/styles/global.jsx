@@ -48,8 +48,8 @@ body {
     height: 100%;
     margin: 0;
 	background: linear-gradient(
-          rgba(0, 0, 0, 0.4), 
-          rgba(0, 0, 0, 0.4)), var(--colorTwo);
+          rgba(0, 0, 0, 0.2), 
+          rgba(0, 0, 0, 0.2)), var(--colorThree);
 
 font-family: "Roboto", sans-serif;
 
