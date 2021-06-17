@@ -31,36 +31,29 @@ const SearchGroup = () => {
   };
 
   const handleGroupSearch = (name) => {
-    const newList = unsubscribedGroups.filter((group) => group.name.toUpperCase() === name.toUpperCase());
+    const newList = unsubscribedGroups.filter(
+      (group) => group.name.toUpperCase() === name.toUpperCase()
+    );
     setGroupsFiltred(newList);
-    setFiltered(true)
+    setFiltered(true);
   };
 
-  const handleClearFilter = () => {
-    setGroupsFiltred([])
-    setFiltered(false)
-    setUserSearch("")
-
-  }
+  const handleChange = (e) => {
+    setUserSearch(e.target.value);
+    if (e.target.value === "") {
+      setGroupsFiltred([]);
+      setFiltered(false);
+    }
+  };
 
   return (
     <Container>
       <NavMenu />
       <Breaker>
-        <TextField
-          value={userSearch}
-          onChange={(e) => setUserSearch(e.target.value)}
-        />
-
-        {filtered ? (
-          <SearchButton onClick={handleClearFilter}>
-            Ver todos grupo
-          </SearchButton>
-        ) : (
-          <SearchButton onClick={() => handleGroupSearch(userSearch)}>
-            Procurar!
-          </SearchButton>
-        )}
+        <TextField value={userSearch} onChange={(e) => handleChange(e)} />
+        <SearchButton onClick={() => handleGroupSearch(userSearch)}>
+          Procurar!
+        </SearchButton>
       </Breaker>
       <div id="buttons-container">
         <ButtonComp
@@ -77,13 +70,19 @@ const SearchGroup = () => {
         </ButtonComp>
       </div>
       <GroupContainer>
-        {groupsFiltred?.length > 0
-          ? groupsFiltred.map((elem) => (
+        {filtered ? (
+          groupsFiltred.length > 0 ? (
+            groupsFiltred.map((elem) => (
               <CardGroup key={elem.id} group={elem} />
             ))
-          : unsubscribedGroups?.map((elem) => (
-              <CardGroup key={elem.id} group={elem} />
-            ))}
+          ) : (
+            <p style={{color:"white"}}>Nenhum grupo encontrado</p> // gambiarra
+          )
+        ) : (
+          unsubscribedGroups?.map((elem) => (
+            <CardGroup key={elem.id} group={elem} />
+          ))
+        )}
       </GroupContainer>
     </Container>
   );
