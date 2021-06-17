@@ -8,19 +8,22 @@ import {
   Container,
   GroupContainer,
 } from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useUnsubscribedGroups } from "../../providers/unsubscribedGroups";
 import ButtonComp from "../../components/ButtonComp";
+import Loader from "../../components/Loader";
 
 const SearchGroup = () => {
   const { unsubscribedGroups, setURL, nextPag, previousPag } =
     useUnsubscribedGroups();
   const [userSearch, setUserSearch] = useState("");
-
+  const [isLoading, setIsLoading] = useState(true);
   const [groupsFiltred, setGroupsFiltred] = useState([]);
   const [filtered, setFiltered] = useState(false);
+
   const handleChangePag = (url) => {
+    setIsLoading(true);
     const index = url.indexOf("?");
     const endPoint = url.slice(index);
     if (index === -1) {
@@ -30,7 +33,7 @@ const SearchGroup = () => {
     }
   };
 
-  const handleGroupSearch = (name) => {
+  const GroupSearch = (name) => {
     const newList = unsubscribedGroups.filter(
       (group) => group.name.toUpperCase() === name.toUpperCase()
     );
@@ -38,22 +41,25 @@ const SearchGroup = () => {
     setFiltered(true);
   };
 
-  const handleChange = (e) => {
-    setUserSearch(e.target.value);
-    if (e.target.value === "") {
+  const handleChange = (value) => {
+    setUserSearch(value);
+    if (value === "") {
       setGroupsFiltred([]);
       setFiltered(false);
+    } else {
+      GroupSearch(value);
     }
   };
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [unsubscribedGroups]);
 
   return (
     <Container>
       <NavMenu />
       <Breaker>
-        <TextField value={userSearch} onChange={(e) => handleChange(e)} />
-        <SearchButton onClick={() => handleGroupSearch(userSearch)}>
-          Procurar!
-        </SearchButton>
+        <TextField value={userSearch} onChange={(e) => handleChange(e.target.value)} placeholder="Filtrar grupos por nome"/>
       </Breaker>
       <div id="buttons-container">
         <ButtonComp
@@ -70,7 +76,9 @@ const SearchGroup = () => {
         </ButtonComp>
       </div>
       <GroupContainer>
-        {filtered ? (
+        {isLoading ? (
+          <Loader />
+        ) : filtered ? (
           groupsFiltred.length > 0 ? (
             groupsFiltred.map((elem) => (
               <CardGroup key={elem.id} group={elem} />
