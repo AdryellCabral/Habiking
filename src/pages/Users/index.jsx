@@ -4,6 +4,9 @@ import { useToken } from "../../providers/UserToken";
 import { apiKabit } from "../../utils/apis";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import NavMenu from "../../components/NavMenu";
+import Loader from "../../components/Loader";
+import { GeneralContainer, HabitList } from "./styles";
+import ButtonComp from "../../components/ButtonComp";
 
 const Users = (props) => {
   const { userToken, setUserToken, username, userId } = useToken();
@@ -29,38 +32,33 @@ const Users = (props) => {
     }
   }, [userToken]);
 
-  console.log(habitos);
+  console.log(username);
   return (
     <>
       <NavMenu />
-      <div>
-        {username}
+      <GeneralContainer>
+        <h1>{username}</h1>
+        <h1>Habitos</h1>
+        <Link to="/create-habit">
+          <ButtonComp>Criar Habito</ButtonComp>
+        </Link>
 
-        <div>
-          <div>
-            <h1>Habitos</h1>
-            <Link to="/create-habit">
-              <button>Criar Habito</button>
-            </Link>
-          </div>
-
-          <div>
-            <p>lista de habitos</p>
-            {habitos[0] === undefined ? <h1>Sem habitos</h1> : null}
-            {loading ? (
-              <div>
-                <HabitCard
-                  habit={habitos}
-                  setHabitos={setHabitos}
-                  habitos={habitos}
-                />{" "}
-              </div>
-            ) : (
-              <p>loading...</p>
-            )}
-          </div>
-        </div>
-      </div>
+        <HabitList>
+          <h1>Lista de Habitos</h1>
+          {habitos[0] === undefined ? <h1>Sem habitos</h1> : null}
+          {loading ? (
+            <div>
+              <HabitCard
+                habit={habitos}
+                setHabitos={setHabitos}
+                habitos={habitos}
+              />{" "}
+            </div>
+          ) : (
+            <Loader />
+          )}
+        </HabitList>
+      </GeneralContainer>
     </>
   );
 };
