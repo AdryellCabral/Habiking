@@ -10,6 +10,9 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+
 const CreateActivitiesForm = () => {
     const { userToken } = useToken();
     const { editGroupId, newRequestGroupsSubscription } = useGroupsSubscriptions();
@@ -39,10 +42,12 @@ const CreateActivitiesForm = () => {
               },
         })
         .then((response) => {
-            newRequestGroupsSubscription()
+            newRequestGroupsSubscription();
+            toast.success('Categoria alterada com sucesso.')
         })
         .catch((error) => {
             console.log(error);
+            toast.error('Ocorreu algum erro, tente novamente depois.')
         })
     }
 
@@ -69,7 +74,8 @@ const CreateActivitiesForm = () => {
 
         {errors.realization_time?.message}
 
-        <ButtonComp type="submit" PropFunction={handleSubmit(onSubmitFunction)}>Criar Meta</ButtonComp>        
+        <ButtonComp type="submit" PropFunction={handleSubmit(onSubmitFunction)}>Criar Meta</ButtonComp>
+        <ToastContainer />        
     </FormStyled>
     );
 }
