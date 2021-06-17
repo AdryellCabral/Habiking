@@ -7,7 +7,7 @@ import HabitCard from "../../components/HabitCard/HabitCard";
 import NavMenu from "../../components/NavMenu";
 
 const Users = (props) => {
-  const { userToken, setUserToken, userId } = useToken();
+  const { userToken, setUserToken, username, userId } = useToken();
   const [habitos, setHabitos] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -35,7 +35,7 @@ const Users = (props) => {
     <>
       <NavMenu />
       <div className="container">
-        {/* nome do usuario aqui*/}
+        {username}
 
         <div className="cardhabit">
           <div className="criacao">

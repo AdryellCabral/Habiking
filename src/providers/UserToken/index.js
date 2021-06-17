@@ -5,7 +5,7 @@ export const TokenContext = createContext();
 
 export const TokenProvider = ({ children }) => {
   const [userToken, setUserToken] = useState("");
-
+  const [username, setUsername]  = useState("");
   const [userId, setUserId] = useState();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const TokenProvider = ({ children }) => {
   },[userToken]);
 
   return (
-    <TokenContext.Provider value={{ userToken, setUserToken, userId }}>
+    <TokenContext.Provider value={{ userToken, setUserToken, userId, setUsername, username }}>
       {children}
     </TokenContext.Provider>
   );

@@ -28,11 +28,12 @@ const LoginPage = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-  const { userToken } = useToken();
+  const { userToken, setUsername } = useToken();
 
   const history = useHistory();
 
   const onSubmitFunction = (data) => {
+    setUsername(data.username);
     apiKabit
       .post("/sessions/", data)
       .then((response) =>
@@ -45,7 +46,7 @@ const LoginPage = () => {
       .catch(() => toast.error("Usuário ou senha incorretos."));
   };
 
-  if (userToken) {
+  if (userToken !== "") {
     return <Redirect to="/user" />;
   }
 
