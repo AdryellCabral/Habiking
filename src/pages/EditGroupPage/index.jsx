@@ -13,7 +13,7 @@ const EditGroupPage = () => {
   const localToken = JSON.parse(localStorage.getItem("@tokenKabit")) || "";
 
   if (localToken === "") {
-    return <Redirect to="/login" />;
+    return <Redirect to="/" />;
   } else {
     setUserToken(localToken);
   }
