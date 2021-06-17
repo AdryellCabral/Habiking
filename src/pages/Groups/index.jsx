@@ -26,7 +26,8 @@ const GroupsPages = () => {
   } = showGroup;
 
   const isCreator = creator?.id === userId
-  if (!userToken) {
+
+  if (userToken === "") {
     return <Redirect to="/login" />;
   }
   return (

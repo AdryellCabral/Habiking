@@ -7,8 +7,9 @@ import CreateGroupPage from "../pages/CreateGroupPage";
 import EditGroupPage from "../pages/EditGroupPage";
 import SearchGroup from "../pages/SearchGroup";
 import NotFound from "../pages/NotFound";
-import Users from "../pages/Users";
 import CreateHabit from "../pages/CreateHabitPage";
+import Users from "../pages/Users";
+
 
 const Routes = () => {
   return (

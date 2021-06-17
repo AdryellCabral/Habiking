@@ -10,6 +10,7 @@ import Menu from "@material-ui/core/Menu";
 import Logo from "../../assets/imgs/logo.png";
 
 import { Link } from "react-router-dom";
+import { useToken } from "../../providers/UserToken";
 
 const menuStyle = {
   style: {
@@ -21,7 +22,7 @@ const menuStyle = {
 
 const NavMenu = () => {
   const [width, setWidth] = useState(window.innerWidth);
-
+  const {setUserToken} = useToken()
   const handleResizeWindow = () => setWidth(window.innerWidth);
   window.addEventListener("resize", handleResizeWindow);
 
@@ -39,6 +40,7 @@ const NavMenu = () => {
 
   const handleLogout = () => {
     localStorage.clear();
+    setUserToken("")
     handleClose();
   };
 
@@ -72,7 +74,7 @@ const NavMenu = () => {
             <Link to="/groups">
               <MyMenuItem onClick={handleClose}>Groups</MyMenuItem>
             </Link>
-            <Link to="/login">
+            <Link to="/">
               <MyMenuItem onClick={handleLogout}>Logout</MyMenuItem>
             </Link>
           </Menu>
@@ -85,7 +87,7 @@ const NavMenu = () => {
           <Link to="/groups">
             <button onClick={handleClose}>Groups</button>
           </Link>
-          <Link to="/login">
+          <Link to="/">
             <button onClick={handleLogout}>Logout</button>
           </Link>
         </DesktopMenuContainer>
