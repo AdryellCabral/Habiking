@@ -1,5 +1,5 @@
 import { DivBackground, DivContainer } from "./styles";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import ButtonComp from "../../components/ButtonComp";
 
 import * as yup from "yup";
@@ -10,6 +10,7 @@ import { apiKabit } from "../../utils/apis";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { useToken } from "../../providers/UserToken";
 
 const formSchema = yup.object().shape({
   username: yup.string().required("Campo obrigatório!"),
@@ -32,6 +33,7 @@ const RegisterPage = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
+  const {userToken } = useToken();
 
   const history = useHistory();
 
@@ -44,6 +46,10 @@ const RegisterPage = () => {
       .catch(() => toast.error("Este nome de usuário já está em uso!"));
   };
 
+  
+  if (userToken) {
+    return <Redirect to="/user" />;
+  }
   return (
     <DivBackground>
       <DivContainer>
