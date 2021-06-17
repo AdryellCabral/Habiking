@@ -3,6 +3,7 @@ import { ContainerStyled } from "./styles";
 import GroupUpdateForm from "../../components/GroupUpdateForm";
 import CreateGoalForm from "../../components/CreateGoalForm";
 import CreateActivitiesForm from "../../components/CreateActivitiesForm";
+import NavMenu from "../../components/NavMenu";
 import { useToken } from "../../providers/UserToken";
 import { Redirect } from "react-router-dom";
 
@@ -14,6 +15,7 @@ const EditGroupPage = () => {
   }
   return (
     <ContainerStyled>
+      <NavMenu />
       <h2>Alterar Categoria</h2>
       <GroupUpdateForm />
       <hr />

@@ -8,15 +8,19 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { apiKabit } from "../../utils/apis";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+
 const formSchema = yup.object().shape({
   username: yup.string().required("Campo obrigatório!"),
   email: yup.string().required("Campo obrigatório!").email("Email inválido!"),
   password: yup
     .string()
-    .min(6, "Mínimo de 6 dígitos!")
-    .required("Campo obrigatório!"),
+    .required("Campo obrigatório!")
+    .min(6, "Mínimo de 6 dígitos!"),
   passwordConfirm: yup
     .string()
+    .required("Campo obrigatório!")
     .oneOf([yup.ref("password")], "As senhas estão diferentes."),
 });
 
@@ -36,9 +40,8 @@ const RegisterPage = () => {
 
     apiKabit
       .post("/users/", user)
-      .then(console.log("Cadastro efetuado com sucesso!"))
-      .then(history.push("/login"))
-      .catch((err) => console.log(err));
+      .then(() => history.push("/login"))
+      .catch(() => toast.error("Este nome de usuário já está em uso!"));
   };
 
   return (
@@ -51,28 +54,29 @@ const RegisterPage = () => {
             placeholder="Nome de usuário"
             {...register("username")}
           />
-          <span>{errors.name?.message}</span>
+          <p>{errors.username?.message}</p>
           <input type="email" placeholder="Email" {...register("email")} />
-          <span>{errors.email?.message}</span>
+          <p>{errors.email?.message}</p>
           <input
             type="password"
             placeholder="Senha"
             {...register("password")}
             autoComplete="new-password"
           />
-          <span>{errors.password?.message}</span>
+          <p>{errors.password?.message}</p>
           <input
             type="password"
             placeholder="Confirmar senha"
             {...register("passwordConfirm")}
           />
-          <span>{errors.passwordConfirm?.message}</span>
+          <p>{errors.passwordConfirm?.message}</p>
           <ButtonComp type="submit">Cadastrar</ButtonComp>
         </form>
         <p>
           Já possui uma conta? Faça <Link to="/login">login</Link>
         </p>
       </DivContainer>
+      <ToastContainer />
     </DivBackground>
   );
 };
