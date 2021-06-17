@@ -13,6 +13,8 @@ export const StyledTextField = styled(TextField)`
 export const FormStyled = styled.form`
   display: flex;
   margin: 40px auto;
+  margin-top: 0;
+  margin-bottom: 0;
   align-self: center;
   width: 90%;
   border-radius: 10px;
