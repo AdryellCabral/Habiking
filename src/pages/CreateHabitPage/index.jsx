@@ -1,43 +1,95 @@
-import { useState } from "react";
 import NavMenu from "../../components/NavMenu";
-import { ContainerHab, Breaker } from "./styles";
-import ButtomComp from "../../components/ButtonComp";
+import { useToken } from "../../providers/UserToken";
+import { apiKabit } from "../../utils/apis";
+import { category } from "../../utils/category";
+import SelectField from "../../components/SelectField";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import ButtonComp from "../../components/ButtonComp";
+import { TextFieldStyled } from "../../components/CreateGroupForm/styles";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const CreateHabit = () => {
-  const [title, setTitle] = useState();
-  const [category, setCategory] = useState();
-  const [difficulty, setDifficulty] = useState();
-  const [frequency, setFrequency] = useState();
+  const { userToken, userId } = useToken();
+
+  const handleForm = ({ title, frequency, category, difficulty }) => {
+    const config = { headers: { Authorization: "Bearer " + userToken } };
+
+    const data = {
+      title: title,
+      frequency: frequency,
+      category: category,
+      difficulty: difficulty,
+      achieved: false,
+      how_much_achieved: 0,
+      user: userId,
+    };
+    console.log("oi");
+    apiKabit
+      .post("/habits/", data, config)
+      .then((response) => toast.success("Habito criado com sucesso."))
+      .catch((err) =>
+        toast.error("Ocorreu algum erro, tente novamente depois.")
+      );
+  };
+  const schema = yup.object().shape({
+    title: yup.string().required("Campo obrigatório"),
+    category: yup.string().required("Campo obrigatório"),
+    difficulty: yup.string().required("Campo obrigatório"),
+    frequency: yup.string().required("Campo obrigatório"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const difficulties = [
+    "Muito fácil",
+    "Fácil",
+    "Intermediário",
+    "Difícil",
+    "Muito difícil",
+  ];
+  const frequencies = ["Diario", "Semanal", "Mensal"];
 
   return (
     <>
       <NavMenu />
-      <Breaker>
-        <ContainerHab>
-          <h1>Criar Hábito</h1>
-          <input
-            placeholder="Título"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          ></input>
-          <input
-            placeholder="Categoria"
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
-          ></input>
-          <input
-            placeholder="Dificuldade"
-            value={difficulty}
-            onChange={(event) => setDifficulty(event.target.value)}
-          ></input>
-          <input
-            placeholder="Frequencia"
-            value={frequency}
-            onChange={(event) => setFrequency(event.target.value)}
-          ></input>
-          <ButtomComp>Criar</ButtomComp>
-        </ContainerHab>
-      </Breaker>
+      <div className="criacao">
+        <form onSubmit={handleSubmit(handleForm)}>
+          <TextFieldStyled
+            {...register("title")}
+            helperText={errors.name?.message}
+            label="Nome do Habito"
+            variant="outlined"
+          />
+          <SelectField
+            register={register}
+            name="category"
+            options={category}
+            label="Categoria"
+          />
+          <SelectField
+            register={register}
+            name="difficulty"
+            options={difficulties}
+            label="Dificuldades"
+          />
+          <SelectField
+            register={register}
+            name="frequency"
+            options={frequencies}
+            label="Frequencia"
+          />
+          <ButtonComp type="submit">Criar</ButtonComp>
+        </form>
+      </div>
     </>
   );
 };
