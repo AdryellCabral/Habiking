@@ -30,7 +30,9 @@ export const DivGroups = styled.div`
   padding: 5px;
 
   p {
-    color: black;
+    text-align: center;
+    color: var(--colorTwo);
+    font-size: 1.5rem;
   }
 
   button {
