@@ -5,6 +5,7 @@ import "./styles.css";
 import { apiKabit } from "../../utils/apis";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import NavMenu from "../../components/NavMenu";
+import Loader from "../../components/Loader";
 
 const Users = (props) => {
   const { userToken, setUserToken, username, userId } = useToken();
@@ -21,7 +22,7 @@ const Users = (props) => {
 
   useEffect(() => {
     if (userToken !== "") {
-      let config = { headers: { Authorization: "Bearer " + userToken } };
+      const config = { headers: { Authorization: "Bearer " + userToken } };
 
       apiKabit.get("/habits/personal/", config).then((response) => {
         setHabitos(response.data);
@@ -30,7 +31,6 @@ const Users = (props) => {
     }
   }, [userToken]);
 
-  console.log(habitos);
   return (
     <>
       <NavMenu />
@@ -50,14 +50,15 @@ const Users = (props) => {
             {habitos[0] === undefined ? <h1>Sem habitos</h1> : null}
             {loading ? (
               <div className="caixaHabitos">
-                <HabitCard
-                  habit={habitos}
+                {habitos.map(habit => <HabitCard
+                  habit={habit}
+                  achieved={habit.achieved}
                   setHabitos={setHabitos}
                   habitos={habitos}
-                />{" "}
+                />)}
               </div>
             ) : (
-              <p>loading...</p>
+              <Loader/>
             )}
           </div>
         </div>
