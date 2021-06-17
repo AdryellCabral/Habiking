@@ -6,12 +6,9 @@ import GroupsPages from "../pages/Groups";
 import CreateGroupPage from "../pages/CreateGroupPage";
 import EditGroupPage from "../pages/EditGroupPage";
 import SearchGroup from "../pages/SearchGroup";
-<<<<<<< HEAD
 import CreateHabit from "../pages/CreateHabitPage";
 import Users from "../pages/Users";
-=======
 import NotFound from "../pages/NotFound";
->>>>>>> 00f7c7a5d834c8ffc73df403b912f7e846fa7ba9
 
 const Routes = () => {
   return (
