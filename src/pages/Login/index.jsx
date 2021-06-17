@@ -8,6 +8,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { apiKabit } from "../../utils/apis";
 
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+
 const formSchema = yup.object().shape({
   username: yup.string().required("Campo obrigatório!"),
   password: yup
@@ -37,7 +40,7 @@ const LoginPage = () => {
         )
       )
       .then(() => history.push("/user"))
-      .catch((err) => console.log("usuário ou senha inválidos!", err));
+      .catch(() => toast.error("Usuário ou senha incorretos."));
   };
 
   return (
@@ -67,6 +70,7 @@ const LoginPage = () => {
           </p>
         </form>
       </DivContainer>
+      <ToastContainer />
     </DivBackground>
   );
 };
