@@ -74,7 +74,7 @@ const NavMenu = () => {
             <Link to="/groups">
               <MyMenuItem onClick={handleClose}>Groups</MyMenuItem>
             </Link>
-            <Link to="/login">
+            <Link to="/">
               <MyMenuItem onClick={handleLogout}>Logout</MyMenuItem>
             </Link>
           </Menu>
@@ -87,7 +87,7 @@ const NavMenu = () => {
           <Link to="/groups">
             <button onClick={handleClose}>Groups</button>
           </Link>
-          <Link to="/login">
+          <Link to="/">
             <button onClick={handleLogout}>Logout</button>
           </Link>
         </DesktopMenuContainer>
