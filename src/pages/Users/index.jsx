@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useToken } from "../../providers/UserToken";
-import "./styles.css";
 import { apiKabit } from "../../utils/apis";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import NavMenu from "../../components/NavMenu";
 import Loader from "../../components/Loader";
+import { GeneralContainer, HabitList } from "./styles";
+import ButtonComp from "../../components/ButtonComp";
 
 const Users = (props) => {
   const { userToken, setUserToken, username, userId } = useToken();
@@ -34,35 +35,32 @@ const Users = (props) => {
   return (
     <>
       <NavMenu />
-      <div className="container">
-        {username}
+      <GeneralContainer>
+        <h1>{username}</h1>
+        <h1>Habitos</h1>
+        <Link to="/create-habit">
+          <ButtonComp>Criar Habito</ButtonComp>
+        </Link>
 
-        <div className="cardhabit">
-          <div className="criacao">
-            <h1>Habitos</h1>
-            <Link to="/create-habit">
-              <button>Criar Habito</button>
-            </Link>
-          </div>
-
-          <div className="lista">
-            <p>lista de habitos</p>
-            {habitos[0] === undefined ? <h1>Sem habitos</h1> : null}
-            {loading ? (
-              <div className="caixaHabitos">
-                {habitos.map(habit => <HabitCard
+        <HabitList>
+          <h1>Lista de Habitos</h1>
+          {habitos[0] === undefined ? <h1>Sem habitos</h1> : null}
+          {loading ? (
+            <div className="caixaHabitos">
+              {habitos.map((habit) => (
+                <HabitCard
                   habit={habit}
                   achieved={habit.achieved}
                   setHabitos={setHabitos}
                   habitos={habitos}
-                />)}
-              </div>
-            ) : (
-              <Loader/>
-            )}
-          </div>
-        </div>
-      </div>
+                />
+              ))}
+            </div>
+          ) : (
+            <Loader />
+          )}
+        </HabitList>
+      </GeneralContainer>
     </>
   );
 };
