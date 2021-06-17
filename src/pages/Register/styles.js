@@ -14,7 +14,9 @@ export const DivContainer = styled.div`
   height: 60%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  border-bottom: 2px solid var(--colorThree);
 
   h1 {
     font-size: 40px;
@@ -30,6 +32,10 @@ export const DivContainer = styled.div`
     text-transform: uppercase;
     text-align: center;
     box-shadow: 0 2px 10px var(--colorOne);
+
+    @media (min-width: 768px) {
+      width: 30%;
+    }
   }
 
   form {

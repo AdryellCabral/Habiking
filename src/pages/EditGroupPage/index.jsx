@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerStyled } from "./styles";
+import { ContainerStyled, Breaker } from "./styles";
 import GroupUpdateForm from "../../components/GroupUpdateForm";
 import CreateGoalForm from "../../components/CreateGoalForm";
 import CreateActivitiesForm from "../../components/CreateActivitiesForm";
@@ -14,17 +14,19 @@ const EditGroupPage = () => {
     return <Redirect to="/login" />;
   }
   return (
-    <ContainerStyled>
+    <>
       <NavMenu />
-      <h2>Alterar Categoria</h2>
-      <GroupUpdateForm />
-      <hr />
-      <h2>Criar Nova Meta</h2>
-      <CreateGoalForm />
-      <hr />
-      <h2>Criar Novo Evento</h2>
-      <CreateActivitiesForm />
-    </ContainerStyled>
+      <Breaker>
+        <ContainerStyled>
+          <h2>Alterar Categoria</h2>
+          <GroupUpdateForm />
+          <h2>Criar Nova Meta</h2>
+          <CreateGoalForm />
+          <h2>Criar Novo Evento</h2>
+          <CreateActivitiesForm />
+        </ContainerStyled>
+      </Breaker>
+    </>
   );
 };
 
