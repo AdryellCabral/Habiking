@@ -8,20 +8,22 @@ import {
   Container,
   GroupContainer,
 } from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useUnsubscribedGroups } from "../../providers/unsubscribedGroups";
 import ButtonComp from "../../components/ButtonComp";
+import Loader from "../../components/Loader";
 
 const SearchGroup = () => {
   const { unsubscribedGroups, setURL, nextPag, previousPag } =
     useUnsubscribedGroups();
   const [userSearch, setUserSearch] = useState("");
-
+  const [isLoading, setIsLoading] = useState(true);
   const [groupsFiltred, setGroupsFiltred] = useState([]);
   const [filtered, setFiltered] = useState(false);
-  
+
   const handleChangePag = (url) => {
+    setIsLoading(true);
     const index = url.indexOf("?");
     const endPoint = url.slice(index);
     if (index === -1) {
@@ -47,6 +49,10 @@ const SearchGroup = () => {
     }
   };
 
+  useEffect(() => {
+    setIsLoading(false)
+  }, [unsubscribedGroups])
+
   return (
     <Container>
       <NavMenu />
@@ -71,7 +77,9 @@ const SearchGroup = () => {
         </ButtonComp>
       </div>
       <GroupContainer>
-        {filtered ? (
+        {isLoading ? (
+          <Loader />
+        ) : filtered ? (
           groupsFiltred.length > 0 ? (
             groupsFiltred.map((elem) => (
               <CardGroup key={elem.id} group={elem} />

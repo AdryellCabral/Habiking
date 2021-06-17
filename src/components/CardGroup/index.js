@@ -7,18 +7,17 @@ import { GroupContainer, Infos } from "./styles";
 
 const CardGroup = ({ group }) => {
   const { userToken } = useToken();
-  const {newRequestGroupsSubscription} = useGroupsSubscriptions();
+  const { newRequestGroupsSubscription } = useGroupsSubscriptions();
 
   const handleSubs = () => {
     const config = {
       headers: {
-        
         Authorization: `Bearer ${userToken}`,
       },
     };
 
     apiKabit
-      .post(`/groups/${group.id}/subscribe/`, null,config)
+      .post(`/groups/${group.id}/subscribe/`, null, config)
       .then((response) => newRequestGroupsSubscription())
       .then(() => toast.success("Inscrição feita com sucesso!"))
       .catch((e) => toast.error("Não foi possível entrar no grupo"));
