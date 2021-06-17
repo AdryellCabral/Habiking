@@ -56,7 +56,7 @@ export const DivContainer = styled.div`
     border: none;
     border-radius: 15px;
     font-size: 20px;
-    margin: 20px;
+    margin: 0;
     margin-bottom: 0;
   }
 
@@ -64,6 +64,12 @@ export const DivContainer = styled.div`
     font-size: 1.2rem;
     color: var(--colorTwo);
     margin-top: 4vh;
+    margin-bottom: 2vh;
+
+    @media (min-width: 768px) {
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+    }
   }
 
   a {
