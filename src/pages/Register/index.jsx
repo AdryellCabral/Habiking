@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { apiKabit } from "../../utils/apis";
 
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useToken } from "../../providers/UserToken";
 
 const formSchema = yup.object().shape({
@@ -33,7 +33,7 @@ const RegisterPage = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-  const {userToken } = useToken();
+  const { userToken } = useToken();
 
   const history = useHistory();
 
@@ -46,7 +46,6 @@ const RegisterPage = () => {
       .catch(() => toast.error("Este nome de usuário já está em uso!"));
   };
 
-  
   if (userToken) {
     return <Redirect to="/user" />;
   }
@@ -82,7 +81,6 @@ const RegisterPage = () => {
           </p>
         </form>
       </DivContainer>
-      <ToastContainer />
     </DivBackground>
   );
 };

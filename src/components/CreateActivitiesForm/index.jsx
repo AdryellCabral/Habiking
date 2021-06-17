@@ -10,7 +10,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const CreateActivitiesForm = () => {
   const { userToken } = useToken();
@@ -81,7 +81,6 @@ const CreateActivitiesForm = () => {
       <ButtonComp type="submit" PropFunction={handleSubmit(onSubmitFunction)}>
         Criar Meta
       </ButtonComp>
-      <ToastContainer />
     </FormStyled>
   );
 };
