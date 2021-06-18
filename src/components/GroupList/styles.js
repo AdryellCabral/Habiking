@@ -12,11 +12,17 @@ export const DivContainer = styled.div`
     label,
     svg {
       color: var(--colorTwo);
+      margin: 5px;
     }
 
     fieldset {
       border-color: var(--colorTwo);
     }
+  }
+
+  > div {
+    border: 2px solid var(--colorTwo);
+    padding: 5px;
   }
 `;
 
