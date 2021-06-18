@@ -65,6 +65,7 @@ export const DivContainer = styled.div`
     color: var(--colorTwo);
     margin-top: 4vh;
     margin-bottom: 2vh;
+    height: 1.2rem;
 
     @media (min-width: 768px) {
       margin-top: 2vh;
