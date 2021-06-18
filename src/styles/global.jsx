@@ -6,8 +6,14 @@ export const GlobalStyle = createGlobalStyle`
    License: none (public domain)
 */
 
+:root {
+	--colorOne: #1D1E18;
+	--colorTwo: #EEA904;
+	--colorThree: #363635;	
+}
+
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -34,7 +40,36 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    height: 100%;
+    margin: 0;
+	background: linear-gradient(
+          rgba(0, 0, 0, 0.2), 
+          rgba(0, 0, 0, 0.2)), var(--colorThree);
+
+font-family: "Roboto", sans-serif;
+
+	
 }
+* {
+	user-select: none;
+	::-webkit-scrollbar {
+	width: 14px;
+	}
+
+	::-webkit-scrollbar-track {
+	background: var(--colorOne);
+	}
+
+	::-webkit-scrollbar-thumb {
+	background: var(--colorTwo);
+	border-radius: 10px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+	background: var(--colorTwo);
+	}
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -52,5 +87,10 @@ table {
 }
 a {
 	text-decoration: none;
+}
+
+button {
+	border: none;
+	cursor: pointer;
 }
 `;
