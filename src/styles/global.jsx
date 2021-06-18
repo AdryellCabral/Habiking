@@ -38,11 +38,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-
-html {
-    height: 100%;
-}
-
 body {
 	line-height: 1;
     height: 100%;
@@ -92,10 +87,5 @@ table {
 }
 a {
 	text-decoration: none;
-}
-
-button {
-	border: none;
-	cursor: pointer;
 }
 `;
