@@ -1,12 +1,22 @@
 import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
 import ButtonComp from "../ButtonComp";
 import { useEffect } from "react";
 import { useState } from "react";
 import { DivContainer, DivGroups } from "./styles";
 import { useGroupsSubscriptions } from "../../providers/groupsSubscriptions";
+import { FormControl, InputLabel } from "@material-ui/core";
 
 const GroupList = ({ setShowGroup, groups }) => {
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        width: 250,
+        backgroundColor: "var(--colorThree)",
+        color: "var(--colorTwo)",
+      },
+    },
+  };
   const categorys = [
     {
       value: "Todos",
@@ -31,9 +41,6 @@ const GroupList = ({ setShowGroup, groups }) => {
     },
     {
       value: "Esportes",
-    },
-    {
-      value: "Book Happy",
     },
   ];
   const { setEditGroupId } = useGroupsSubscriptions();
@@ -67,19 +74,23 @@ const GroupList = ({ setShowGroup, groups }) => {
   };
   return (
     <DivContainer>
-      <TextField
-        select
-        label="Categorys"
-        variant="outlined"
-        onChange={handleChange}
-        value={category}
-      >
-        {categorys.map((category) => (
-          <MenuItem value={category.value} key={category.value}>
-            {category.value}
-          </MenuItem>
-        ))}
-      </TextField>
+      <FormControl>
+        <InputLabel>Categorias</InputLabel>
+        <Select
+          MenuProps={MenuProps}
+          labelId="Categorys"
+          id={"Categoria"}
+          // variant="outlined"
+          onChange={handleChange}
+          value={category}
+        >
+          {categorys.map((category) => (
+            <MenuItem value={category.value} key={category.value}>
+              {category.value}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       <DivGroups>
         {groupsFiltred.length === 0 ? (
