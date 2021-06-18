@@ -91,8 +91,9 @@ export const MyMenuItem = styled(MenuItem)`
 
   @media (min-width: 768px) {
     && {
-    width: 20vw;
-    margin: 1vw;
-    padding: 1vw;
+      width: 20vw;
+      margin: 1vw;
+      padding: 1vw;
+    }
   }
 `;
