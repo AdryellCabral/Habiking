@@ -3,6 +3,15 @@ import { InputLabel, MenuItem, Select } from '@material-ui/core';
 import { FormControlStyled } from './styles';
 
 const SelectField =  ({register, name, options, label, ...rest}) => {
+    const MenuProps = {
+        PaperProps: {
+          style: {
+            width: 250,
+            backgroundColor: "var(--colorThree)",
+            color: "var(--colorTwo)"
+          },
+        },
+      };
     return (
         <FormControlStyled variant='outlined'>
             <InputLabel id={name + '-label'}>
@@ -10,6 +19,7 @@ const SelectField =  ({register, name, options, label, ...rest}) => {
             </InputLabel>
             
             <Select
+                MenuProps={MenuProps}
                 labelId = {name + '-label'}
                 id={name} 
                 {...register(name)} 
