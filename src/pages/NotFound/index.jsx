@@ -1,14 +1,18 @@
-import { Container } from '@material-ui/core';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { DivContainer } from "./style";
+import React from "react";
+import { Link } from "react-router-dom";
+import Logo from "../../assets/imgs/logo.png";
 
 const NotFound = () => {
   return (
-    <Container>
+    <DivContainer>
       <h2>Página Não Encontrada.</h2>
-      <Link to='/'>Retorne à Página Inicial.</Link>
-    </Container>
+      <img src={Logo} alt="logo"></img>
+      <p>
+        Que tal ir para nossa <Link to="/">Página Inicial.</Link>
+      </p>
+    </DivContainer>
   );
-}
+};
 
 export default NotFound;
