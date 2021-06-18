@@ -56,7 +56,7 @@ const CreateGoalForm = () => {
       )
       .then((response) => {
         newRequestGroupsSubscription();
-        toast.success("Categoria alterada com sucesso.");
+        toast.success("Meta criada com sucesso.");
       })
       .catch((error) => {
         console.log(error);

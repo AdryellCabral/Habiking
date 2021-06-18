@@ -47,7 +47,7 @@ const CreateActivitiesForm = () => {
       )
       .then((response) => {
         newRequestGroupsSubscription();
-        toast.success("Categoria alterada com sucesso.");
+        toast.success("Evento criado com sucesso.");
       })
       .catch((error) => {
         console.log(error);
@@ -79,7 +79,7 @@ const CreateActivitiesForm = () => {
       {errors.realization_time?.message}
 
       <ButtonComp type="submit" PropFunction={handleSubmit(onSubmitFunction)}>
-        Criar Meta
+        Criar Evento
       </ButtonComp>
     </FormStyled>
   );
