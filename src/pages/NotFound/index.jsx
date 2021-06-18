@@ -8,6 +8,8 @@ const NotFound = () => {
     <DivContainer>
       <h2>Página Não Encontrada.</h2>
       <img src={Logo} alt="logo"></img>
+      <h3>Habiking</h3>
+
       <p>
         Que tal ir para nossa <Link to="/">Página Inicial.</Link>
       </p>

@@ -23,6 +23,13 @@ export const DivContainer = styled.div`
     }
   }
 
+  h3 {
+    font-family: "Staatliches", cursive;
+    color:black;
+    font-size: 3rem;
+    -webkit-text-stroke: 1px #eea904;
+  }
+
   @media (min-width:768px){
       img{
           width:25%;
